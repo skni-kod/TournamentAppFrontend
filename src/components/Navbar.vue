@@ -1,14 +1,14 @@
 <template>
   <div>
-    <v-app-bar color="primary" dark>
+    <v-app-bar color="rgb(41,70,129)" dark>
     <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-    <v-toolbar-title>Apka turniejowa</v-toolbar-title>
+    <v-toolbar-title class="d-none d-sm-flex">Apka turniejowa</v-toolbar-title>
 
     <v-spacer></v-spacer>
 
-    <v-btn icon v-for="icon in iconLinks" :key="icon.icon">
-      <v-icon>{{ icon.icon }}</v-icon>
+    <v-btn icon v-for="item in iconLinks" :key="item.link" :to="item.link">
+      <v-icon>{{ item.icon }}</v-icon>
     </v-btn>
   </v-app-bar>
   </div>
@@ -24,7 +24,7 @@ export default class Navbar extends Vue {
     return {
       iconLinks: [
         {
-          icon: "mdi-seal",
+          link:"/",icon: "mdi-seal",
         },
         {
           icon: "mdi-account-multiple-outline",
@@ -33,7 +33,7 @@ export default class Navbar extends Vue {
           icon: "mdi-bell-outline",
         },
         {
-          icon: "mdi-login",
+          link:"/login",icon: "mdi-login",
         },
       ],
     };
