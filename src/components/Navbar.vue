@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar color="rgb(41,70,129)" dark>
+    <v-app-bar dark class="primary">
       <v-toolbar-title>Apka turniejowa</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon v-for="icon in iconLinks" :key="icon" :to="icon.link">
@@ -9,16 +9,16 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" absolute top right temporary>
-        <v-list nav dense>
-          <v-list-item-group v-model="group">
-            <text-weight-bold>Apka Turniejowa</text-weight-bold>
-            <v-list-item v-for="icon in iconLinks" :key="icon" :to="icon.link">
-              <v-icon>{{ icon.icon }}</v-icon>
-              <v-list-item-title>{{ icon.text }}</v-list-item-title>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-navigation-drawer>
+      <v-list nav dense>
+        <v-list-item-group v-model="group">
+          <div class="font-weight-bold pl-2">Apka Turniejowa</div>
+          <v-list-item v-for="icon in iconLinks" :key="icon" :to="icon.link">
+            <v-icon>{{ icon.icon }}</v-icon>
+            <v-list-item-title>{{ icon.text }}</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
   </div>
 </template>
 
