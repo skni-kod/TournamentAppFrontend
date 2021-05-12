@@ -11,7 +11,7 @@
     <v-navigation-drawer v-model="drawer" absolute top right temporary>
         <v-list nav dense>
           <v-list-item-group v-model="group">
-            <strong>Apka Turniejowa</strong>
+            <text-weight-bold>Apka Turniejowa</text-weight-bold>
             <v-list-item v-for="icon in iconLinks" :key="icon" :to="icon.link">
               <v-icon>{{ icon.icon }}</v-icon>
               <v-list-item-title>{{ icon.text }}</v-list-item-title>
@@ -33,7 +33,7 @@ export default class Navbar extends Vue {
       group: null,
       iconLinks: [
         {
-          link: '/home',
+          link: '/',
           icon: 'mdi-seal',
           text: 'Strona główna',
         },
