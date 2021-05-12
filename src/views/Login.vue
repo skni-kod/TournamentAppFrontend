@@ -155,7 +155,7 @@
                 </v-dialog>
 
               </template>
-            </v-form>
+            
         </v-card>
       </v-col>
     </v-row>
