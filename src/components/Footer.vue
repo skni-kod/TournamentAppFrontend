@@ -1,8 +1,10 @@
 <template>
-  <v-footer color="rgb(41,70,129)">
-    <v-row justify="center" no-gutters >
+  <v-footer class="primary white--text">
+    <v-row justify="center" no-gutters>
       <v-col v-for="link in links" :key="link.link" class="text-center">
-        <v-btn  rounded color="white" text="center" v-bind:href="link.link">{{ link.name }} </v-btn>
+        <v-btn rounded color="white" text="center" v-bind:href="link.link"
+          >{{ link.name }}
+        </v-btn>
       </v-col>
     </v-row>
   </v-footer>
