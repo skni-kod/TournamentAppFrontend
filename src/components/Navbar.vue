@@ -38,8 +38,13 @@ export default class Navbar extends Vue {
           text: 'Strona główna',
         },
         {
+          link: '/userprofile',
+          icon: 'mdi-account-outline',
+          text: 'Profil',
+        },
+        {
           link: '',
-          icon: 'mdi-account-multiple-outline',
+          icon: 'mdi-account-group-outline',
           text: 'Kluby',
         },
         {

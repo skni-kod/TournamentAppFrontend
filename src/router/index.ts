@@ -20,6 +20,11 @@ const routes: Array<RouteConfig> = [
     name: "Retrive",
     component: () => import(/* webpackChunkName: "retrive" */ '../views/Retrive.vue'),
   },
+  {
+    path: "/userprofile",
+    name: "UserProfile",
+    component: () => import(/* webpackChunkName: "retrive" */ '../views/UserProfile.vue'),
+  },
 ];
 
 const router = new VueRouter({
