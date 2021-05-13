@@ -27,25 +27,23 @@
           </v-tabs>
 
           <v-tabs-items v-model="x">
-            <v-tab-item v-for="item in items" :key="item.tab">
-              <v-card>
-                <v-list>
-                  <v-list-group v-for="element in item.listy" :key="element">
-                    <template v-slot:activator>
-                      <v-list-item-title v-text="element"></v-list-item-title>
-                    </template>
-                    <v-list-item-group>
-                      <v-list-item v-for="info in item.infos" :key="info">
-                        <v-list-item-content>
-                          <v-list-item-subtitle
-                            v-text="info"
-                          ></v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-list-item-group>
-                  </v-list-group>
-                </v-list>
-              </v-card>
+            <v-tab-item v-for="item in items" :key="item">
+              <v-data-table
+                :headers="item.headers"
+                :items="item.positions"
+                item-key="name"
+                :expanded.sync="expanded"
+                show-expand
+                single-expand
+                :items-per-page="10"
+                class="elevation-1"
+              >
+                <template v-slot:expanded-item="{ headers, item }">
+                  <td :colspan="headers.length">
+                    {{ item.info }}
+                  </td>
+                </template>
+              </v-data-table>
             </v-tab-item>
           </v-tabs-items>
         </v-card>
@@ -64,6 +62,7 @@ export default class Home extends Vue {
     return {
       x: null,
       tab: null,
+      
       images: [
         {
           src: 'https://dogemuchwow.com/wp-content/uploads/2020/12/bonk-it.jpg',
@@ -79,32 +78,51 @@ export default class Home extends Vue {
         {
           tab: 'Turnieje',
           icon: 'mdi-tournament',
-          listy: [
-            '1. OWC - Osu world cup',
-            '2. Przestancie palowac pls',
-            '3. No i dont want to go to brazil',
+          headers: [
+            { text: 'Nazwa', value: 'name' },
+            { text: 'Data rozpoczęcia', value: 'date' },
+            { text: 'Typ gry', value: 'type' },
+            { text: 'Kraj', value: 'country' },
+            { text: '', value: 'data-table-expand' },
           ],
-          infos: [
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget lacinia nisi, sed condimentum leo. Nam posuere, felis in finibus fringilla, mauris mi rutrum orci, et pulvinar lectus libero a augue.',
-            'adsfg',
-            'asdfas',
+          positions: [
+            {
+              name: 'OWC - Osu world cup',
+              date: '15.05.2021',
+              type: 'szybka',
+              country: 'Polska',
+              info: 'Tomek, dawaj streama z Osu!'
+            },
+            {
+              name: 'Przestancie palowac pls',
+              date: '23.05.2021',
+              type: 'speedrun',
+              country: 'Mielec',
+              info: 'Nie ma żadnych dowodów na to, że Oskar wiedział o pałowaniu w kole.'
+            },
           ],
         },
         {
           tab: 'Kluby',
           icon: 'mdi-account-group-outline',
-          listy: ['1. depends', '2. bonk'],
-          infos: [
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget lacinia nisi, sed condimentum leo. Nam posuere, felis in finibus fringilla, mauris mi rutrum orci, et pulvinar lectus libero a augue.',
-            'adsfg',
-            'asdfas',
+          headers: [
+            { text: 'Nazwa klubu', value: 'name' },
+            { text: 'Kraj', value: 'country' },
+            { text: '', value: 'data-table-expand'},
+            
           ],
-        },
-        {
-          tab: 'Ranking',
-          icon: 'mdi-trophy-outline',
-          listy: ['1. no dobra', '2. h'],
-          infos: ['adsfg', 'asdfas'],
+          positions: [
+            {
+              name: 'Pałownicy Oskara',
+              country: 'Polska',
+              info: 'Czy wiedziałeś, że Oskar nie przyszedł na spotkanie projektu i nie poniósł za to żadnych konsekwencji? Jeśli Ty też chcesz wymierzyć mu sprawiedliwość to dołącz do naszego zespołu.'
+            },
+            {
+              name: 'Kocham Matematykę Dyskretną',
+              country: 'Mielec',
+              info: 'Jeśli istnieje tylko 1 minimalny zbiór totalnie dominujący to jest on podzbiorem każdego zbioru totalnie dominującego'
+            },
+          ],
         },
       ],
     };
