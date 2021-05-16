@@ -1,29 +1,30 @@
 <template>
-  <v-container rounded>
-    <v-carousel cycle height="350px">
-      <v-carousel-item
-        v-for="(image, i) in images"
-        :key="i"
-        :src="image.src"
-        contain
-      >
-      </v-carousel-item>
-    </v-carousel>
-    <v-card>
-      <v-tabs
-        v-model="x"
-        background-color="rgb(27,47,87)"
-        centered
-        dark
-        class="rounded-b-xl"
-        icons-and-text
-      >
-        <v-tab v-for="item in items" :key="item.tab">
-          <div class="d-none d-sm-flex">{{ item.tab }}</div>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-tab>
-      </v-tabs>
-
+  <v-row justify="center">
+    <v-col cols="8" sm="8">
+      <v-container rounded>
+        <v-carousel cycle height="350px">
+          <v-carousel-item
+            v-for="(image, i) in images"
+            :key="i"
+            :src="image.src"
+            contain
+          >
+          </v-carousel-item>
+        </v-carousel>
+        <v-card>
+          <v-tabs
+            v-model="x"
+            background-color="secondary"
+            centered
+            dark
+            class="rounded-b-xl"
+            icons-and-text
+          >
+            <v-tab v-for="item in items" :key="item.tab">
+              <div class="d-none d-sm-flex">{{ item.tab }}</div>
+              <v-icon>{{ item.icon }} asd</v-icon>
+            </v-tab>
+          </v-tabs>
       <v-tabs-items v-model="x">
         <v-tab-item v-for="item in items" :key="item.tab">
           <v-card>
