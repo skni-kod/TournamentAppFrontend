@@ -26,32 +26,30 @@
             </v-tab>
           </v-tabs>
 
-          <v-tabs-items v-model="x">
-            <v-tab-item v-for="item in items" :key="item.tab">
-              <v-card>
-                <v-list>
-                  <v-list-group v-for="element in item.listy" :key="element">
-                    <template v-slot:activator>
-                      <v-list-item-title v-text="element"></v-list-item-title>
-                    </template>
-                    <v-list-item-group>
-                      <v-list-item v-for="info in item.infos" :key="info">
-                        <v-list-item-content>
-                          <v-list-item-subtitle
-                            v-text="info"
-                          ></v-list-item-subtitle>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-list-item-group>
-                  </v-list-group>
-                </v-list>
-              </v-card>
-            </v-tab-item>
-          </v-tabs-items>
-        </v-card>
-      </v-container>
-    </v-col>
-  </v-row>
+      <v-tabs-items v-model="x">
+        <v-tab-item v-for="item in items" :key="item.tab">
+          <v-card>
+            <v-list>
+              <v-list-group v-for="element in item.listy" :key="element">
+                <template v-slot:activator>
+                  <v-list-item-title v-text="element"></v-list-item-title>
+                </template>
+                <v-list-item-group>
+                  <v-list-item v-for="info in item.infos" :key="info">
+                    <v-list-item-content>
+                      <v-list-item-subtitle
+                        v-text="info"
+                      ></v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list-group>
+            </v-list>
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -69,7 +67,8 @@ export default class Home extends Vue {
           src: 'https://dogemuchwow.com/wp-content/uploads/2020/12/bonk-it.jpg',
         },
         {
-          src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftelegramguides.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fpepe-sticker-package-telegram-4.png&f=1&nofb=1',
+          src:
+            'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftelegramguides.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fpepe-sticker-package-telegram-4.png&f=1&nofb=1',
         },
         {
           src: 'https://i.imgur.com/Fp2RQn4.png',
