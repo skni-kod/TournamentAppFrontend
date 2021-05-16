@@ -9,13 +9,4 @@ export default new Vuetify({
     locales: { pl },
     current: "pl",
   },
-  theme: {
-    themes: {
-      light: {
-        primary: '#294681',
-        secondary: '#1b2f57',
-        accent: '#f7f7f7',
-      },
-    },
-  },
 });
