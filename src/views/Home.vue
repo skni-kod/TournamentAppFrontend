@@ -22,7 +22,7 @@
           >
             <v-tab v-for="item in items" :key="item.tab">
               <div class="d-none d-sm-flex">{{ item.tab }}</div>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon>{{ item.icon }} asd</v-icon>
             </v-tab>
           </v-tabs>
 
