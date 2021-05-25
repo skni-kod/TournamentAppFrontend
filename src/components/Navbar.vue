@@ -3,7 +3,7 @@
     <v-app-bar dark class="primary">
       <v-toolbar-title>Apka turniejowa</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon v-for="icon in iconLinks" :key="icon" :to="icon.link">
+      <v-btn icon v-for="(icon,id) in iconLinks" :key="id" :to="icon.link">
         <v-icon>{{ icon.icon }}</v-icon>
       </v-btn>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -12,7 +12,7 @@
       <v-list nav dense>
         <v-list-item-group v-model="group">
           <div class="font-weight-bold pl-2">Apka Turniejowa</div>
-          <v-list-item v-for="icon in iconLinks" :key="icon" :to="icon.link">
+          <v-list-item v-for="(icon,id) in iconLinks" :key="id" :to="icon.link">
             <v-icon>{{ icon.icon }}</v-icon>
             <v-list-item-title>{{ icon.text }}</v-list-item-title>
           </v-list-item>
