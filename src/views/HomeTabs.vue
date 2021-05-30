@@ -15,10 +15,10 @@
     </v-tabs>
 
     <v-tabs-items v-model="x">
-      <v-tab-item v-for="(item, index) in items" :key="index">
+      <v-tab-item v-for="(itemtab, index) in items" :key="index">
         <v-data-table
-          :headers="item.headers"
-          :items="item.positions"
+          :headers="itemtab.headers"
+          :items="itemtab.positions"
           item-key="name"
           show-expand
           single-expand
@@ -31,8 +31,8 @@
                 <v-col class="my-auto">
                   {{ item.info }}
                 </v-col>
-                <v-col cols="auto" class="my-auto">
-                  <v-btn :v-if="index == '0'"
+                <v-col cols="auto" class="my-auto" v-if="itemtab.tab === 'Turnieje'">
+                  <v-btn 
                     >Więcej o Turnieju</v-btn
                   >
                 </v-col>
