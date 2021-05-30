@@ -34,6 +34,11 @@ const routes: Array<RouteConfig> = [
       },
     ],
   },
+  {
+    path: "/tournamentInfo",
+    name: "Tournament Info",
+    component: () => import(/* webpackChunkName: "retrive" */ '../views/TournamentInfo.vue'),
+  },
 ];
 
 const router = new VueRouter({
