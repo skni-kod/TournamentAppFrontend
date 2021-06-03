@@ -21,13 +21,31 @@
                 required
               ></v-text-field>
               <v-btn
-                color="#1b2f57"
+                color="secondary"
                 class="white--text"
                 @click="validate"
               >
                 Wyślij wiadomość
               </v-btn>
             </v-form>
+          <v-card-text>
+          <v-form
+            ref="retrive-password"
+            v-model="valid"
+            lazy-validation
+            class="pb-5 mx-5"
+          >
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              label="Adres e-mail"
+              required
+            ></v-text-field>
+            <v-btn color="secondary" class="white--text" @click="validate">
+              Wyślij wiadomość
+            </v-btn>
+          </v-form>
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -41,10 +59,3 @@ import { Component } from 'vue-property-decorator';
 @Component
 export default class Retrive extends Vue {}
 </script>
-
-<style scoped>
-.v-form{
-  width: 80%;
-  margin: 0 auto;
-}
-</style>
