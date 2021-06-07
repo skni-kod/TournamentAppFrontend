@@ -1,8 +1,9 @@
 <template>
   <v-row justify="center">
     <v-col cols="8" sm="8">
-      <players v-if="!modules || modules==='players'"></players>
-      <gallery v-else-if="modules==='gallery'"></gallery>
+      <players v-if="!module || module === 'players'"></players>
+      <gallery v-else-if="module === 'gallery'"></gallery>
+      <p v-else>WTF</p>
     </v-col>
   </v-row>
 </template>
@@ -18,9 +19,10 @@ import { Component } from 'vue-property-decorator';
     Gallery,
     Players,
   },
-  get module() {
-    return this.route.params.module;
-  }
 })
-export default class TournamentInfo extends Vue {}
+export default class TournamentInfo extends Vue {
+  get module() {
+    return this.$route.params.module;
+  }
+}
 </script>
