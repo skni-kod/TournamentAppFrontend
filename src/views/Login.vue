@@ -16,21 +16,35 @@
             >Masz już konto?<br />Zaloguj się:</v-card-title
           >
           <v-card-subtitle>Wpisz swoje dane:</v-card-subtitle>
-          <v-form ref="sign-in" v-model="valid" lazy-validation class="pb-5">
-            <v-text-field
-              v-model="email"
-              label="Adres e-mail"
-              required
-            ></v-text-field>
-            <v-text-field type="password" label="Hasło" required></v-text-field>
-            <v-checkbox v-model="checkbox" label="Zapamiętaj mnie"></v-checkbox>
+          <v-card-text>
+            <v-form
+              ref="sign-in"
+              v-model="valid"
+              lazy-validation
+              class="pb-5 mx-auto"
+            >
+              <v-text-field
+                v-model="email"
+                label="Adres e-mail"
+                required
+              ></v-text-field>
+              <v-text-field
+                type="password"
+                label="Hasło"
+                required
+              ></v-text-field>
+              <v-checkbox
+                v-model="checkbox"
+                label="Zapamiętaj mnie"
+              ></v-checkbox>
 
-            <v-btn color="secondary" class="white--text" @click="validate">
-              Zaloguj się
-            </v-btn>
-            <br /><br />
-            <router-link to="/retrive">Nie pamiętam hasła</router-link>
-          </v-form>
+              <v-btn color="secondary" class="white--text" @click="validate">
+                Zaloguj się
+              </v-btn>
+              <br /><br />
+              <router-link to="/retrive">Nie pamiętam hasła</router-link>
+            </v-form>
+          </v-card-text>
           <hr />
           <v-card-title class="justify-center"
             >... lub zarejestruj się:</v-card-title
@@ -66,19 +80,23 @@
                       </v-col>
                       <v-col cols="2">
                         <v-select
-                          :items="['Kobieta', 'Mężczyzna', 'Nie chcę podawać']"
+                          :items="sex_list"
+                          item-value="code"
+                          item-text="name_pl"
                           label="Płeć*"
                           required
                         ></v-select>
                       </v-col>
                       <v-col cols="2">
                         <v-select
-                          :items="['aaa', 'bbb', 'ccc']"
+                          :items="country_list"
+                          item-value="code"
+                          item-text="name_pl"
                           label="Kraj*"
                           required
                         ></v-select>
                       </v-col>
-                      <v-col cols="6">
+                      <v-col cols="8">
                         <v-text-field
                           label="Adres e-mail*"
                           required
@@ -92,12 +110,21 @@
                         ></v-text-field>
                       </v-col>
                       <v-col cols="6">
+                        <v-text-field
+                          label="Powtórz hasło*"
+                          type="password"
+                          required
+                        ></v-text-field>
+                      </v-col>
+                      <v-col cols="6">
                         <v-text-field label="Klub szachowy"></v-text-field>
                       </v-col>
                       <v-col cols="2">
                         <v-text-field
                           label="Rating"
                           type="number"
+                          min="0"
+                          max="3000"
                         ></v-text-field>
                       </v-col>
                     </v-row>
@@ -115,11 +142,11 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="#1b2f57" text @click="dialog = false">
+                  <v-btn color="secondary" text @click="dialog = false">
                     Zamknij
                   </v-btn>
                   <v-btn
-                    color="#1b2f57"
+                    color="secondary"
                     class="white--text"
                     @click="dialog = false"
                   >
@@ -138,20 +165,19 @@
 <script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-
+import { country } from '../assets/country.js';
 @Component
 export default class Login extends Vue {
   data() {
     return {
       dialog: false,
+      country_list: country,
+      sex_list: [
+          {name_pl: 'Kobieta', code: 'female'},
+          {name_pl: 'Mężczyzna', code: 'male'},
+          {name_pl: 'Nie chcę podawać', code: 'other'},
+      ]
     };
   }
 }
 </script>
-
-<style scoped>
-.v-form {
-  width: 80%;
-  margin: 0 auto;
-}
-</style>
