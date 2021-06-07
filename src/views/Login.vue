@@ -166,7 +166,6 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { country } from '../assets/country.js';
-
 @Component
 export default class Login extends Vue {
   data() {

@@ -1,11 +1,12 @@
 <template>
-  <v-footer color="#1b2f57">
-
-      <v-row no-gutters>
-        <v-col v-for="ref in refs" justify="right">
-          <router-link class="footer_refs" :to="{path:ref.router}">{{ref.name}}</router-link>
-        </v-col>
-      </v-row>
+  <v-footer class="primary white--text">
+    <v-row justify="center" no-gutters>
+      <v-col v-for="(link,i) in links" :key="i" class="text-center">
+        <v-btn rounded text class="primary white--text text-center"  v-bind:href="link.link"
+          >{{ link.name }}
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-footer>
 </template>
 
@@ -17,23 +18,13 @@ import { Component } from 'vue-property-decorator';
 export default class Footer extends Vue {
   data() {
     return {
-      refs: [
-        {router: '/faq', name: 'Pomoc i FAQ'},
-        {router: '/toa', name: 'Polityka prywatności'},
-        {router: '/regulations', name: 'Regulamin'},
-        {router: '/contact', name: 'Kontakt'}
-      ]
+      links: [
+        { link: '', name: 'Pomoc i FAQ' },
+        { link: '', name: 'Polityka prywatności' },
+        { link: '', name: 'Warunki korzystania' },
+        { link: 'https://kod.prz.edu.pl/#/', name: 'O Nas' },
+      ],
     };
   }
 }
 </script>
-<style>
-.footer_refs{
-  color:white!important;
-  text-decoration: none;
-  font-weight: 300!important;
-  text-align: right!important;
-  font-size: 15px;
-}
-
-</style>

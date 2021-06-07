@@ -55,7 +55,6 @@
 <script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-
 @Component
 export default class Retrive extends Vue {}
 </script>
