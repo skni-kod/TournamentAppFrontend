@@ -32,7 +32,7 @@
                   {{ item.info }}
                 </v-col>
                 <v-col cols="auto" class="my-auto" v-if="itemtab.tab === 'Turnieje'">
-                  <v-btn 
+                  <v-btn :to="path"
                     >Więcej o Turnieju</v-btn
                   >
                 </v-col>
@@ -47,13 +47,19 @@
 
 <script>
 import Vue from 'vue';
+import TheTournament from './TheTournament.vue';
 import { Component } from 'vue-property-decorator';
 
-@Component
+@Component({
+  components: {
+    TheTournament,
+  },
+})
 export default class HomeTabs extends Vue {
   data() {
     return {
       x: null,
+      path: '/tournament',
       items: [
         {
           tab: 'Turnieje',
@@ -75,18 +81,32 @@ export default class HomeTabs extends Vue {
           ],
           positions: [
             {
-              name: 'OWC - Osu world cup',
-              date: '15.05.2021',
-              type: 'szybka',
+              name: 'Mistrzostwa Polski 2021',
+              date: '11.05.2021',
+              type: 'Round Robin',
               country: 'Polska',
-              info: 'Tomek, dawaj streama z Osu!',
+              info: '',
             },
             {
-              name: 'Przestancie palowac pls',
-              date: '23.05.2021',
-              type: 'speedrun',
-              country: 'Mielec',
-              info: 'Nie ma żadnych dowodów na to, że Oskar wiedział o pałowaniu w kole.',
+              name: 'Mistrzostwa Czech',
+              date: '17.07.2021',
+              type: 'Drabinka turniejowa',
+              country: 'Czechy',
+              info: '',
+            },
+            {
+              name: 'Mistrzostwa Podkarpacia',
+              date: '30.09.2021',
+              type: 'Drabinka turniejowa',
+              country: 'Polska',
+              info: '',
+            },
+            {
+              name: 'Wielki Turniej SKNI KOD',
+              date: '30.11.2021',
+              type: 'Round Robin',
+              country: 'Polska',
+              info: '',
             },
           ],
         },
@@ -108,14 +128,19 @@ export default class HomeTabs extends Vue {
           ],
           positions: [
             {
-              name: 'Pałownicy Oskara',
+              name: 'Klub Szachowy „Polonia” Warszawa',
               country: 'Polska',
-              info: 'Czy wiedziałeś, że Oskar nie przyszedł na spotkanie projektu i nie poniósł za to żadnych konsekwencji? Jeśli Ty też chcesz wymierzyć mu sprawiedliwość to dołącz do naszego zespołu.',
+              info: 'Klub Szachowy „Polonia” powstał w 2005 roku, 2 lata później zarejestrowano go w Polskim Związku Szachowym. Jego siedziba znajduje się przy ul. Konwiktorskiej 6. Zawodnicy tego klubu w znacznej mierze wywodzą się z KS „Polonia” Warszawa. Nie był on w stanie zapewnić odpowiedniego rozwoju szachistom z uwagi na problemy finansowe.\r\n\r\nObecnie Klub Szachowy „Polonia” Warszawa wspiera aktywnie młodych szachistów. Organizuje szkółkę szachową dla dzieci i młodzieży.',
             },
             {
-              name: 'Kocham Matematykę Dyskretną',
-              country: 'Mielec',
-              info: 'Jeśli istnieje tylko 1 minimalny zbiór totalnie dominujący to jest on podzbiorem każdego zbioru totalnie dominującego',
+              name: 'Klub Szachowy „Stilon” Gorzów Wielkopolski',
+              country: 'Polska',
+              info: 'Klub Szachowy „Stilon” powstał w 1952 roku w Gorzowie Wielkopolskim. Na początku jego działalność koncentrowała się wokół amatorskiego grania w szachy, po kilku latach to się zmieniło. Członkowie klubu zaczęli odnosić sukcesy, awansowali do ligi okręgowej i międzywojewódzkiej. Wśród wybitnych szachistów należących do Stilonu wyróżnia się Roberta Kuczyńskiego, Igora Chenkina, Barbarę Kaczorowską, Pawła Jaracza, Romana Sokołowskiego czy Józefa Goldberga.',
+            },
+            {
+              name: 'Klub Szachowy „Hetman” Katowice',
+              country: 'Polska',
+              info: 'Klub Szachowy „Hetman” powstał w 1975 roku. Początkowo istniał jako sekcja szachowa w szopienickim Domu Kultury. Do jego powstania przyczynili się miłośnicy szachów, tj. Henryk Ciesielski, Alojzy Kaczmarczyk, Krystian Klimczok i Piotr Ottenburger. Klub ten odnosi sukcesy od 1976 roku, kiedy zdobył mistrzostwo klasy „A”. W ostatnich latach zawodnicy wielokrotnie zajmowali I miejsce w Drużynowych Mistrzostwach Polski. Tak było w roku 2015, 2016, 2017 czy 2018.',
             },
           ],
         },

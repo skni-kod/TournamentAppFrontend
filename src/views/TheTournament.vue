@@ -6,7 +6,7 @@
 
 <script>
 import Vue from 'vue';
-import Gallery from '../components/Gallery.vue';
+import Gallery from './Gallery.vue';
 import { Component } from 'vue-property-decorator';
 
 @Component({
@@ -16,10 +16,5 @@ import { Component } from 'vue-property-decorator';
 })
 
 export default class TournamentInfo extends Vue {
-  data() {
-    return {
-
-    };
-  }
 }
 </script>

@@ -35,9 +35,9 @@ const routes: Array<RouteConfig> = [
     ],
   },
   {
-    path: "/tournamentInfo",
+    path: "/tournament",
     name: "Tournament Info",
-    component: () => import(/* webpackChunkName: "retrive" */ '../views/TournamentInfo.vue'),
+    component: () => import(/* webpackChunkName: "retrive" */ '../views/TheTournament.vue'),
   },
 ];
 
