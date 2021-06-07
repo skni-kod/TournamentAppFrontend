@@ -6,7 +6,7 @@
           <v-carousel-item
             v-for="(image, i) in images"
             :key="i"
-            :src="image.src"
+            :src="image"
             contain
           >
           </v-carousel-item>
@@ -31,15 +31,10 @@ export default class Home extends Vue {
   data() {
     return {
       images: [
-        {
-          src: 'https://dogemuchwow.com/wp-content/uploads/2020/12/bonk-it.jpg',
-        },
-        {
-          src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftelegramguides.com%2Fwp-content%2Fuploads%2F2018%2F04%2Fpepe-sticker-package-telegram-4.png&f=1&nofb=1',
-        },
-        {
-          src: 'https://i.imgur.com/Fp2RQn4.png',
-        },
+          'https://cdn.pixabay.com/photo/2021/01/29/11/33/chess-5960730_960_720.jpg',
+          'https://cdn.pixabay.com/photo/2017/09/08/02/24/chess-2727443_960_720.jpg',
+          'https://cdn.pixabay.com/photo/2019/03/04/11/59/chess-4033887_960_720.jpg',
+          'https://cdn.pixabay.com/photo/2017/02/24/18/20/king-2095834_960_720.jpg'
       ],
     };
   }

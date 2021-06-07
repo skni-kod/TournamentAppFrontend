@@ -35,7 +35,6 @@ export default {
       index: null,
     };
   },
-
   components: {
     gallery: VueGallery,
   },
