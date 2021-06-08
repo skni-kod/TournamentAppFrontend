@@ -12,8 +12,8 @@
           </v-list-item-avatar>
 
           <v-list-item-content two-line >
-            <v-list-item-title>Oskar Tyniec</v-list-item-title>
-            <v-list-item-subtitle>PolishChessClub</v-list-item-subtitle>
+            <v-list-item-title>Oskar Wasilewski</v-list-item-title>
+            <v-list-item-subtitle>Akademia Szachowa Gambit</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 

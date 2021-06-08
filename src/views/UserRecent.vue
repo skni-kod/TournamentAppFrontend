@@ -1,5 +1,5 @@
 <template>
-  <div class="recent">Tutaj pojawią się ostatnie rozgrywki szachowe.</div>
+  <div class="recent">Soon...</div>
 </template>
 
 <script>

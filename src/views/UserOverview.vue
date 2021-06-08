@@ -10,7 +10,6 @@
               <v-card-text><b>Rating:</b> {{item.Rating}}</v-card-text>
               <v-card-text><b>Klub:</b> {{item.Klub}}</v-card-text>
               <v-card-text><b>Email:</b> {{item.email}}</v-card-text>
-              <v-card-text><b>Telefon:</b> {{item.telefon}}</v-card-text>
           </v-col>
         </v-row>
       </v-container>
@@ -27,11 +26,10 @@ export default class UserOverview extends Vue {
     return {
       items: [
         {
-          name: 'Oskar Tyniec',
-          Rating: 123,
-          Klub: 'PolishChessClub',
-          email:'oskartyniec123@gmail.com',
-          telefon:592138942,
+          name: 'Oskar Wasilewski',
+          Rating: 1000,
+          Klub: 'Akademia Szachowa Gambit',
+          email:'oskarwasilewski123@gmail.com',
         },
       ],
     };
