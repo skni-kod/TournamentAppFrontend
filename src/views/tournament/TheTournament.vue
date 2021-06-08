@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center">
     <v-col cols="8" sm="8">
-       <h2 class="tytul">Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"</h2>
+       <h2 class="tytul" @click="$router.push('/register')">Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"</h2>
        <v-row justify="center" no-gutters class="ma-5">
        <v-col v-for="(mod,i) in modules" :key="i" class="text-center">
         <v-btn @click="$router.replace('/tournament/' + mod.mod)" color="primary"
@@ -15,7 +15,6 @@
       <players v-else-if="module === 'players'"></players>
       <gallery v-else-if="module === 'gallery'"></gallery>
       <matches v-else-if="module === 'matches'"></matches>
-      <tournament-info v-else-if="module === 'tournamentinfo'"></tournament-info>
     </v-col>
   </v-row>
 </template>
