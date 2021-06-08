@@ -9,7 +9,14 @@
         </v-btn>
         </v-col>
        </v-row>
+<<<<<<< Updated upstream
       <players v-if="!module || module === 'players'"></players>
+=======
+      <tournament-info
+        v-if="!module || module === 'tournament-info'"
+      ></tournament-info>
+      <players v-else-if="module === 'players'"></players>
+>>>>>>> Stashed changes
       <gallery v-else-if="module === 'gallery'"></gallery>
       <matches v-else-if="module === 'matches'"></matches>
       <tournament-info v-else-if="module === 'tournamentinfo'"></tournament-info>
@@ -37,7 +44,11 @@ export default class TheTournament extends Vue {
   data(){
     return{
       modules: [
+<<<<<<< Updated upstream
         { mod: 'tournamentinfo', name: 'Opis turnieju'},
+=======
+        { mod: 'tournament-info', name: 'Opis turnieju'},
+>>>>>>> Stashed changes
         { mod: 'players', name: 'Gracze'},
         { mod: 'matches', name: 'Rozgrywki'},
         { mod: 'gallery', name: 'Galeria'},
