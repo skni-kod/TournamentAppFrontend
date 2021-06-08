@@ -8,26 +8,6 @@
               Poniżej wpisz adres e-mail powiązany z Twoim kontem.<br>
               Zostanie wysłana wiadomość z instrukcjami, które pomogą Ci zmienić hasło.
           </v-card-subtitle>
-            <v-form
-              ref="retrive-password"
-              v-model="valid"
-              lazy-validation
-              class="pb-5"
-            >
-              <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="Adres e-mail"
-                required
-              ></v-text-field>
-              <v-btn
-                color="secondary"
-                class="white--text"
-                @click="validate"
-              >
-                Wyślij wiadomość
-              </v-btn>
-            </v-form>
           <v-card-text>
           <v-form
             ref="retrive-password"

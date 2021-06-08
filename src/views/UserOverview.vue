@@ -6,7 +6,7 @@
           <v-col v-for="(item, i) in items" :key="i" cols="12"> 
               <v-card-title><b>Informacje</b></v-card-title>
               <v-divider></v-divider>
-              <v-card-text><b>Imie i nazwisko:</b> {{item.name}}</v-card-text>
+              <v-card-text><b>Imię i nazwisko:</b> {{item.name}}</v-card-text>
               <v-card-text><b>Rating:</b> {{item.Rating}}</v-card-text>
               <v-card-text><b>Klub:</b> {{item.Klub}}</v-card-text>
               <v-card-text><b>Email:</b> {{item.email}}</v-card-text>
