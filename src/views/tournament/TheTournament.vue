@@ -2,10 +2,17 @@
   <v-row justify="center">
     <v-col cols="8" sm="8">
        <h2 class="tytul">Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"</h2>
+       <v-row justify="center" no-gutters class="ma-5">
+       <v-col v-for="(mod,i) in modules" :key="i" class="text-center">
+        <v-btn @click="$router.replace('/tournament/' + mod.mod)" color="primary"
+          >{{ mod.name }}
+        </v-btn>
+        </v-col>
+       </v-row>
       <players v-if="!module || module === 'players'"></players>
       <gallery v-else-if="module === 'gallery'"></gallery>
       <matches v-else-if="module === 'matches'"></matches>
-      <p v-else>WTF</p>
+      <tournament-info v-else-if="module === 'tournamentinfo'"></tournament-info>
     </v-col>
   </v-row>
 </template>
@@ -14,8 +21,9 @@
 import Vue from 'vue';
 import Gallery from './Gallery.vue';
 import Matches from './Matches.vue';
-import Players from '@/views/tournament/Players.vue';
+import Players from './Players.vue';
 import { Component } from 'vue-property-decorator';
+import TournamentInfo from '@/views/tournament/TournamentInfo.vue';
 
 @Component({
   components: {
@@ -24,7 +32,18 @@ import { Component } from 'vue-property-decorator';
     Matches,
   },
 })
-export default class TournamentInfo extends Vue {
+
+export default class TheTournament extends Vue {
+  data(){
+    return{
+      modules: [
+        { mod: 'tournamentinfo', name: 'Opis turnieju'},
+        { mod: 'players', name: 'Gracze'},
+        { mod: 'matches', name: 'Rozgrywki'},
+        { mod: 'gallery', name: 'Galeria'},
+      ],
+    }
+  }
   get module() {
     return this.$route.params.module;
   }
