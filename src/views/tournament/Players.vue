@@ -48,11 +48,46 @@ export default class Players extends Vue {
         },
         {
           id: '2',
-          name: 'Piotr Nowak',
+          name: 'Oskar Wasilewski',
           country: 'Polska',
           club: 'Nie dotyczy',
           rating: '1000',
         },
+        {
+            id: '3',
+            name: 'Jakub Świętoń',
+            country: 'Polska',
+          club: 'Nie dotyczy',
+          rating: '1000',
+          },
+          {
+            id: '4',
+            name: 'Jerzy Wilk',
+            country: 'Polska',
+          club: 'Nie dotyczy',
+          rating: '1000',
+          },
+          {
+            id: '5',
+            name: 'Mikołaj Rasiak',
+            country: 'Polska',
+          club: 'Nie dotyczy',
+          rating: '1000',
+          },
+          {
+            id: '6',
+            name: 'Hubert Cichoń',
+            country: 'Polska',
+          club: 'Nie dotyczy',
+          rating: '1000',
+          },
+          {
+            id: '7',
+            name: 'Szymon Nowak',
+            country: 'Polska',
+          club: 'Nie dotyczy',
+          rating: '1000',
+          },
       ],
     };
   }

@@ -30,12 +30,12 @@ export default class TournamentInfo extends Vue {
   data() {
     return {
       text: [
-        ['Nazwa turnieju', 'Mistrzostwa Polski 2021'],
-        ['Data turnieju', '11.05.2021'],
+        ['Nazwa turnieju', 'Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"'],
+        ['Data turnieju', '30.11.2021'],
         ['Kraj', 'Polska'],
-        ['Adres', 'Rzeszow'],
-        ['Limit uczestnikow', '6'],
-        ['Organizator', 'Rzeszowskie stowarzyszenie szachowe'],
+        ['Adres', 'Rzeszów'],
+        ['Limit uczestnikow', '8'],
+        ['Organizator', 'SKNI "KOD"'],
         ['System rozgrywek', 'Kołowy'],
         ['Punktowanie', '| Wygrana: 2.0 | Przegrana: 0.0 | Remis: 1.0 |'],
       ],

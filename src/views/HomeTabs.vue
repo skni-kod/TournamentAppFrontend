@@ -117,14 +117,6 @@ export default class HomeTabs extends Vue {
               info: '',
             },
             {
-              name:
-                'Całoroczne Szkolenie dla Rodziców i Nauczycieli Każdy Wtorek po 18:00',
-              date: '2021-02-02',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
               name: 'IV Dolnośląska Liga Szachowa 2020/2021 - okręg wrocławski',
               date: '2021-03-14',
               type: 'Kołowy',
