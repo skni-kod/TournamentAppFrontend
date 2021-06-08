@@ -7,13 +7,13 @@
         <v-list-item two-line>
           <v-list-item-avatar>
             <img
-              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Frisibank.fr%2Fcache%2Fstickers%2Fd1973%2F197365-full.png&f=1&nofb=1"
+              src="https://i.imgur.com/IiNWFmy.png"
             />
           </v-list-item-avatar>
 
           <v-list-item-content two-line >
-            <v-list-item-title>Imie Nazwisko</v-list-item-title>
-            <v-list-item-subtitle>Klub</v-list-item-subtitle>
+            <v-list-item-title>Oskar Tyniec</v-list-item-title>
+            <v-list-item-subtitle>PolishChessClub</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 

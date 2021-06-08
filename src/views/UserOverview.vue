@@ -6,7 +6,7 @@
           <v-col v-for="(item, i) in items" :key="i" cols="12"> 
               <v-card-title><b>Informacje</b></v-card-title>
               <v-divider></v-divider>
-              <v-card-text><b>Imie i nazwisko:</b> {{item.name}}</v-card-text>
+              <v-card-text><b>Imię i nazwisko:</b> {{item.name}}</v-card-text>
               <v-card-text><b>Rating:</b> {{item.Rating}}</v-card-text>
               <v-card-text><b>Klub:</b> {{item.Klub}}</v-card-text>
               <v-card-text><b>Email:</b> {{item.email}}</v-card-text>
@@ -25,15 +25,13 @@ import { Component } from 'vue-property-decorator';
 export default class UserOverview extends Vue {
   data() {
     return {
-      itemsPerPage: 4,
       items: [
         {
-          name: 'Oskar Pałowicz',
+          name: 'Oskar Tyniec',
           Rating: 123,
-          Klub: 'yeehawclub',
-          email:'oskarciespaluje@gmail.com',
-          telefon:'123456789',
-
+          Klub: 'PolishChessClub',
+          email:'oskartyniec123@gmail.com',
+          telefon:592138942,
         },
       ],
     };

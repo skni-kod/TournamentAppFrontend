@@ -43,11 +43,6 @@ export default class Navbar extends Vue {
           text: 'Profil',
         },
         {
-          link: '',
-          icon: 'mdi-account-group-outline',
-          text: 'Kluby',
-        },
-        {
           link: '/login',
           icon: 'mdi-login',
           text: 'Logowanie',
