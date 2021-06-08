@@ -49,14 +49,9 @@
 
 <script>
 import Vue from 'vue';
-import TheTournament from './TheTournament.vue';
 import { Component } from 'vue-property-decorator';
 
-@Component({
-  components: {
-    TheTournament,
-  },
-})
+@Component
 export default class HomeTabs extends Vue {
   data() {
     return {

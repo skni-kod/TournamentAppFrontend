@@ -24,13 +24,10 @@ export default {
   data: function() {
     return {
       images: [
-        'https://i.imgur.com/B4Em7p5.jpg',
-        'https://i.imgur.com/EiNm8IU.jpg',
-        'https://i.imgur.com/nQomgLJ.jpg',
-        'https://i.imgur.com/uUVIogR.jpg',
-        'https://i.imgur.com/RU9auUz.jpg',
-        'https://i.imgur.com/uUVIogR.jpg',
-        'https://i.imgur.com/RU9auUz.jpg',
+          'https://cdn.pixabay.com/photo/2021/01/29/11/33/chess-5960730_960_720.jpg',
+          'https://cdn.pixabay.com/photo/2017/09/08/02/24/chess-2727443_960_720.jpg',
+          'https://cdn.pixabay.com/photo/2019/03/04/11/59/chess-4033887_960_720.jpg',
+          'https://cdn.pixabay.com/photo/2017/02/24/18/20/king-2095834_960_720.jpg'
       ],
       index: null,
     };
