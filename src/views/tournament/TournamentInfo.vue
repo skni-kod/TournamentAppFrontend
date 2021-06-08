@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card>
-      <v-row justify="center" v-for="(item, i) in items" :key="i">
+      <v-row justify="center">
         <v-divider></v-divider>
         <div class="col-12 col-md-6 mb-5">
           <iframe
@@ -15,40 +15,29 @@
         </div>
         <div class="col-12 col-md-6 mb-5">
           <v-card-title><b>Informacje</b></v-card-title>
-          <v-card-text><b>Nazwa turnieju:</b> {{ item.name }}</v-card-text>
-          <v-card-text><b>Data turnieju:</b> {{ item.date }}</v-card-text>
-          <v-card-text><b>Limit uczestnikow:</b> {{ item.limit }}</v-card-text>
-          <v-card-text><b>Kraj: </b> {{ item.country }}</v-card-text>
-          <v-card-text><b>Adres: </b> {{ item.adress }}</v-card-text>
-          <v-card-text><b>Organizator:</b> {{ item.ogranizer }}</v-card-text>
-          <v-card-text
-            ><b>System rozgrywek:</b> {{ item.playType }}</v-card-text
-          >
-          <v-card-text><b>Punktowanie: </b> {{ item.punkty }}</v-card-text>
+          <v-card-text v-for="(t, i) in text" :key="i"><b>{{t[0]}}: </b>{{t[1]}}</v-card-text>
         </div>
       </v-row>
     </v-card>
   </v-container>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 @Component
-export default class Profile extends Vue {
+export default class TournamentInfo extends Vue {
   data() {
     return {
-      items: [
-        {
-          name: 'Mistrzostwa Polski 2021',
-          date: '11.05.2021',
-          limit: 6,
-          ogranizer: 'Rzeszowskie stowarzyszenie szachowe',
-          playType: 'Kołowy',
-          country: 'Polska',
-          adress: 'Rzeszow',
-          punkty: '| Wygrana: 2.0 | Przegrana: 0.0 | Remis: 1.0 |',
-        },
+      text: [
+        ['Nazwa turnieju', 'Mistrzostwa Polski 2021'],
+        ['Data turnieju', '11.05.2021'],
+        ['Kraj', 'Polska'],
+        ['Adres', 'Rzeszow'],
+        ['Limit uczestnikow', '6'],
+        ['Organizator', 'Rzeszowskie stowarzyszenie szachowe'],
+        ['System rozgrywek', 'Kołowy'],
+        ['Punktowanie', '| Wygrana: 2.0 | Przegrana: 0.0 | Remis: 1.0 |'],
       ],
     };
   }
