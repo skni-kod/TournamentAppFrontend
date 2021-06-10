@@ -10,7 +10,7 @@
 <script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import UserProfile from '../components/UserProfile.vue';
+import UserProfile from '@/views/user/UserProfile.vue';
 @Component({
   components: {
     UserProfile,

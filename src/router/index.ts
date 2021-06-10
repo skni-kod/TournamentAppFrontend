@@ -22,15 +22,15 @@ const routes: Array<RouteConfig> = [
   {
     path: '/user',
     name: 'User',
-    component: () => import(/* webpackChunkName: "retrive" */ '../views/User.vue'),
+    component: () => import(/* webpackChunkName: "retrive" */ '../views/user/User.vue'),
     children: [
       {
         path: '/user',
-        component: () =>import(/* webpackChunkName: "Overview" */ '../views/UserOverview.vue'),
+        component: () =>import(/* webpackChunkName: "Overview" */ '../views/user/UserOverview.vue'),
       },
       {
         path: '/user/userrecent',
-        component: () =>import(/* webpackChunkName: "Overview" */ '../views/UserRecent.vue'),
+        component: () =>import(/* webpackChunkName: "Overview" */ '../views/user/UserRecent.vue'),
       },
     ],
   },
