@@ -1,20 +1,23 @@
 <template>
   <v-row justify="center">
     <v-col cols="8" sm="8">
-       <h2 class="tytul" @click="$router.push('/register')">Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"</h2>
-       <v-row justify="center" no-gutters class="ma-5">
-       <v-col v-for="(mod,i) in modules" :key="i" class="text-center">
-        <v-btn @click="$router.replace('/tournament/' + mod.mod)" color="primary"
-          >{{ mod.name }}
-        </v-btn>
+      <div
+        class="info--text text-h3 text-center font-weight-bold my-8 tytul"
+        @click="$router.push('/register')"
+      >
+        Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"
+      </div>
+      <v-row justify="center" no-gutters class="ma-5">
+        <v-col v-for="(mod, i) in modules" :key="i" class="text-center">
+          <v-btn
+            @click="$router.replace('/tournament/' + mod.mod)"
+            color="primary"
+            class="rounded text-h5 text-capitalize pa-4"
+            >{{ mod.name }}
+          </v-btn>
         </v-col>
-       </v-row>
-      <tournament-info
-        v-if="!module || module === 'tournament-info'"
-      ></tournament-info>
-      <players v-else-if="module === 'players'"></players>
-      <gallery v-else-if="module === 'gallery'"></gallery>
-      <matches v-else-if="module === 'matches'"></matches>
+      </v-row>
+      <component :is="module"></component>
     </v-col>
   </v-row>
 </template>
@@ -35,15 +38,15 @@ import TournamentInfo from './TournamentInfo.vue';
   },
 })
 export default class TheTournament extends Vue {
-  data(){
-    return{
+  data() {
+    return {
       modules: [
-        { mod: 'tournament-info', name: 'Opis turnieju'},
-        { mod: 'players', name: 'Gracze'},
-        { mod: 'matches', name: 'Rozgrywki'},
-        { mod: 'gallery', name: 'Galeria'},
+        { mod: 'tournament-info', name: 'O turnieju' },
+        { mod: 'players', name: 'Gracze' },
+        { mod: 'matches', name: 'Rozgrywki' },
+        { mod: 'gallery', name: 'Galeria' },
       ],
-    }
+    };
   }
   get module() {
     return this.$route.params.module;
@@ -52,15 +55,10 @@ export default class TheTournament extends Vue {
 </script>
 
 <style scoped>
-.tytul{
-  font-size: 36px;
-  color: #1b2f57; 
+.tytul {
   font-family: 'Roboto', sans-serif;
-  margin: auto; 
-  display: flex; 
-  justify-content: center; 
-  margin: 2%; 
-  letter-spacing: 1px; 
-  word-spacing: 10px; 
+  letter-spacing: 1px;
+  word-spacing: 10px;
+  cursor: pointer
 }
 </style>
