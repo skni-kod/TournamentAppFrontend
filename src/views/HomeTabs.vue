@@ -56,7 +56,7 @@ export default class HomeTabs extends Vue {
   data() {
     return {
       x: null,
-      path: '/tournament/tournament-info',
+      path: '/tournament/info',
       items: [
         {
           tab: 'Turnieje',

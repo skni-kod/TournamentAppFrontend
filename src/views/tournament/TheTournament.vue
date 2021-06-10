@@ -24,24 +24,25 @@
 
 <script>
 import Vue from 'vue';
-import Gallery from './Gallery.vue';
-import Matches from './Matches.vue';
-import Players from './Players.vue';
+import Gallery from './TournamentGallery.vue';
+import Matches from './TournamentMatches.vue';
+import Players from './TournamentPlayers.vue';
+import Info from './TournamentInfo.vue';
 import { Component } from 'vue-property-decorator';
-import TournamentInfo from './TournamentInfo.vue';
+
 @Component({
   components: {
     Gallery,
     Players,
     Matches,
-    TournamentInfo,
+    Info,
   },
 })
 export default class TheTournament extends Vue {
   data() {
     return {
       modules: [
-        { mod: 'tournament-info', name: 'O turnieju' },
+        { mod: 'info', name: 'O turnieju' },
         { mod: 'players', name: 'Gracze' },
         { mod: 'matches', name: 'Rozgrywki' },
         { mod: 'gallery', name: 'Galeria' },
