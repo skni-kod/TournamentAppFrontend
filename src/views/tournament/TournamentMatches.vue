@@ -6,7 +6,7 @@
       :items="positions[page]"
       item-key="id"
       :items-per-page="5"
-      class="elevation-1 rounded-sm"
+      class="elevation-0 rounded-sm"
     >
     </v-data-table>
   </div>
@@ -57,7 +57,8 @@ export default class Matches extends Vue {
       ],
       positions: [
         [], //0
-        [ //1
+        [
+          //1
           {
             id: '1',
             player: 'Damian Kowalski',
@@ -99,7 +100,8 @@ export default class Matches extends Vue {
             opponent: 'Szymon Nowak',
           },
         ],
-        [ //2
+        [
+          //2
           {
             id: '1',
             player: 'Mikołaj Rasiak',
@@ -141,7 +143,8 @@ export default class Matches extends Vue {
             opponent: 'Oskar Wasilewski',
           },
         ],
-        [ //3
+        [
+          //3
           {
             id: '1',
             player: 'Jakub Świętoń',

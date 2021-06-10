@@ -7,17 +7,19 @@
       >
         Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"
       </div>
-      <v-row justify="center" no-gutters class="ma-5">
-        <v-col v-for="(mod, i) in modules" :key="i" class="text-center">
-          <v-btn
-            @click="$router.replace('/tournament/' + mod.mod)"
-            color="primary"
-            class="rounded text-h5 text-capitalize pa-4"
-            >{{ mod.name }}
-          </v-btn>
-        </v-col>
-      </v-row>
-      <component :is="module"></component>
+        <v-row justify="center" no-gutters class="ma-5">
+          <v-col v-for="(mod, i) in modules" :key="i" class="text-center">
+            <v-btn
+              @click="$router.replace('/tournament/' + mod.mod)"
+              color="primary"
+              class="rounded text-h5 text-capitalize pa-4"
+              >{{ mod.name }}
+            </v-btn>
+          </v-col>
+        </v-row>
+      <v-card class="py-4 px-6 rounded-lg mb-3">
+        <component :is="module"></component>
+      </v-card>
     </v-col>
   </v-row>
 </template>
@@ -60,6 +62,6 @@ export default class TheTournament extends Vue {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1px;
   word-spacing: 10px;
-  cursor: pointer
+  cursor: pointer;
 }
 </style>
