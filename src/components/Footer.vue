@@ -1,8 +1,12 @@
 <template>
   <v-footer class="primary white--text">
     <v-row justify="center" no-gutters>
-      <v-col v-for="(link,i) in links" :key="i" class="text-center">
-        <v-btn rounded text :class="link.active ? 'primary' : ''" v-bind:href="link.link"
+      <v-col v-for="(link, i) in links" :key="i" class="text-center">
+        <v-btn
+          rounded
+          text
+          :class="link.active ? 'primary' : ''"
+          v-bind:href="link.link"
           >{{ link.name }}
         </v-btn>
       </v-col>

@@ -5,7 +5,7 @@
       <v-col class="col-12 col-md-6 mb-5">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82057.96349532958!2d21.918243913309265!3d50.00551909965454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cfae3cc14d449%3A0xd2240d31b33eb2ed!2zUnplc3rDs3c!5e0!3m2!1spl!2spl!4v1623101375521!5m2!1spl!2spl"
-          class="pa-6 overflow-hidden"
+          class="pa-6"
           width="500"
           height="400"
           style="border: 0"
@@ -22,9 +22,10 @@
   </v-container>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+
 @Component
 export default class TournamentInfo extends Vue {
   data() {

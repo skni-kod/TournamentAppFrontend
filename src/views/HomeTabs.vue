@@ -103,7 +103,8 @@ export default class HomeTabs extends Vue {
               info: '',
             },
             {
-              name: 'Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"',
+              name:
+                'Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"',
               date: '2021-11-30',
               type: 'Kołowy',
               country: 'Polska',
