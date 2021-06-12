@@ -1,7 +1,7 @@
 <template>
   <div>
     <UserProfile />
-    <v-container  fluid>
+    <v-container fluid>
       <router-view />
     </v-container>
   </div>
@@ -10,18 +10,12 @@
 <script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import UserProfile from '../components/UserProfile.vue';
+import UserProfile from '@/views/user/UserProfile.vue';
+
 @Component({
   components: {
     UserProfile,
   },
 })
-export default class User extends Vue {
-  data() {
-    return {};
-  }
-}
+export default class User extends Vue {}
 </script>
-
-<style>
-</style>

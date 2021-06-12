@@ -5,7 +5,7 @@
       :items="positions"
       item-key="id"
       :items-per-page="5"
-      class="elevation-1 rounded-sm"
+      class="elevation-0 rounded-sm"
     >
     </v-data-table>
   </div>
@@ -54,40 +54,40 @@ export default class Players extends Vue {
           rating: '1000',
         },
         {
-            id: '3',
-            name: 'Jakub Świętoń',
-            country: 'Polska',
+          id: '3',
+          name: 'Jakub Świętoń',
+          country: 'Polska',
           club: 'Nie dotyczy',
           rating: '1000',
-          },
-          {
-            id: '4',
-            name: 'Jerzy Wilk',
-            country: 'Polska',
+        },
+        {
+          id: '4',
+          name: 'Jerzy Wilk',
+          country: 'Polska',
           club: 'Nie dotyczy',
           rating: '1000',
-          },
-          {
-            id: '5',
-            name: 'Mikołaj Rasiak',
-            country: 'Polska',
+        },
+        {
+          id: '5',
+          name: 'Mikołaj Rasiak',
+          country: 'Polska',
           club: 'Nie dotyczy',
           rating: '1000',
-          },
-          {
-            id: '6',
-            name: 'Hubert Cichoń',
-            country: 'Polska',
+        },
+        {
+          id: '6',
+          name: 'Hubert Cichoń',
+          country: 'Polska',
           club: 'Nie dotyczy',
           rating: '1000',
-          },
-          {
-            id: '7',
-            name: 'Szymon Nowak',
-            country: 'Polska',
+        },
+        {
+          id: '7',
+          name: 'Szymon Nowak',
+          country: 'Polska',
           club: 'Nie dotyczy',
           rating: '1000',
-          },
+        },
       ],
     };
   }

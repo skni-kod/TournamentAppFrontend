@@ -166,6 +166,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { country } from '../assets/country.js';
+
 @Component
 export default class Login extends Vue {
   data() {
@@ -173,10 +174,10 @@ export default class Login extends Vue {
       dialog: false,
       country_list: country,
       sex_list: [
-          {name_pl: 'Kobieta', code: 'female'},
-          {name_pl: 'Mężczyzna', code: 'male'},
-          {name_pl: 'Nie chcę podawać', code: 'other'},
-      ]
+        { name_pl: 'Kobieta', code: 'female' },
+        { name_pl: 'Mężczyzna', code: 'male' },
+        { name_pl: 'Nie chcę podawać', code: 'other' },
+      ],
     };
   }
 }
