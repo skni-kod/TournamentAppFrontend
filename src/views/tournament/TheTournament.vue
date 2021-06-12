@@ -32,6 +32,7 @@ import Gallery from './TournamentGallery.vue';
 import Matches from './TournamentMatches.vue';
 import Players from './TournamentPlayers.vue';
 import Info from './TournamentInfo.vue';
+
 import { Component } from 'vue-property-decorator';
 
 @Component({

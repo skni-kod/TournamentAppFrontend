@@ -50,9 +50,45 @@
 <script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import axios from '@/axios';
 
 @Component
 export default class HomeTabs extends Vue {
+  created() {
+    this.downloadData();
+  }
+
+  downloadData() {
+    axios.post('token', {
+      email: 'kamil@klecha.pl',
+      password: 'Kamilek123',
+    }).then((res) => {
+      console.log(res);
+    }).catch(() => console.log('haha nie'));
+    axios.get('tournament/', {}, {
+      headers: {
+          Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNTA3MDIyLCJqdGkiOiIyMWM1Mjk2ODVjNzY0MzBjOGVmZWUxMWIyNzg0OTFhYyIsInVzZXJfaWQiOjEsImVtYWlsIjoia29ucmFkQGtvbnJhZC5wbCJ9.cC9-X11KYxrRjNw41J-Yti-q2t2E6DNOa_uBawz-T84',
+        },
+    }).then((res) => {
+      if (res === 200) {
+        console.log(res);
+        let tabelki = [];
+        const data = res.data;
+        data.forEach(element => {
+          let tab = {};
+          tab.name = element.name;
+          tab.date = element.date;
+          tab.type = element.play_type;
+          tab.country = element.country; 
+          tabelki.push(tab);
+        });
+        this.$data.items.positions = data;
+      }
+    }).catch(() => {
+      console.log('Zepsuło sie');
+    });
+  }
+
   data() {
     return {
       x: null,
@@ -80,102 +116,7 @@ export default class HomeTabs extends Vue {
               class: 'primary white--text',
             },
           ],
-          positions: [
-            {
-              name: 'Mistrzostwa Polski 2021',
-              date: '2021-05-11',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'Mistrzostwa Czech',
-              date: '2021-07-17',
-              type: 'Szwajcarski',
-              country: 'Czechy',
-              info: '',
-            },
-            {
-              name: 'Mistrzostwa Podkarpacia',
-              date: '2021-09-30',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name:
-                'Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"',
-              date: '2021-11-30',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'Serwis zbiorczy Grand Prix woj. warmińsko-mazurskiego',
-              date: '2021-01-01',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'IV Dolnośląska Liga Szachowa 2020/2021 - okręg wrocławski',
-              date: '2021-03-14',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: '242nd YMCA Spring 2021-C',
-              date: '2021-04-13',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'III Puchar UKS MDK Gdynia',
-              date: '2021-05-22',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'Liga Wojewódzka Seniorów Warmińsko-Mazurskie',
-              date: '2021-05-30',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'Lista rankingowa PK CZERWIEC 2021',
-              date: '2021-06-01',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'XX JUBILEUSZOWE MISTRZOSTWA POLSKI SŁUŻB MUNDUROWYCH',
-              date: '2021-06-01',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name:
-                'Międzynarodowe Mistrzostwa Małopolski Seniorów i Juniorów - Grupa E',
-              date: '2021-06-03',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name:
-                'Indywidualne Mistrzostwa Śląska Juniorów w Szachach Klasycznych',
-              date: '2021-06-04',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-          ],
+          positions: [],
         },
         {
           tab: 'Kluby',
