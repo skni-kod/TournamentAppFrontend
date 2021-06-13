@@ -59,34 +59,43 @@ export default class HomeTabs extends Vue {
   }
 
   downloadData() {
-    axios.post('token', {
-      email: 'kamil@klecha.pl',
-      password: 'Kamilek123',
-    }).then((res) => {
-      console.log(res);
-    }).catch(() => console.log('haha nie'));
-    axios.get('tournament/', {}, {
-      headers: {
-          Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIzNTA3MDIyLCJqdGkiOiIyMWM1Mjk2ODVjNzY0MzBjOGVmZWUxMWIyNzg0OTFhYyIsInVzZXJfaWQiOjEsImVtYWlsIjoia29ucmFkQGtvbnJhZC5wbCJ9.cC9-X11KYxrRjNw41J-Yti-q2t2E6DNOa_uBawz-T84',
-        },
-    }).then((res) => {
-      if (res === 200) {
+    axios
+      .post('token/', {
+        email: 'kamil@klecha.pl',
+        password: 'Kamilek123',
+      })
+      .then((res) => {
         console.log(res);
-        let tabelki = [];
-        const data = res.data;
-        data.forEach(element => {
-          let tab = {};
-          tab.name = element.name;
-          tab.date = element.date;
-          tab.type = element.play_type;
-          tab.country = element.country; 
-          tabelki.push(tab);
-        });
-        this.$data.items.positions = data;
-      }
-    }).catch(() => {
-      console.log('Zepsuło sie');
-    });
+
+        if (res.status === 200) {
+          axios
+            .get('tournament/', {
+              headers: {
+                Authorization: 'Bearer ' + res.data.access,
+              },
+            })
+            .then((res2) => {
+              if (res2.status === 200) {
+                let tabelki = [];
+                const data = res2.data;
+                data.forEach((element) => {
+                  let tab = {};
+                  tab.name = element.name;
+                  tab.date = element.date;
+                  tab.type = element.play_type;
+                  tab.country = element.country;
+                  console.log(tab);
+                  tabelki.push(tab);
+                });
+                this.$data.items[0].positions = tabelki;
+              }
+            })
+            .catch(() => {
+              console.log('Zepsuło sie');
+            });
+        }
+      })
+      .catch(() => console.log('haha nie'));
   }
 
   data() {
