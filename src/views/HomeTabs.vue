@@ -36,7 +36,7 @@
                   class="my-auto"
                   v-if="itemtab.tab === 'Turnieje'"
                 >
-                  <v-btn :to="path">Więcej o Turnieju</v-btn>
+                  <v-btn :to="{ name: 'Tournament Info', params: { module } }">Więcej o Turnieju</v-btn>
                 </v-col>
               </v-row>
             </td>
@@ -59,49 +59,46 @@ export default class HomeTabs extends Vue {
   }
 
   downloadData() {
-    axios
-      .post('token/', {
-        email: 'kamil@klecha.pl',
-        password: 'Kamilek123',
+    if(this.auth) {
+      axios
+      .get('tournament/', {
+        headers: {
+          Authorization: 'Bearer ' + this.token,
+        },
       })
-      .then((res) => {
-        console.log(res);
-
-        if (res.status === 200) {
-          axios
-            .get('tournament/', {
-              headers: {
-                Authorization: 'Bearer ' + res.data.access,
-              },
-            })
-            .then((res2) => {
-              if (res2.status === 200) {
-                let tabelki = [];
-                const data = res2.data;
-                data.forEach((element) => {
-                  let tab = {};
-                  tab.name = element.name;
-                  tab.date = element.date;
-                  tab.type = element.play_type;
-                  tab.country = element.country;
-                  console.log(tab);
-                  tabelki.push(tab);
-                });
-                this.$data.items[0].positions = tabelki;
-              }
-            })
-            .catch(() => {
-              console.log('Zepsuło sie');
-            });
+      .then((res2) => {
+        if (res2.status === 200) {
+          let tabelki = [];
+          const data = res2.data;
+          data.forEach((element) => {
+            let tab = {};
+            tab.name = element.name;
+            tab.date = element.date;
+            tab.type = element.play_type;
+            tab.country = element.country;
+            console.log(tab);
+            tabelki.push(tab);
+          });
+          this.$data.items[0].positions = tabelki;
         }
       })
-      .catch(() => console.log('haha nie'));
+      .catch(() => {
+        console.log('Zepsuło sie');
+      });
+    }
+  }
+
+  get auth() {
+    return this.$store.getters.isAuthenticated;
+  }
+  get token() {
+    return this.$store.getters.token;
   }
 
   data() {
     return {
       x: null,
-      path: '/tournament/info',
+      module: 'info',
       items: [
         {
           tab: 'Turnieje',

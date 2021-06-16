@@ -21,15 +21,29 @@
             <v-icon>{{ icon.icon }}</v-icon>
             <v-list-item-title>{{ icon.text }}</v-list-item-title>
           </v-list-item>
+          <v-list-item
+            v-if="auth"
+            @click="logout"
+          >
+            <v-icon>mdi-logout</v-icon>
+            <v-list-item-title>Wyloguj się</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            v-else
+            @click="login"
+          >
+            <v-icon>mdi-login</v-icon>
+            <v-list-item-title>Zaloguj się</v-list-item-title>
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Navbar extends Vue {
@@ -48,16 +62,25 @@ export default class Navbar extends Vue {
           icon: 'mdi-account-outline',
           text: 'Profil',
         },
-        {
-          link: '/login',
-          icon: 'mdi-login',
-          text: 'Wyloguj się',
-        },
       ],
     };
   }
-  watch(group) {
-    this.drawer = false;
+
+  login() {
+    this.$router.push({ name: 'Login' });
+  }
+
+  logout() {
+    this.$store.dispatch('logout');
+  }
+
+@Watch('group')
+  onGroup() {
+    this.$data.drawer = false;
+  }
+
+  get auth() {
+    return this.$store.getters.isAuthenticated;
   }
 }
 </script>
