@@ -30,6 +30,7 @@
               ></v-text-field>
               <v-text-field
                 type="password"
+                v-model="password"
                 label="Hasło"
                 required
               ></v-text-field>
@@ -38,7 +39,7 @@
                 label="Zapamiętaj mnie"
               ></v-checkbox>
 
-              <v-btn color="secondary" class="white--text" @click="validate">
+              <v-btn color="secondary" class="white--text" @click="validate()">
                 Zaloguj się
               </v-btn>
               <br /><br />
@@ -169,9 +170,21 @@ import { country } from '../assets/country.js';
 
 @Component
 export default class Login extends Vue {
+
+validate() {
+  this.$store.dispatch('login', {
+    email: this.$data.email,
+    password: this.$data.password,
+  })
+}
+
   data() {
     return {
+      email: undefined,
+      password: undefined,
       dialog: false,
+      valid: false,
+      checkbox: false,
       country_list: country,
       sex_list: [
         { name_pl: 'Kobieta', code: 'female' },

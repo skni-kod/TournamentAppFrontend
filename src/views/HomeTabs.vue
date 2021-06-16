@@ -36,7 +36,7 @@
                   class="my-auto"
                   v-if="itemtab.tab === 'Turnieje'"
                 >
-                  <v-btn :to="path">Więcej o Turnieju</v-btn>
+                  <v-btn :to="{ name: 'Tournament Info', params: { module } }">Więcej o Turnieju</v-btn>
                 </v-col>
               </v-row>
             </td>
@@ -50,13 +50,55 @@
 <script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import axios from '@/axios';
 
 @Component
 export default class HomeTabs extends Vue {
+  created() {
+    this.downloadData();
+  }
+
+  downloadData() {
+    if(this.auth) {
+      axios
+      .get('tournament/', {
+        headers: {
+          Authorization: 'Bearer ' + this.token,
+        },
+      })
+      .then((res2) => {
+        if (res2.status === 200) {
+          let tabelki = [];
+          const data = res2.data;
+          data.forEach((element) => {
+            let tab = {};
+            tab.name = element.name;
+            tab.date = element.date;
+            tab.type = element.play_type;
+            tab.country = element.country;
+            console.log(tab);
+            tabelki.push(tab);
+          });
+          this.$data.items[0].positions = tabelki;
+        }
+      })
+      .catch(() => {
+        console.log('Zepsuło sie');
+      });
+    }
+  }
+
+  get auth() {
+    return this.$store.getters.isAuthenticated;
+  }
+  get token() {
+    return this.$store.getters.token;
+  }
+
   data() {
     return {
       x: null,
-      path: '/tournament/info',
+      module: 'info',
       items: [
         {
           tab: 'Turnieje',
@@ -80,102 +122,7 @@ export default class HomeTabs extends Vue {
               class: 'primary white--text',
             },
           ],
-          positions: [
-            {
-              name: 'Mistrzostwa Polski 2021',
-              date: '2021-05-11',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'Mistrzostwa Czech',
-              date: '2021-07-17',
-              type: 'Szwajcarski',
-              country: 'Czechy',
-              info: '',
-            },
-            {
-              name: 'Mistrzostwa Podkarpacia',
-              date: '2021-09-30',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name:
-                'Wielki Turniej Studenckiego Koła Naukowego Informatyków "KOD"',
-              date: '2021-11-30',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'Serwis zbiorczy Grand Prix woj. warmińsko-mazurskiego',
-              date: '2021-01-01',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'IV Dolnośląska Liga Szachowa 2020/2021 - okręg wrocławski',
-              date: '2021-03-14',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: '242nd YMCA Spring 2021-C',
-              date: '2021-04-13',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'III Puchar UKS MDK Gdynia',
-              date: '2021-05-22',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'Liga Wojewódzka Seniorów Warmińsko-Mazurskie',
-              date: '2021-05-30',
-              type: 'Kołowy',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'Lista rankingowa PK CZERWIEC 2021',
-              date: '2021-06-01',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name: 'XX JUBILEUSZOWE MISTRZOSTWA POLSKI SŁUŻB MUNDUROWYCH',
-              date: '2021-06-01',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name:
-                'Międzynarodowe Mistrzostwa Małopolski Seniorów i Juniorów - Grupa E',
-              date: '2021-06-03',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-            {
-              name:
-                'Indywidualne Mistrzostwa Śląska Juniorów w Szachach Klasycznych',
-              date: '2021-06-04',
-              type: 'Szwajcarski',
-              country: 'Polska',
-              info: '',
-            },
-          ],
+          positions: [],
         },
         {
           tab: 'Kluby',
