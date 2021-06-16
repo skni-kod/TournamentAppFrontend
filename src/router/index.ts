@@ -1,19 +1,43 @@
-import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue';
+import VueRouter, { RouteConfig } from 'vue-router';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
   },
   {
-    path: "/login",
-    name: "Login",
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+    path: '/login',
+    name: 'Login',
+    component: () =>import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+  },
+  {
+    path: '/retrive',
+    name: 'Retrive',
+    component: () =>import(/* webpackChunkName: "retrive" */ '../views/Retrive.vue'),
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: () => import(/* webpackChunkName: "retrive" */ '../views/user/TheUser.vue'),
+    children: [
+      {
+        path: '/user',
+        component: () =>import(/* webpackChunkName: "Overview" */ '../views/user/UserOverview.vue'),
+      },
+      {
+        path: '/user/userrecent',
+        component: () =>import(/* webpackChunkName: "Overview" */ '../views/user/UserRecent.vue'),
+      },
+    ],
+  },
+  {
+    path: "/tournament/:module?",
+    name: "Tournament Info",
+    component: () => import(/* webpackChunkName: "tournament" */ '../views/tournament/TheTournament.vue'),
   },
   {
     path: "/retrive",
@@ -23,7 +47,7 @@ const routes: Array<RouteConfig> = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes,
 });
