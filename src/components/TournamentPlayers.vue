@@ -39,7 +39,6 @@ export default class Players extends Vue {
                 const data2 = members.notification;
                 data2.forEach((member) => {
                   let player = {};
-                  console.log(member.player.id);
                   player.id = member.player.id;
                   player.name = member.player.first_name + ' ' + member.player.last_name;
                   player.country = member.player.country;
