@@ -28,17 +28,17 @@ const routes: Array<RouteConfig> = [
     component: () =>import(/* webpackChunkName: "retrive" */ '../views/Retrive.vue'),
   },
   {
-    path: '/user',
+    path: '/user/:id',
     name: 'User',
-    component: () => import(/* webpackChunkName: "retrive" */ '../views/user/TheUser.vue'),
+    component: () => import(/* webpackChunkName: "retrive" */ '../views/TheUser.vue'),
     children: [
       {
-        path: '/user',
-        component: () =>import(/* webpackChunkName: "Overview" */ '../views/user/UserOverview.vue'),
+        path: '/user/:id',
+        component: () =>import(/* webpackChunkName: "Overview" */ '../components/UserOverview.vue'),
       },
       {
         path: '/user/userrecent',
-        component: () =>import(/* webpackChunkName: "Overview" */ '../views/user/UserRecent.vue'),
+        component: () =>import(/* webpackChunkName: "Overview" */ '../components/UserRecent.vue'),
       },
     ],
   },

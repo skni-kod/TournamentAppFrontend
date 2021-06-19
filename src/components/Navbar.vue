@@ -48,6 +48,7 @@ import { Component, Watch } from 'vue-property-decorator';
 @Component
 export default class Navbar extends Vue {
   data() {
+    
     return {
       drawer: false,
       group: null,
@@ -58,7 +59,7 @@ export default class Navbar extends Vue {
           text: 'Strona główna',
         },
         {
-          link: '/user',
+          link: '/user/' + this.$route.params.id + '/',
           icon: 'mdi-account-outline',
           text: 'Profil',
         },
@@ -82,5 +83,6 @@ export default class Navbar extends Vue {
   get auth() {
     return this.$store.getters.isAuthenticated;
   }
+  
 }
 </script>
