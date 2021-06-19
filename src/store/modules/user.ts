@@ -29,6 +29,7 @@ const userModule: Module<any, any> = {
         })
         .then((res) => {
           if (res.status == 200) {
+            alert('Logowanie przebiegło pomyślnie.');
             commit('authUser', {
               token: res.data.access,
               refreshToken: res.data.refresh,
@@ -37,16 +38,26 @@ const userModule: Module<any, any> = {
           }
         })
         .catch((err) => {
-          console.log(err.response.status);
-          console.log('Błąd logowania');
+          alert('Błąd logowania. Spróbuj ponownie.');
         });
     },
     logout({ dispatch, commit, state }) {
       commit('clearAuthData');
-      if (router.currentRoute.name !== 'Home') {
-        router.replace({ name: 'Home' });
-      }
-      console.log('Wylogowano');
+      router.replace({ name: 'Login' });
+      alert("Wylogowanie przebiegło pomyślnie.")
+    },
+    register({dispatch}, data){
+      axios
+        .post('user/', data)
+        .then((res) => {
+          if (res.status == 201){
+            alert("Rejestracja przebiegła pomyślnie. Możesz teraz się zalogować.");
+            router.go(0);
+          }
+        })
+        .catch((err) => {
+          alert("Wystąpił problem. Spróbuj ponownie.")
+        });
     },
   },
 

@@ -17,7 +17,7 @@
           >
           <v-card-subtitle>Wpisz swoje dane:</v-card-subtitle>
           <v-card-text>
-            <v-form
+            <v-form 
               ref="sign-in"
               v-model="valid"
               lazy-validation
@@ -26,18 +26,18 @@
               <v-text-field
                 v-model="email"
                 label="Adres e-mail"
+                :rules="[rules.required, rules.counter(email, 6, 'ów')]"
                 required
+                v-on:keyup.enter="validate()"
               ></v-text-field>
               <v-text-field
                 type="password"
                 v-model="password"
                 label="Hasło"
+                :rules="[rules.required, rules.counter(password, 8, 'ów')]"
                 required
+                v-on:keyup.enter="validate()"
               ></v-text-field>
-              <v-checkbox
-                v-model="checkbox"
-                label="Zapamiętaj mnie"
-              ></v-checkbox>
 
               <v-btn color="secondary" class="white--text" @click="validate()">
                 Zaloguj się
@@ -55,120 +55,23 @@
             <router-link to="/regulations">Regulaminem serwisu</router-link>
             oraz <router-link to="/toa">Polityką prywatności</router-link>
           </v-card-subtitle>
-          <template>
-            <v-dialog v-model="dialog" persistent max-width="50%">
-              <template v-slot:activator="{ on, attrs }" class="register-btn">
-                <v-btn
-                  color="secondary"
-                  class="white--text mb-5"
-                  v-bind="attrs"
-                  v-on="on"
-                >
-                  Zarejestruj się
-                </v-btn>
-              </template>
-              <v-card>
-                <v-card-title>Rejestracja użytkownika</v-card-title>
-                <v-card-subtitle>Wypełnij informacje o sobie.</v-card-subtitle>
-                <v-card-text>
-                  <v-container>
-                    <v-row>
-                      <v-col cols="4">
-                        <v-text-field label="Imię*" required></v-text-field>
-                      </v-col>
-                      <v-col cols="4">
-                        <v-text-field label="Nazwisko*" required></v-text-field>
-                      </v-col>
-                      <v-col cols="2">
-                        <v-select
-                          :items="sex_list"
-                          item-value="code"
-                          item-text="name_pl"
-                          label="Płeć*"
-                          required
-                        ></v-select>
-                      </v-col>
-                      <v-col cols="2">
-                        <v-select
-                          :items="country_list"
-                          item-value="code"
-                          item-text="name_pl"
-                          label="Kraj*"
-                          required
-                        ></v-select>
-                      </v-col>
-                      <v-col cols="8">
-                        <v-text-field
-                          label="Adres e-mail*"
-                          required
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-text-field
-                          label="Hasło*"
-                          type="password"
-                          required
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-text-field
-                          label="Powtórz hasło*"
-                          type="password"
-                          required
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-text-field label="Klub szachowy"></v-text-field>
-                      </v-col>
-                      <v-col cols="2">
-                        <v-text-field
-                          label="Rating"
-                          type="number"
-                          min="0"
-                          max="3000"
-                        ></v-text-field>
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                  <small>* oznacza pole wymagane.</small>
-                  <v-checkbox v-model="checkbox" required>
-                    <div slot="label">
-                      Zapoznałem/am się z
-                      <router-link to="/regulations"
-                        >Regulaminem serwisu</router-link
-                      >
-                      i akceptuję go.
-                    </div>
-                  </v-checkbox>
-                </v-card-text>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="secondary" text @click="dialog = false">
-                    Zamknij
-                  </v-btn>
-                  <v-btn
-                    color="secondary"
-                    class="white--text"
-                    @click="dialog = false"
-                  >
-                    Zarejestruj się
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-          </template>
+          <Registration/>
         </v-card>
       </v-col>
     </v-row>
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import { country } from '../assets/country.js';
+import Registration from '../components/Registration.vue';
 
-@Component
+@Component({
+  components:{
+    Registration
+  }
+})
 export default class Login extends Vue {
 
 validate() {
@@ -180,17 +83,15 @@ validate() {
 
   data() {
     return {
-      email: undefined,
-      password: undefined,
+      email: '',
+      password: '',
       dialog: false,
       valid: false,
-      checkbox: false,
-      country_list: country,
-      sex_list: [
-        { name_pl: 'Kobieta', code: 'female' },
-        { name_pl: 'Mężczyzna', code: 'male' },
-        { name_pl: 'Nie chcę podawać', code: 'other' },
-      ],
+      rules: {
+        required: (input: string) => !!input || 'To pole jest wymagane',
+        counter: (input: string, number: number, end: string) =>
+          input.length >= number || 'Musisz podać minimum ' + number + ' znak' + end,
+      },
     };
   }
 }
