@@ -42,7 +42,7 @@
                       name: 'Tournament Info',
                       params: { id: item.id, module },
                     }"
-                    >{{ item.id }} Więcej o Turnieju</v-btn
+                    >Więcej o Turnieju</v-btn
                   >
                 </v-col>
               </v-row>
