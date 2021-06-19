@@ -20,9 +20,5 @@ import { Component } from 'vue-property-decorator';
     Footer,
   },
 })
-export default class App extends Vue {
-  data() {
-    return {};
-  }
-}
+export default class App extends Vue {}
 </script>

@@ -19,7 +19,7 @@
 
 <script>
 import Vue from 'vue';
-import HomeTabs from './HomeTabs.vue';
+import HomeTabs from '@/components/HomeTabs.vue';
 import { Component } from 'vue-property-decorator';
 
 @Component({
