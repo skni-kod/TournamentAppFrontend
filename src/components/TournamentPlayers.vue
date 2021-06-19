@@ -14,9 +14,50 @@
 <script>
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import axios from '@/axios';
 
 @Component
 export default class Players extends Vue {
+  created() {
+    this.downloadData();
+  }
+
+  downloadData() {
+    if (this.auth) {
+      axios
+        .get('tournament_player_notifications/', {
+          headers: {
+            Authorization: 'Bearer ' + this.$store.getters.token,
+          },
+        })
+        .then((res2) => {
+          if (res2.status === 200) {
+            let players = [];
+            const data = res2.data;
+            data.forEach((members) => {
+              if(this.$route.params.id == members.id){
+                const data2 = members.notification;
+                data2.forEach((member) => {
+                  let player = {};
+                  console.log(member.player.id);
+                  player.id = member.player.id;
+                  player.name = member.player.first_name + ' ' + member.player.last_name;
+                  player.country = member.player.country;
+                  player.club = member.player.club;
+                  player.rating = member.player.rating;
+                  players.push(player);
+                });
+                this.$data.positions = players;
+              }
+            })
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+
   data() {
     return {
       headers: [
@@ -38,58 +79,11 @@ export default class Players extends Vue {
           class: 'primary white--text',
         },
       ],
-      positions: [
-        {
-          id: '1',
-          name: 'Damian Kowalski',
-          country: 'Polska',
-          club: 'Nie dotyczy',
-          rating: '1000',
-        },
-        {
-          id: '2',
-          name: 'Oskar Wasilewski',
-          country: 'Polska',
-          club: 'Nie dotyczy',
-          rating: '1000',
-        },
-        {
-          id: '3',
-          name: 'Jakub Świętoń',
-          country: 'Polska',
-          club: 'Nie dotyczy',
-          rating: '1000',
-        },
-        {
-          id: '4',
-          name: 'Jerzy Wilk',
-          country: 'Polska',
-          club: 'Nie dotyczy',
-          rating: '1000',
-        },
-        {
-          id: '5',
-          name: 'Mikołaj Rasiak',
-          country: 'Polska',
-          club: 'Nie dotyczy',
-          rating: '1000',
-        },
-        {
-          id: '6',
-          name: 'Hubert Cichoń',
-          country: 'Polska',
-          club: 'Nie dotyczy',
-          rating: '1000',
-        },
-        {
-          id: '7',
-          name: 'Szymon Nowak',
-          country: 'Polska',
-          club: 'Nie dotyczy',
-          rating: '1000',
-        },
-      ],
+      positions: [],
     };
+  }
+  get auth() {
+    return this.$store.getters.isAuthenticated;
   }
 }
 </script>
