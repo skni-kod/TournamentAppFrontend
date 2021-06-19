@@ -26,12 +26,12 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import VueGallery from '@/node_modules/vue-gallery/src/component/gallery.vue';
 import axios from '@/axios';
+import VueGallery from '../../node_modules/vue-gallery/src/component/gallery.vue';
 
 @Component({
   components: {
-    VueGallery
+    'gallery': VueGallery,
   }
 })
 export default class Gallery extends Vue {
