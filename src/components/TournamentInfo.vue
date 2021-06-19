@@ -34,8 +34,6 @@ export default class TournamentInfo extends Vue {
   }
 
   downloadData() {
-    console.log(this.$route.params.id);
-    console.log(this.auth);
     if (this.auth) {
       axios
         .get('tournament/' + this.$route.params.id + '/', {
@@ -44,11 +42,9 @@ export default class TournamentInfo extends Vue {
           },
         })
         .then((res2) => {
-          console.log('asd');
           if (res2.status === 200) {
             let tab = [];
             const data = res2.data;
-            console.log('2');
             tab[0] = data.name;
             tab[1] = data.date;
             tab[2] = data.country;
@@ -56,12 +52,11 @@ export default class TournamentInfo extends Vue {
             tab[4] = data.members_limit;
             tab[5] = data.organiser;
             tab[6] = data.play_type;
-            console.log(tab);
             this.$data.info = tab;
           }
         })
         .catch((error) => {
-          console.log('error turniej');
+          console.log('Błąd w TournamentInfo');
         });
     }
   }

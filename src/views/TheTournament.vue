@@ -53,7 +53,6 @@ export default class TheTournament extends Vue {
   }
 
   downloadData() {
-    console.log(this.id);
     if (this.$store.getters.isAuthenticated) {
       axios
         .get('tournament/' + this.$route.params.id + '/', {
@@ -62,7 +61,6 @@ export default class TheTournament extends Vue {
           },
         })
         .then((res2) => {
-          console.log('dobrze idzie');
           if (res2.status === 200) {
             let name;
             const data = res2.data;
