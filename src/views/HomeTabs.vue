@@ -85,12 +85,9 @@ export default class HomeTabs extends Vue {
               tab.type = element.play_type;
               tab.country = element.country;
               tab.id = element.id;
-              console.log(tab.id);
               tabelki.push(tab);
             });
             this.$data.items[0].positions = tabelki;
-            console.log(this.items[0].positions.date);
-            console.log(this.items[0].positions.id);
           }
         })
         .catch(() => {
