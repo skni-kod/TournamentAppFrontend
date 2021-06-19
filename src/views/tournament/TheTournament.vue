@@ -11,7 +11,7 @@
       <v-row justify="center" no-gutters class="ma-5">
         <v-col v-for="(mod, i) in modules" :key="i" class="text-center">
           <v-btn
-            @click="$router.replace('/tournament/' + mod.mod)"
+            @click="$router.replace('/tournament/' + id + '/' + mod.mod)"
             color="primary"
             class="rounded text-h5 text-capitalize pa-4"
             >{{ mod.name }}
@@ -56,6 +56,9 @@ export default class TheTournament extends Vue {
   }
   get module() {
     return this.$route.params.module;
+  }
+  get id() {
+    return this.$route.params.id;
   }
 }
 </script>
