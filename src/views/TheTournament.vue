@@ -21,7 +21,7 @@
       </v-row>
 
       <v-card class="py-4 px-6 rounded-lg mb-3">
-        <component :is="module" v-bind="property"></component>
+        <component :is="module" v-bind="{ value: $data[module] }"></component>
       </v-card>
     </v-col>
   </v-row>
@@ -72,7 +72,7 @@ export default class TheTournament extends Vue {
             tab[6] = data.play_type;
             name = data.name;
             this.$data.name = name;
-            this.$data.t_info = tab;
+            this.$data.info = tab;
 
             let gal: object[] = [];
             const data2 = res2.data.gallery.image;
@@ -122,9 +122,10 @@ export default class TheTournament extends Vue {
 
   data() {
     return {
-      t_info: [],
+      info: [],
       gallery: [],
       players: [],
+      matches: [],
       name: '',
       modules: [
         { mod: 'info', name: 'O turnieju' },
@@ -140,20 +141,6 @@ export default class TheTournament extends Vue {
   }
   get id() {
     return this.$route.params.id;
-  }
-  get property() {
-    if (this.module === 'info'){
-      return { value: this.$data.t_info };
-    }
-    else if (this.module === 'players'){
-      return { value: this.$data.players };
-    }
-    else if (this.module === 'gallery'){
-      return { value: this.$data.gallery };
-    }
-    else if (this.module === 'matches'){
-      return;
-    }
   }
 }
 </script>
