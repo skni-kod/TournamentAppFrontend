@@ -1,4 +1,4 @@
-var country = [
+var countries = [
     { name_pl: "Afganistan", name_en: "Afghanistan", code: "AF" },
     { name_pl: "Albania", name_en: "Albania", code: "AL" },
     { name_pl: "Algieria", name_en: "Algeria", code: "DZ" },
@@ -250,4 +250,4 @@ var country = [
     { name_pl: "Zjednoczone Emiraty Arabskie", name_en: "United Arab Emirates", code: "AE" }
   ]
 
-  export {country};
+  export {countries};
