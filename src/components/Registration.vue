@@ -40,8 +40,12 @@
                   :items="country_list"
                   item-value="name_en"
                   item-text="name_pl"
-                  label="Kraj"
+                  label="Kraj*"
                   v-model="country"
+                  :rules="[
+                  rules.required,
+                  ]"
+                  required
                 ></v-select>
               </v-col>
               <v-col cols="8">
@@ -136,6 +140,9 @@ import { countries } from '../assets/country';
 export default class Registration extends Vue {
   private data() {
     return {
+      club: '',
+      gender: '',
+      country: '',
       checkbox: false,
       dialog: false,
       valid: true,
@@ -147,17 +154,17 @@ export default class Registration extends Vue {
       profile: [{
       club: '',
       gender: '',
-      country: 'Poland',
+      country: '',
       }],
       rating: 0,
       country_list: countries,
       gender_list: [
-        { name_pl: 'Kobieta', code: 'female' },
-        { name_pl: 'Mężczyzna', code: 'male' },
+        { name_pl: 'Kobieta', code: 'F' },
+        { name_pl: 'Mężczyzna', code: 'M' },
         { name_pl: 'Nie chcę podawać', code: 'other' },
       ],
       rules: {
-        required: (input: string) => !!input || 'To pole jest wymagane',
+        required: (input: string) => !!input || 'To pol jest wymagane',
         counter: (input: string, number: number, end: string) =>
           input.length >= number || 'Musisz podać minimum ' + number + ' znak' + end,
         integrity: (input1: string, input2: string) => input1 === input2 || 'Podane hasła się różnią',
@@ -183,9 +190,10 @@ export default class Registration extends Vue {
         profile: [{
         club: this.$data.club,
         gender: this.$data.gender,
-        country: "Poland"}]
+        country: this.$data.country}]
       });
     }
+    
   }
 }
 </script>
