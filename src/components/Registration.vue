@@ -164,7 +164,7 @@ export default class Registration extends Vue {
         { name_pl: 'Nie chcę podawać', code: 'other' },
       ],
       rules: {
-        required: (input: string) => !!input || 'To pol jest wymagane',
+        required: (input: string) => !!input || 'To pole jest wymagane',
         counter: (input: string, number: number, end: string) =>
           input.length >= number || 'Musisz podać minimum ' + number + ' znak' + end,
         integrity: (input1: string, input2: string) => input1 === input2 || 'Podane hasła się różnią',
