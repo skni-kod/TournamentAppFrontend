@@ -6,17 +6,20 @@ const userModule: Module<any, any> = {
   state: {
     token: undefined,
     refreshToken: undefined,
+    id:undefined,
   },
 
   mutations: {
     authUser(state, auth) {
       state.token = auth.token;
       state.refreshToken = auth.refreshToken;
+      state.id=auth.id;
     },
     clearAuthData(state) {
       state.token = undefined;
       state.refreshToken = undefined;
       state.userData = {};
+      state.id = undefined;
     },
   },
 
@@ -33,6 +36,7 @@ const userModule: Module<any, any> = {
             commit('authUser', {
               token: res.data.access,
               refreshToken: res.data.refresh,
+              id: res.data.id,
             });
             router.replace({ name: 'Home' });
           }
@@ -64,6 +68,7 @@ const userModule: Module<any, any> = {
   getters: {
     token: (state) => state.token,
     isAuthenticated: (state) => state.token !== undefined,
+    id: (state) => state.id,
   },
 };
 
