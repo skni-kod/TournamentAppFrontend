@@ -26,7 +26,7 @@
           :value="t_info"
         ></info>
         <players v-else-if="module === 'players'"></players>
-        <gallery v-else-if="module === 'gallery'"></gallery>
+        <gallery v-else-if="module === 'gallery'" :value="gallery"></gallery>
         <matches v-else-if="module === 'matches'"></matches>
       </v-card>
     </v-col>
@@ -79,6 +79,14 @@ export default class TheTournament extends Vue {
             name = data.name;
             this.$data.name = name;
             this.$data.t_info = tab;
+            
+            let gal:object[] = [];
+            const data2 = res2.data.gallery.image;
+            data2.forEach((element:any) => {
+              let photo = element.image;
+              gal.push(photo);
+            });
+            this.$data.gallery = gal;
           }
         })
         .catch(() => {
@@ -90,6 +98,7 @@ export default class TheTournament extends Vue {
   data() {
     return {
       t_info: [],
+      gallery: [],
       name: '',
       modules: [
         { mod: 'info', name: 'O turnieju' },
