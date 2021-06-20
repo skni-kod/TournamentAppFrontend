@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 import axios from '@/axios';
 import VueGallery from '../../node_modules/vue-gallery/src/component/gallery.vue';
 
@@ -35,44 +35,14 @@ import VueGallery from '../../node_modules/vue-gallery/src/component/gallery.vue
   }
 })
 export default class Gallery extends Vue {
-  created() {
-    this.downloadData();
-  }
-
-  downloadData() {
-    if (this.auth) {
-      axios
-        .get('tournament/' + this.$route.params.id + '/', {
-          headers: {
-            Authorization: 'Bearer ' + this.$store.getters.token,
-          },
-        })
-        .then((res2) => {
-          if (res2.status === 200) {
-            let gal:object[] = [];
-            const data = res2.data.gallery.image;
-            data.forEach((element:any) => {
-              let photo = element.image;
-              gal.push(photo);
-            });
-            this.$data.images = gal;
-          }
-        })
-        .catch(() => {
-          console.log('Błąd w galerii');
-        });
-    }
-  }
-
-  get auth() {
-    return this.$store.getters.isAuthenticated;
-  }
-
+  @Prop({required: true}) readonly value!: String[]
   data() {
     return {
       index: null,
-      images: [],
     };
+  }
+  get images() {
+    return this.value;
   }
 }
 </script>

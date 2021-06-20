@@ -10,7 +10,6 @@
 
       <v-row justify="center" no-gutters class="ma-5">
         <v-col v-for="(mod, i) in modules" :key="i" class="text-center">
-          
           <v-btn
             @click="$router.replace('/tournament/' + id + '/' + mod.mod)"
             color="primary"
@@ -18,12 +17,11 @@
             :disabled="$route.path === '/tournament/' + id + '/' + mod.mod"
             >{{ mod.name }}
           </v-btn>
-        
         </v-col>
       </v-row>
 
       <v-card class="py-4 px-6 rounded-lg mb-3">
-        <component :is="module"></component>
+        <component :is="module" v-bind="{ value: $data[module] }"></component>
       </v-card>
     </v-col>
   </v-row>
@@ -62,20 +60,72 @@ export default class TheTournament extends Vue {
         })
         .then((res2) => {
           if (res2.status === 200) {
+            let tab = [];
             let name;
             const data = res2.data;
+            tab[0] = data.name;
+            tab[1] = data.date;
+            tab[2] = data.country;
+            tab[3] = data.address;
+            tab[4] = data.members_limit;
+            tab[5] = data.organiser;
+            tab[6] = data.play_type;
             name = data.name;
             this.$data.name = name;
+            this.$data.info = tab;
+
+            let gal: object[] = [];
+            const data2 = res2.data.gallery.image;
+            data2.forEach((element: any) => {
+              let photo = element.image;
+              gal.push(photo);
+            });
+            this.$data.gallery = gal;
           }
         })
         .catch(() => {
-          console.log('Błąd w nazwie turnieju');
+          console.log('Błąd w nazwie/info turnieju');
+        });
+      axios
+        .get('tournament_player_notifications/', {
+          headers: {
+            Authorization: 'Bearer ' + this.$store.getters.token,
+          },
+        })
+        .then((res2) => {
+          if (res2.status === 200) {
+            let players: object[] = [];
+            const data = res2.data;
+            data.forEach((members: any) => {
+              if (this.$route.params.id == members.id) {
+                const data2 = members.notification;
+                data2.forEach((member: any) => {
+                  let player: any = {};
+                  player.id = member.player.id;
+                  player.name =
+                    member.player.first_name + ' ' + member.player.last_name;
+                  player.country = member.player.country;
+                  player.club = member.player.club;
+                  player.rating = member.player.rating;
+                  players.push(player);
+                });
+                this.$data.players = players;
+              }
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
         });
     }
   }
 
   data() {
     return {
+      info: [],
+      gallery: [],
+      players: [],
+      matches: [],
       name: '',
       modules: [
         { mod: 'info', name: 'O turnieju' },

@@ -22,48 +22,14 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 import axios from '@/axios';
 
 @Component
 export default class TournamentInfo extends Vue {
-  created() {
-    this.downloadData();
-  }
-
-  downloadData() {
-    if (this.auth) {
-      axios
-        .get('tournament/' + this.$route.params.id + '/', {
-          headers: {
-            Authorization: 'Bearer ' + this.$store.getters.token,
-          },
-        })
-        .then((res2) => {
-          if (res2.status === 200) {
-            let tab = [];
-            const data = res2.data;
-            tab[0] = data.name;
-            tab[1] = data.date;
-            tab[2] = data.country;
-            tab[3] = data.address;
-            tab[4] = data.members_limit;
-            tab[5] = data.organiser;
-            tab[6] = data.play_type;
-            this.$data.info = tab;
-          }
-        })
-        .catch((error) => {
-          console.log('Błąd w TournamentInfo');
-        });
-    }
-  }
-
-  get auth() {
-    return this.$store.getters.isAuthenticated;
-  }
+  @Prop({required: true}) readonly value!: String[] 
   data() {
     return {
       text: [
@@ -75,8 +41,10 @@ export default class TournamentInfo extends Vue {
         'Organizator',
         'System rozgrywek',
       ],
-      info: [],
     };
+  }
+  get info() {
+    return this.value;
   }
 }
 </script>
