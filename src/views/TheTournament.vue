@@ -117,6 +117,47 @@ export default class TheTournament extends Vue {
         .catch((error) => {
           console.log(error);
         });
+      axios
+        .get('tournament_games/' + this.id, {
+          headers: {
+            Authorization: 'Bearer ' + this.$store.getters.token,
+          },
+        })
+        .then((res2) => {
+          if (res2.status === 200) {
+            let wyniki: any[] = [];
+            const data = res2.data.game;
+            data.forEach((g: any) => {
+              let game: any = {};
+              game.player =
+                g.player1.user.first_name + ' ' + g.player1.user.last_name;
+              game.rating = g.player1.rating;
+              game.opponent =
+                g.player2 !== null
+                  ? g.player2.user.first_name + ' ' + g.player2.user.last_name
+                  : 'Bye';
+              game.ratingi = game.opponent === 'Bye' ? '0' : g.player2.rating;
+              if (g.result === '1' || g.result === '4') {
+                game.points = '2';
+                game.pointsi = '0';
+                game.result = '2:0';
+              } else if (g.result === '2' || g.result === '5') {
+                game.pointsi = '2';
+                game.points = '0';
+                game.result = '0:2';
+              } else if (g.result === '3') {
+                game.points = '1';
+                game.pointsi = '1';
+                game.result = '1:1';
+              }
+              wyniki.push(game);
+            });
+            this.$data.matches = wyniki;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }
 
