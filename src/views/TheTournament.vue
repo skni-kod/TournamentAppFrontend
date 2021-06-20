@@ -10,7 +10,6 @@
 
       <v-row justify="center" no-gutters class="ma-5">
         <v-col v-for="(mod, i) in modules" :key="i" class="text-center">
-          
           <v-btn
             @click="$router.replace('/tournament/' + id + '/' + mod.mod)"
             color="primary"
@@ -18,12 +17,17 @@
             :disabled="$route.path === '/tournament/' + id + '/' + mod.mod"
             >{{ mod.name }}
           </v-btn>
-        
         </v-col>
       </v-row>
 
       <v-card class="py-4 px-6 rounded-lg mb-3">
-        <component :is="module"></component>
+        <info
+          v-if="!module || module === 'info'"
+          :value="t_info"
+        ></info>
+        <players v-else-if="module === 'players'"></players>
+        <gallery v-else-if="module === 'gallery'"></gallery>
+        <matches v-else-if="module === 'matches'"></matches>
       </v-card>
     </v-col>
   </v-row>
@@ -44,7 +48,7 @@ import { Component } from 'vue-property-decorator';
     Gallery,
     Players,
     Matches,
-    Info,
+    Info 
   },
 })
 export default class TheTournament extends Vue {
@@ -62,20 +66,30 @@ export default class TheTournament extends Vue {
         })
         .then((res2) => {
           if (res2.status === 200) {
+            let tab = [];
             let name;
             const data = res2.data;
+            tab[0] = data.name;
+            tab[1] = data.date;
+            tab[2] = data.country;
+            tab[3] = data.address;
+            tab[4] = data.members_limit;
+            tab[5] = data.organiser;
+            tab[6] = data.play_type;
             name = data.name;
             this.$data.name = name;
+            this.$data.t_info = tab;
           }
         })
         .catch(() => {
-          console.log('Błąd w nazwie turnieju');
+          console.log('Błąd w nazwie/info turnieju');
         });
     }
   }
 
   data() {
     return {
+      t_info: [],
       name: '',
       modules: [
         { mod: 'info', name: 'O turnieju' },
