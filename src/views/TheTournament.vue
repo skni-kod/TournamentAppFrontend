@@ -21,10 +21,7 @@
       </v-row>
 
       <v-card class="py-4 px-6 rounded-lg mb-3">
-        <info v-if="!module || module === 'info'" :value="t_info"></info>
-        <players v-else-if="module === 'players'" :value="players"></players>
-        <gallery v-else-if="module === 'gallery'" :value="gallery"></gallery>
-        <matches v-else-if="module === 'matches'"></matches>
+        <component :is="module" v-bind="property"></component>
       </v-card>
     </v-col>
   </v-row>
@@ -143,6 +140,20 @@ export default class TheTournament extends Vue {
   }
   get id() {
     return this.$route.params.id;
+  }
+  get property() {
+    if (this.module === 'info'){
+      return { value: this.$data.t_info };
+    }
+    else if (this.module === 'players'){
+      return { value: this.$data.players };
+    }
+    else if (this.module === 'gallery'){
+      return { value: this.$data.gallery };
+    }
+    else if (this.module === 'matches'){
+      return;
+    }
   }
 }
 </script>
