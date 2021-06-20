@@ -21,11 +21,8 @@
       </v-row>
 
       <v-card class="py-4 px-6 rounded-lg mb-3">
-        <info
-          v-if="!module || module === 'info'"
-          :value="t_info"
-        ></info>
-        <players v-else-if="module === 'players'"></players>
+        <info v-if="!module || module === 'info'" :value="t_info"></info>
+        <players v-else-if="module === 'players'" :value="players"></players>
         <gallery v-else-if="module === 'gallery'" :value="gallery"></gallery>
         <matches v-else-if="module === 'matches'"></matches>
       </v-card>
@@ -48,7 +45,7 @@ import { Component } from 'vue-property-decorator';
     Gallery,
     Players,
     Matches,
-    Info 
+    Info,
   },
 })
 export default class TheTournament extends Vue {
@@ -79,10 +76,10 @@ export default class TheTournament extends Vue {
             name = data.name;
             this.$data.name = name;
             this.$data.t_info = tab;
-            
-            let gal:object[] = [];
+
+            let gal: object[] = [];
             const data2 = res2.data.gallery.image;
-            data2.forEach((element:any) => {
+            data2.forEach((element: any) => {
               let photo = element.image;
               gal.push(photo);
             });
@@ -92,6 +89,37 @@ export default class TheTournament extends Vue {
         .catch(() => {
           console.log('Błąd w nazwie/info turnieju');
         });
+      axios
+        .get('tournament_player_notifications/', {
+          headers: {
+            Authorization: 'Bearer ' + this.$store.getters.token,
+          },
+        })
+        .then((res2) => {
+          if (res2.status === 200) {
+            let players: object[] = [];
+            const data = res2.data;
+            data.forEach((members: any) => {
+              if (this.$route.params.id == members.id) {
+                const data2 = members.notification;
+                data2.forEach((member: any) => {
+                  let player: any = {};
+                  player.id = member.player.id;
+                  player.name =
+                    member.player.first_name + ' ' + member.player.last_name;
+                  player.country = member.player.country;
+                  player.club = member.player.club;
+                  player.rating = member.player.rating;
+                  players.push(player);
+                });
+                this.$data.players = players;
+              }
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }
 
@@ -99,6 +127,7 @@ export default class TheTournament extends Vue {
     return {
       t_info: [],
       gallery: [],
+      players: [],
       name: '',
       modules: [
         { mod: 'info', name: 'O turnieju' },
