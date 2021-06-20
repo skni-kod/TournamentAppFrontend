@@ -21,17 +21,11 @@
             <v-icon>{{ icon.icon }}</v-icon>
             <v-list-item-title>{{ icon.text }}</v-list-item-title>
           </v-list-item>
-          <v-list-item
-            v-if="auth"
-            @click="logout"
-          >
+          <v-list-item v-if="auth" @click="logout">
             <v-icon>mdi-logout</v-icon>
             <v-list-item-title>Wyloguj się</v-list-item-title>
           </v-list-item>
-          <v-list-item
-            v-else
-            @click="login"
-          >
+          <v-list-item v-else @click="login">
             <v-icon>mdi-login</v-icon>
             <v-list-item-title>Zaloguj się</v-list-item-title>
           </v-list-item>
@@ -44,11 +38,11 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Watch } from 'vue-property-decorator';
+import axios from '@/axios';
 
 @Component
 export default class Navbar extends Vue {
   data() {
-    
     return {
       drawer: false,
       group: null,
@@ -59,7 +53,7 @@ export default class Navbar extends Vue {
           text: 'Strona główna',
         },
         {
-          link: '/user/' + this.$route.params.id + '/',
+          link: '/user/',
           icon: 'mdi-account-outline',
           text: 'Profil',
         },
@@ -75,14 +69,15 @@ export default class Navbar extends Vue {
     this.$store.dispatch('logout');
   }
 
-@Watch('group')
+  @Watch('group')
   onGroup() {
     this.$data.drawer = false;
   }
-
   get auth() {
     return this.$store.getters.isAuthenticated;
   }
-  
+  get id(){
+    return this.$store.getters.id;
+  }
 }
 </script>

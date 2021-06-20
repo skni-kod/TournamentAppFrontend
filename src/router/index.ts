@@ -28,12 +28,12 @@ const routes: Array<RouteConfig> = [
     component: () =>import(/* webpackChunkName: "retrive" */ '../views/Retrive.vue'),
   },
   {
-    path: '/user/:id',
+    path: '/user/',
     name: 'User',
     component: () => import(/* webpackChunkName: "retrive" */ '../views/TheUser.vue'),
     children: [
       {
-        path: '/user/:id',
+        path: '/user/',
         component: () =>import(/* webpackChunkName: "Overview" */ '../components/UserOverview.vue'),
       },
       {

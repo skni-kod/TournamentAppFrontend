@@ -40,7 +40,7 @@ export default class UserProfile extends Vue {
   downloadData() {
     if (this.auth) {
       axios
-        .get('user/' + this.$route.params.id + '/', {
+        .get('user/' + this.$store.getters.id + '/', {
           headers: {
             Authorization: 'Bearer ' + this.$store.getters.token,
           },
@@ -49,29 +49,30 @@ export default class UserProfile extends Vue {
           if (res4.status === 200) {
             let tab = [];
             const data = res4.data;
-            const data2 = data.user;
             tab[0] = data.first_name;
             tab[1] = data.last_name;
-            tab[2] = data2.club;
+            tab[2] = data.email;
             this.$data.info = tab;
           }
         })
         .catch(() => {
-          console.log('Błąd w UserProfile');
+          console.log('Błąd w UserProfile ');
         });
-    }
+      }
   }
+  
 
   get auth() {
     return this.$store.getters.isAuthenticated;
   }
+  
 
   data() {
     return {
       drawer: true,
       items: [
         {
-          path: '/user/' + this.$route.params.id + '/',
+          path: '/user/' + this.$store.getters.id + '/',
           title: 'Ogólne',
           icon: 'mdi-information-outline',
         },

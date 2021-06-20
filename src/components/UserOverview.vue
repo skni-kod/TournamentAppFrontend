@@ -7,7 +7,7 @@
             <v-card-title><b>Informacje</b></v-card-title>
             <v-divider></v-divider>
             <v-card-text v-for="(t, i) in text" :key="i" cols="12"
-              ><b>{{ t }}</b> {{ info[i] }}</v-card-text
+              ><b>{{ t }}</b> {{ info1[i] }}</v-card-text
             >
           </v-col>
         </v-row>
@@ -27,25 +27,37 @@ export default class UserOverview extends Vue {
     this.downloadData();
   }
   downloadData() {
+    let tab;
     if (this.auth) {
       axios
-        .get('profile/' + this.$route.params.id + '/', {
+        .get('user/' + this.$store.getters.id + '/', {
           headers: {
             Authorization: 'Bearer ' + this.$store.getters.token,
           },
         })
         .then((res3) => {
           if (res3.status === 200) {
-            let tab = [];
             const data = res3.data;
-            const data2 = data.user;
-            tab[0] = data2.first_name;
-            tab[1] = data2.last_name;
-            tab[3] = data.rating;
-            tab[4] = data.club;
-            tab[5] = data2.email;
-
+            tab = data.profile[0];
             this.$data.info = tab;
+            axios
+              .get('profile/' + tab + '/', {
+                headers: {
+                  Authorization: 'Bearer ' + this.$store.getters.token,
+                },
+              })
+              .then((res4) => {
+                let tab1 = [];
+                const data1 = res4.data;
+                console.log(data1.user.first_name);
+                tab1[0] = data1.user.first_name + ' ' + data1.user.last_name;
+                tab1[1] = data1.rating;
+                tab1[2] = data1.club;
+                tab1[3] = data1.user.email;
+                console.log(tab1[0])
+                this.$data.info1 = tab1;
+              });
+              
           }
         })
         .catch(() => {
@@ -57,13 +69,11 @@ export default class UserOverview extends Vue {
   get auth() {
     return this.$store.getters.isAuthenticated;
   }
-  get id() {
-    return this.$route.params.id;
-  }
   data() {
     return {
-      text: ['Imie: ', 'Nazwisko: ', 'Rating: ', 'Klub: ', 'Email: '],
+      text: ['Imie i nazwisko: ', 'Rating: ', 'Klub: ', 'Email: '],
       info: [],
+      info1: [],
     };
   }
 }
