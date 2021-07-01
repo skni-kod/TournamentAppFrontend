@@ -26,6 +26,7 @@ export default class UserOverview extends Vue {
   created() {
     this.downloadData();
   }
+  
   downloadData() {
     let tab;
     if (this.auth) {
@@ -62,6 +63,7 @@ export default class UserOverview extends Vue {
         });
     }
   }
+  
   get auth() {
     return this.$store.getters.isAuthenticated;
   }

@@ -96,6 +96,7 @@ export default class HomeTabs extends Vue {
         .then(() => {
           this.$data.loading = false;
         });
+      
       axios
         .get('club/', {
           headers: {
@@ -125,6 +126,7 @@ export default class HomeTabs extends Vue {
   get auth() {
     return this.$store.getters.isAuthenticated;
   }
+
   get token() {
     return this.$store.getters.token;
   }
@@ -159,6 +161,7 @@ export default class HomeTabs extends Vue {
           ],
           positions: [],
         },
+
         {
           tab: 'Kluby',
           icon: 'mdi-account-group-outline',

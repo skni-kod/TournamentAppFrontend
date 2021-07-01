@@ -2,7 +2,9 @@
   <div>
     <v-app-bar dark class="primary">
       <v-toolbar-title>Aplikacja Turniejowa</v-toolbar-title>
+      
       <v-spacer></v-spacer>
+      
       <v-btn icon v-for="(icon, id) in iconLinks" :key="id" :to="icon.link">
         <v-icon>{{ icon.icon }}</v-icon>
       </v-btn>
@@ -13,6 +15,7 @@
       <v-list nav dense>
         <v-list-item-group v-model="group">
           <div class="font-weight-bold pl-2">Aplikacja Turniejowa</div>
+          
           <v-list-item
             v-for="(icon, id) in iconLinks"
             :key="id"
@@ -21,20 +24,17 @@
             <v-icon>{{ icon.icon }}</v-icon>
             <v-list-item-title>{{ icon.text }}</v-list-item-title>
           </v-list-item>
-          <v-list-item
-            v-if="auth"
-            @click="logout"
-          >
+          
+          <v-list-item v-if="auth" @click="logout">
             <v-icon>mdi-logout</v-icon>
             <v-list-item-title>Wyloguj się</v-list-item-title>
           </v-list-item>
-          <v-list-item
-            v-else
-            @click="login"
-          >
+          
+          <v-list-item v-else @click="login">
             <v-icon>mdi-login</v-icon>
             <v-list-item-title>Zaloguj się</v-list-item-title>
           </v-list-item>
+          
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -53,7 +53,7 @@ export default class Navbar extends Vue {
       group: null,
       iconLinks: [
         {
-          link: '/',
+          link: { name: 'Home' },
           icon: 'mdi-seal',
           text: 'Strona główna',
         },
@@ -74,7 +74,7 @@ export default class Navbar extends Vue {
     this.$store.dispatch('logout');
   }
 
-@Watch('group')
+  @Watch('group')
   onGroup() {
     this.$data.drawer = false;
   }

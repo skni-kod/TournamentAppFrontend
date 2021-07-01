@@ -1,5 +1,5 @@
 <template>
-  <div class="recent">Soon...</div>
+  <div>Soon...</div>
 </template>
 
 <script lang="ts">

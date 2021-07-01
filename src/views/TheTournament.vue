@@ -86,6 +86,7 @@ export default class TheTournament extends Vue {
         .catch(() => {
           console.log('Błąd w nazwie/info turnieju');
         });
+      
       axios
         .get('tournament_player_notifications/', {
           headers: {
@@ -117,6 +118,7 @@ export default class TheTournament extends Vue {
         .catch((error) => {
           console.log(error);
         });
+      
       axios
         .get('tournament_games/' + this.id, {
           headers: {
@@ -180,6 +182,7 @@ export default class TheTournament extends Vue {
   get module() {
     return this.$route.params.module;
   }
+  
   get id() {
     return this.$route.params.id;
   }
