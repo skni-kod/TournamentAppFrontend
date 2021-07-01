@@ -54,7 +54,7 @@
   </v-card>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from '@/axios';
@@ -76,10 +76,10 @@ export default class HomeTabs extends Vue {
         })
         .then((res2) => {
           if (res2.status === 200) {
-            let tabelki = [];
+            let tabelki:any = [];
             const data = res2.data;
-            data.forEach((element) => {
-              let tab = {};
+            data.forEach((element:any) => {
+              let tab:any = {};
               tab.name = element.name;
               tab.date = element.date;
               tab.type = element.play_type;
@@ -96,6 +96,7 @@ export default class HomeTabs extends Vue {
         .then(() => {
           this.$data.loading = false;
         });
+      
       axios
         .get('club/', {
           headers: {
@@ -104,10 +105,10 @@ export default class HomeTabs extends Vue {
         })
         .then((club) => {
           if (club.status === 200) {
-            let tabelki = [];
+            let tabelki:any = [];
             const data = club.data;
-            data.forEach((element) => {
-              let tab = {};
+            data.forEach((element:any) => {
+              let tab:any = {};
               tab.name = element.club_name;
               tab.country = element.country;
               tab.info = element.club_info;
@@ -125,6 +126,7 @@ export default class HomeTabs extends Vue {
   get auth() {
     return this.$store.getters.isAuthenticated;
   }
+
   get token() {
     return this.$store.getters.token;
   }
@@ -159,6 +161,7 @@ export default class HomeTabs extends Vue {
           ],
           positions: [],
         },
+
         {
           tab: 'Kluby',
           icon: 'mdi-account-group-outline',

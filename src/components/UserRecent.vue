@@ -1,8 +1,8 @@
 <template>
-  <div class="recent">Soon...</div>
+  <div>Soon...</div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 

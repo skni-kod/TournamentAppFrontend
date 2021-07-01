@@ -2,11 +2,13 @@
   <div>
     <v-container>
       <v-row justify="center">
+        
         <gallery
           :images="images"
           :index="index"
           @close="index = null"
         ></gallery>
+        
         <v-img
           class="image rounded ma-2"
           v-for="(image, imageIndex) in images"
@@ -18,6 +20,7 @@
             height: '300px',
           }"
         ></v-img>
+
       </v-row>
     </v-container>
   </div>
@@ -41,6 +44,7 @@ export default class Gallery extends Vue {
       index: null,
     };
   }
+  
   get images() {
     return this.value;
   }

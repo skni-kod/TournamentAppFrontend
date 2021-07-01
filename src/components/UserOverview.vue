@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from '@/axios';
@@ -26,6 +26,7 @@ export default class UserOverview extends Vue {
   created() {
     this.downloadData();
   }
+  
   downloadData() {
     let tab;
     if (this.auth) {
@@ -62,6 +63,7 @@ export default class UserOverview extends Vue {
         });
     }
   }
+  
   get auth() {
     return this.$store.getters.isAuthenticated;
   }

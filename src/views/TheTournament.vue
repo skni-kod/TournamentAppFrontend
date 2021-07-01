@@ -60,6 +60,7 @@ export default class TheTournament extends Vue {
         })
         .then((res2) => {
           if (res2.status === 200) {
+            /*Nazwa oraz informacje o turnieju*/
             let tab = [];
             let name;
             const data = res2.data;
@@ -86,6 +87,7 @@ export default class TheTournament extends Vue {
         .catch(() => {
           console.log('Błąd w nazwie/info turnieju');
         });
+      
       axios
         .get('tournament_player_notifications/', {
           headers: {
@@ -94,6 +96,7 @@ export default class TheTournament extends Vue {
         })
         .then((res2) => {
           if (res2.status === 200) {
+            /*Uczestnicy turnieju*/
             let players: object[] = [];
             const data = res2.data;
             data.forEach((members: any) => {
@@ -117,6 +120,7 @@ export default class TheTournament extends Vue {
         .catch((error) => {
           console.log(error);
         });
+      
       axios
         .get('tournament_games/' + this.id, {
           headers: {
@@ -125,6 +129,7 @@ export default class TheTournament extends Vue {
         })
         .then((res2) => {
           if (res2.status === 200) {
+            /*Rozgrywki*/
             let wyniki: any[] = [];
             const data = res2.data.game;
             data.forEach((g: any) => {
@@ -180,6 +185,7 @@ export default class TheTournament extends Vue {
   get module() {
     return this.$route.params.module;
   }
+  
   get id() {
     return this.$route.params.id;
   }

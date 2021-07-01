@@ -27,7 +27,7 @@
   </v-navigation-drawer>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from '@/axios';
@@ -37,6 +37,7 @@ export default class UserProfile extends Vue {
   created() {
     this.downloadData();
   }
+  
   downloadData() {
     if (this.auth) {
       axios
@@ -60,9 +61,11 @@ export default class UserProfile extends Vue {
         });
     }
   }
+
   get auth() {
     return this.$store.getters.isAuthenticated;
   }
+
   data() {
     return {
       drawer: true,
