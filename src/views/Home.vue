@@ -17,7 +17,7 @@
   </v-row>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import HomeTabs from '@/components/HomeTabs.vue';
 import { Component } from 'vue-property-decorator';

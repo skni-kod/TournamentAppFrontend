@@ -8,7 +8,7 @@
   </v-app>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
