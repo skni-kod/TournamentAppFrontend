@@ -17,7 +17,11 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="4" v-for="(field, i) in fields_name_surname" :key="i">
+              <v-col
+                cols="4"
+                v-for="(field, i) in fields_name_surname"
+                :key="i"
+              >
                 <v-text-field
                   :label="field.label"
                   :v-model="field.model"
@@ -39,9 +43,7 @@
                   item-text="name_pl"
                   label="Kraj*"
                   v-model="country"
-                  :rules="[
-                  rules.required,
-                  ]"
+                  :rules="[rules.required]"
                   required
                 ></v-select>
               </v-col>
@@ -49,10 +51,7 @@
                 <v-text-field
                   label="Adres e-mail*"
                   v-model="email"
-                  :rules="[
-                    rules.required,
-                    rules.regex_email(email)
-                  ]"
+                  :rules="[rules.required, rules.regex_email(email)]"
                   required
                 ></v-text-field>
               </v-col>
@@ -62,9 +61,10 @@
                   type="password"
                   v-model="password"
                   :rules="[
-                  rules.required, 
-                  rules.counter(password, 8, 'ów'),
-                  rules.regex_password(password)]"
+                    rules.required,
+                    rules.counter(password, 8, 'ów'),
+                    rules.regex_password(password),
+                  ]"
                   required
                 ></v-text-field>
               </v-col>
@@ -98,12 +98,7 @@
             </v-row>
           </v-container>
           <small>* oznacza pole wymagane.</small>
-          <v-checkbox 
-            v-model="checkbox" 
-            :rules="[
-            rules.required
-            ]"
-            required>
+          <v-checkbox v-model="checkbox" :rules="[rules.required]" required>
             <div slot="label">
               Zapoznałem/am się z
               <router-link to="/regulations">Regulaminem serwisu</router-link>
@@ -130,10 +125,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { countries } from '../assets/country';
 
-@Component({
-
-})
-
+@Component({})
 export default class Registration extends Vue {
   private data() {
     return {
@@ -148,15 +140,17 @@ export default class Registration extends Vue {
       email: '',
       password: '',
       re_password: '',
-      profile: [{
-      club: '',
-      gender: '',
-      country: '',
-      }],
+      profile: [
+        {
+          club: '',
+          gender: '',
+          country: '',
+        },
+      ],
       rating: 0,
       fields_name_surname: [
-        {label: 'Imię', model: 'first_name'},
-        {label: 'Nazwisko', model: 'last_name'}
+        { label: 'Imię', model: 'first_name' },
+        { label: 'Nazwisko', model: 'last_name' },
       ],
 
       country_list: countries,
@@ -168,34 +162,40 @@ export default class Registration extends Vue {
       rules: {
         required: (input: string) => !!input || 'To pol jest wymagane',
         counter: (input: string, number: number, end: string) =>
-          input.length >= number || 'Musisz podać minimum ' + number + ' znak' + end,
-        integrity: (input1: string, input2: string) => input1 === input2 || 'Podane hasła się różnią',
+          input.length >= number ||
+          'Musisz podać minimum ' + number + ' znak' + end,
+        integrity: (input1: string, input2: string) =>
+          input1 === input2 || 'Podane hasła się różnią',
         regex_email: (input: string) => {
           const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return regex.test(input) || 'Musisz podać poprawny adres e-mail';
         },
         regex_password: (input: string) => {
-          const regex = /([a-z]{1,}[0-9]{0,})/ig;
-          return regex.test(input) || 'Hasło nie może się składać z samych cyfr';
+          const regex = /([a-z]{1,}[0-9]{0,})/gi;
+          return (
+            regex.test(input) || 'Hasło nie może się składać z samych cyfr'
+          );
         },
       },
-    }
+    };
   }
 
-  register(): void{
-    if(this.$data.valid){
+  register(): void {
+    if (this.$data.valid) {
       this.$store.dispatch('register', {
         email: this.$data.email,
         password: this.$data.password,
         first_name: this.$data.first_name,
         last_name: this.$data.last_name,
-        profile: [{
-        club: this.$data.club,
-        gender: this.$data.gender,
-        country: this.$data.country}]
+        profile: [
+          {
+            club: this.$data.club,
+            gender: this.$data.gender,
+            country: this.$data.country,
+          },
+        ],
       });
     }
-    
   }
 }
 </script>
