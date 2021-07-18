@@ -17,13 +17,10 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="4">
-                <v-text-field label="Imię" v-model="first_name"></v-text-field>
-              </v-col>
-              <v-col cols="4">
+              <v-col cols="4" v-for="(field, i) in fields_name_surname" :key="i">
                 <v-text-field
-                  label="Nazwisko"
-                  v-model="last_name"
+                  :label="field.label"
+                  :v-model="field.model"
                 ></v-text-field>
               </v-col>
               <v-col cols="2">
@@ -157,6 +154,11 @@ export default class Registration extends Vue {
       country: '',
       }],
       rating: 0,
+      fields_name_surname: [
+        {label: 'Imię', model: 'first_name'},
+        {label: 'Nazwisko', model: 'last_name'}
+      ],
+
       country_list: countries,
       gender_list: [
         { name_pl: 'Kobieta', code: 'F' },
