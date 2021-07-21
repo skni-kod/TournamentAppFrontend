@@ -54,6 +54,7 @@ export default class UserOverview extends Vue {
                 tab1[1] = data1.rating;
                 tab1[2] = data1.club;
                 tab1[3] = data1.user.email;
+                tab1[4] = data1.country;
                 this.$data.info1 = tab1;
               });
           }
@@ -70,7 +71,7 @@ export default class UserOverview extends Vue {
 
   data() {
     return {
-      text: ['Imie i Nazwisko: ', 'Rating: ', 'Klub: ', 'Email: '],
+      text: ['Imie i Nazwisko: ', 'Rating: ', 'Klub: ', 'Email: ','Kraj: '],
       info: [],
       info1:[],
     };

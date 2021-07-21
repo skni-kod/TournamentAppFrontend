@@ -2,10 +2,15 @@
   <div>
     <v-app-bar dark class="primary">
       <v-toolbar-title>Aplikacja Turniejowa</v-toolbar-title>
-      
+
       <v-spacer></v-spacer>
-      
-      <v-btn icon v-for="(icon, id) in iconLinks" :key="id" :to="icon.link">
+
+      <v-btn
+        icon
+        v-for="(icon, i) in iconLinks"
+        :key="i"
+        :to="icon.link"
+      >
         <v-icon>{{ icon.icon }}</v-icon>
       </v-btn>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -15,26 +20,21 @@
       <v-list nav dense>
         <v-list-item-group v-model="group">
           <div class="font-weight-bold pl-2">Aplikacja Turniejowa</div>
-          
-          <v-list-item
-            v-for="(icon, id) in iconLinks"
-            :key="id"
-            :to="icon.link"
-          >
+
+          <v-list-item v-for="(icon, i) in iconLinks" :key="i" :to="icon.link">
             <v-icon>{{ icon.icon }}</v-icon>
             <v-list-item-title>{{ icon.text }}</v-list-item-title>
           </v-list-item>
-          
+
           <v-list-item v-if="auth" @click="logout">
             <v-icon>mdi-logout</v-icon>
             <v-list-item-title>Wyloguj się</v-list-item-title>
           </v-list-item>
-          
+
           <v-list-item v-else @click="login">
             <v-icon>mdi-login</v-icon>
             <v-list-item-title>Zaloguj się</v-list-item-title>
           </v-list-item>
-          
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -44,6 +44,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Watch } from 'vue-property-decorator';
+import axios from '@/axios';
 
 @Component
 export default class Navbar extends Vue {
@@ -58,14 +59,13 @@ export default class Navbar extends Vue {
           text: 'Strona główna',
         },
         {
-          link: '/user',
+          link: '/user/'+this.$store.getters.id,
           icon: 'mdi-account-outline',
           text: 'Profil',
         },
       ],
     };
   }
-
   login() {
     this.$router.push({ name: 'Login' });
   }
@@ -78,9 +78,11 @@ export default class Navbar extends Vue {
   onGroup() {
     this.$data.drawer = false;
   }
-
   get auth() {
     return this.$store.getters.isAuthenticated;
+  }
+  get id(){
+    return this.$store.getters.id;
   }
 }
 </script>
