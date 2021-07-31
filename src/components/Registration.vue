@@ -171,7 +171,6 @@ export default class Registration extends Vue {
         { label: 'Imię', model: 'first_name' },
         { label: 'Nazwisko', model: 'last_name' },
       ],
-
       country_list: countries,
       gender_list: [
         { name_pl: 'Kobieta', code: 'F' },
