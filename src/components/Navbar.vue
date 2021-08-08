@@ -5,13 +5,11 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        icon
-        v-for="(icon, i) in iconLinks"
-        :key="i"
-        :to="icon.link"
-      >
-        <v-icon>{{ icon.icon }}</v-icon>
+      <v-btn icon :to="iconLinks[0].link">
+        <v-icon>{{ iconLinks[0].icon }}</v-icon>
+      </v-btn>
+      <v-btn v-if="auth" icon :to="user()">
+        <v-icon>{{ iconLinks[1].icon }}</v-icon>
       </v-btn>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
@@ -21,9 +19,14 @@
         <v-list-item-group v-model="group">
           <div class="font-weight-bold pl-2">Aplikacja Turniejowa</div>
 
-          <v-list-item v-for="(icon, i) in iconLinks" :key="i" :to="icon.link">
-            <v-icon>{{ icon.icon }}</v-icon>
-            <v-list-item-title>{{ icon.text }}</v-list-item-title>
+          <v-list-item :to="iconLinks[0].link">
+              <v-icon>{{ iconLinks[0].icon }}</v-icon>
+              <v-list-item-title>{{ iconLinks[0].text }}</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item v-if="auth" :to="user()">
+              <v-icon>{{ iconLinks[1].icon }}</v-icon>
+              <v-list-item-title>{{ iconLinks[1].text }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item v-if="auth" @click="logout">
@@ -59,17 +62,19 @@ export default class Navbar extends Vue {
           text: 'Strona główna',
         },
         {
-          link: '/user/'+this.$store.getters.id,
           icon: 'mdi-account-outline',
           text: 'Profil',
         },
       ],
     };
   }
+  user(){
+    return { name: 'User', params: { id: this.id } };
+  }
+
   login() {
     this.$router.push({ name: 'Login' });
   }
-
   logout() {
     this.$store.dispatch('logout');
   }
@@ -81,7 +86,7 @@ export default class Navbar extends Vue {
   get auth() {
     return this.$store.getters.isAuthenticated;
   }
-  get id(){
+  get id() {
     return this.$store.getters.id;
   }
 }
