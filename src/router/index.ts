@@ -6,14 +6,9 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
-  },
-  {
     path: '/login',
     name: 'Login',
-    component: () =>import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
     beforeEnter: (to, from, next) => {
       if (!store.getters.isAuthenticated) {
         next();
@@ -23,14 +18,36 @@ const routes: Array<RouteConfig> = [
     }
   },
   {
+    path: '/',
+    name: 'Home',
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
+  },
+  {
     path: '/user',
     name: 'User',
-    component: () => import(/* webpackChunkName: "retrive" */ '../views/TheUser.vue'),
+    component: () => import(/* webpackChunkName: "user" */ '../views/TheUser.vue'),
   },
   {
     path: "/tournament/:id/:module?",
     name: "Tournament Info",
     component: () => import(/* webpackChunkName: "tournament" */ '../views/TheTournament.vue'),
+  },
+  {
+    path: '/faq',
+    name: 'FAQ',
+    component: () => import(/* webpackChunkName: "faq" */ '../views/FAQ.vue'),
+  },
+  {
+    path: '/privacy-policy',
+    name: 'Privacy Policy',
+    component: () => import(/* webpackChunkName: "privacy-policy" */ '../views/PrivacyPolicy.vue'),
+  },
+  {
+    path: '/skni',
+    name: 'SKNI',
+    beforeEnter() {
+      location.href = 'https://kod.prz.edu.pl/#/';
+    }
   },
   {
     path: "/retrive",

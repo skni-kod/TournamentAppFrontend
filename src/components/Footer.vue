@@ -5,9 +5,9 @@
         <v-btn
           rounded
           text
-          :class="link.active ? 'primary' : ''"
-          v-bind:href="link.link"
-          >{{ link.name }}
+          :class="'primary'"
+          :to="link.link"
+          >{{ link.text }}
         </v-btn>
       </v-col>
     </v-row>
@@ -23,10 +23,9 @@ export default class Footer extends Vue {
   data() {
     return {
       links: [
-        { link: '', name: 'Pomoc i FAQ', active: false },
-        { link: '', name: 'Polityka prywatności', active: false },
-        { link: '', name: 'Warunki korzystania', active: false },
-        { link: 'https://kod.prz.edu.pl/#/', name: 'O Nas', active: true },
+        { link: { name: 'FAQ' }, text: 'Pomoc i FAQ' },
+        { link: { name: 'Privacy Policy' }, text: 'Polityka prywatności' },
+        { link: { name: 'SKNI' }, text: 'O nas' },
       ],
     };
   }
