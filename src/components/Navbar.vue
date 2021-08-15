@@ -5,11 +5,11 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon :to="iconLinks[0].link">
-        <v-icon>{{ iconLinks[0].icon }}</v-icon>
+      <v-btn icon :to="page[0].link">
+        <v-icon>{{ page[0].icon }}</v-icon>
       </v-btn>
-      <v-btn v-if="auth" icon :to="user()">
-        <v-icon>{{ iconLinks[1].icon }}</v-icon>
+      <v-btn v-if="auth" icon :to="page[1].link">
+        <v-icon>{{ page[1].icon }}</v-icon>
       </v-btn>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
@@ -19,14 +19,14 @@
         <v-list-item-group v-model="group">
           <div class="font-weight-bold pl-2">Aplikacja Turniejowa</div>
 
-          <v-list-item :to="iconLinks[0].link">
-              <v-icon>{{ iconLinks[0].icon }}</v-icon>
-              <v-list-item-title>{{ iconLinks[0].text }}</v-list-item-title>
+          <v-list-item :to="page[0].link">
+            <v-icon>{{ page[0].icon }}</v-icon>
+            <v-list-item-title>{{ page[0].text }}</v-list-item-title>
           </v-list-item>
 
-          <v-list-item v-if="auth" :to="user()">
-              <v-icon>{{ iconLinks[1].icon }}</v-icon>
-              <v-list-item-title>{{ iconLinks[1].text }}</v-list-item-title>
+          <v-list-item v-if="auth" :to="page[1].link">
+            <v-icon>{{ page[1].icon }}</v-icon>
+            <v-list-item-title>{{ page[1].text }}</v-list-item-title>
           </v-list-item>
 
           <v-list-item v-if="auth" @click="logout">
@@ -55,21 +55,19 @@ export default class Navbar extends Vue {
     return {
       drawer: false,
       group: null,
-      iconLinks: [
+      page: [
         {
           link: { name: 'Home' },
           icon: 'mdi-seal',
           text: 'Strona główna',
         },
         {
+          link: { name: 'User' },
           icon: 'mdi-account-outline',
           text: 'Profil',
         },
       ],
     };
-  }
-  user(){
-    return { name: 'User', params: { id: this.id } };
   }
 
   login() {

@@ -97,7 +97,6 @@ export default class TheUser extends Vue {
 
   data() {
     return {
-      drawer: true,
       text: ['Rating: ', 'Klub: ', 'Email: ', 'Kraj: '],
       info: [], //imie, nazwisko etc
       player: [], //rating, klub etc
