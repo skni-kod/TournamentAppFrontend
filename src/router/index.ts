@@ -26,16 +26,6 @@ const routes: Array<RouteConfig> = [
     path: '/user',
     name: 'User',
     component: () => import(/* webpackChunkName: "retrive" */ '../views/TheUser.vue'),
-    children: [
-      {
-        path: '/user',
-        component: () =>import(/* webpackChunkName: "Overview" */ '../components/UserOverview.vue'),
-      },
-      {
-        path: '/user/userrecent',
-        component: () =>import(/* webpackChunkName: "Overview" */ '../components/UserRecent.vue'),
-      },
-    ],
   },
   {
     path: "/tournament/:id/:module?",
