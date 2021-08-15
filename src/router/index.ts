@@ -8,7 +8,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/login',
     name: 'Login',
-    component: () =>import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
     beforeEnter: (to, from, next) => {
       if (!store.getters.isAuthenticated) {
         next();
@@ -41,6 +41,13 @@ const routes: Array<RouteConfig> = [
     path: '/privacy-policy',
     name: 'Privacy Policy',
     component: () => import(/* webpackChunkName: "privacy-policy" */ '../views/PrivacyPolicy.vue'),
+  },
+  {
+    path: '/skni',
+    name: 'SKNI',
+    beforeEnter() {
+      location.href = 'https://kod.prz.edu.pl/#/';
+    }
   },
   {
     path: "/retrive",
