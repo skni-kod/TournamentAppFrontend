@@ -7,7 +7,7 @@
           text
           :class="'primary'"
           :to="link.link"
-          >{{ link.name }}
+          >{{ link.text }}
         </v-btn>
       </v-col>
     </v-row>
@@ -23,10 +23,10 @@ export default class Footer extends Vue {
   data() {
     return {
       links: [
-        { link: 'FAQ', name: 'Pomoc i FAQ'},
-        { link: 'PrivacyPolicy', name: 'Polityka prywatności'},
+        { link: { name: 'FAQ' }, text: 'Pomoc i FAQ'},
+        { link: { name: 'Privacy Policy' }, text: 'Polityka prywatności'}
       ],
-      privacy: { link: 'https://kod.prz.edu.pl/#/', name: 'O Nas' },
+      privacy: { link: 'https://kod.prz.edu.pl/#/', name: 'O Nas'},
     };
   }
 }

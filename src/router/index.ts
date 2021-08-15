@@ -25,7 +25,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/user',
     name: 'User',
-    component: () => import(/* webpackChunkName: "retrive" */ '../views/TheUser.vue'),
+    component: () => import(/* webpackChunkName: "user" */ '../views/TheUser.vue'),
   },
   {
     path: "/tournament/:id/:module?",
@@ -35,7 +35,12 @@ const routes: Array<RouteConfig> = [
   {
     path: '/faq',
     name: 'FAQ',
-    component: () => import(/* webpackChunkName: "home" */ '../views/FAQ.vue'),
+    component: () => import(/* webpackChunkName: "faq" */ '../views/FAQ.vue'),
+  },
+  {
+    path: '/privacy-policy',
+    name: 'Privacy Policy',
+    component: () => import(/* webpackChunkName: "privacy-policy" */ '../views/PrivacyPolicy.vue'),
   },
   {
     path: "/retrive",
