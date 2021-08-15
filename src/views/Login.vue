@@ -40,7 +40,7 @@
                 label="Hasło"
                 required
                 v-model="password"
-                @click:append="() => (show = !show)"   
+                @click:append="() => (show = !show)"
                 @keyup.enter="validate()"
               ></v-text-field>
 
@@ -48,7 +48,7 @@
                 Zaloguj się
               </v-btn>
 
-              <br /><br />
+              <p></p><p></p>
 
               <router-link to="/retrive">Nie pamiętam hasła</router-link>
             </v-form>
@@ -62,8 +62,11 @@
 
           <v-card-subtitle>
             Przed rejestracją zapoznaj się z
-            <router-link to="/regulations">Regulaminem serwisu</router-link>
-            oraz <router-link to="/toa">Polityką prywatności</router-link>
+            <router-link :to="{ name: 'FAQ' }">naszym FAQ</router-link>
+            oraz
+            <router-link :to="{ name: 'Privacy Policy' }"
+              >Polityką prywatności</router-link
+            >
           </v-card-subtitle>
 
           <Registration />
@@ -103,7 +106,7 @@ export default class Login extends Vue {
           input.length >= number ||
           'Musisz podać minimum ' + number + ' znak' + end,
       },
-      show: false
+      show: false,
     };
   }
 }
