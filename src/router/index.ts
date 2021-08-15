@@ -6,11 +6,6 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
-  },
-  {
     path: '/login',
     name: 'Login',
     component: () =>import(/* webpackChunkName: "login" */ '../views/Login.vue'),
@@ -23,6 +18,11 @@ const routes: Array<RouteConfig> = [
     }
   },
   {
+    path: '/',
+    name: 'Home',
+    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
+  },
+  {
     path: '/user',
     name: 'User',
     component: () => import(/* webpackChunkName: "retrive" */ '../views/TheUser.vue'),
@@ -31,6 +31,11 @@ const routes: Array<RouteConfig> = [
     path: "/tournament/:id/:module?",
     name: "Tournament Info",
     component: () => import(/* webpackChunkName: "tournament" */ '../views/TheTournament.vue'),
+  },
+  {
+    path: '/faq',
+    name: 'FAQ',
+    component: () => import(/* webpackChunkName: "home" */ '../views/FAQ.vue'),
   },
   {
     path: "/retrive",
