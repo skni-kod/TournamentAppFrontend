@@ -1,36 +1,36 @@
 <template>
   <div>
-    <v-row justify="center" align="center">
-      <v-col cols="12" sm="10" md="8" lg="6" xl="4">
+    <v-row style="max-width: 1450px;" class="mx-auto justify-center">
+      <v-col sm="8" md="4">
         <v-img
           :src="require('../assets/login-picture.png')"
           alt="Logo Apki turniejowej"
           contain
-          height="500px"
-          class="mx-auto"
+          height="540"
+          class="mx-auto my-12"
         ></v-img>
       </v-col>
-      <v-col cols="12" sm="10" md="8" lg="6" xl="4" class="pa-md-4">
-        <v-card class="ma-2 text-center">
+      <v-col sm="8" md="4">
+        <v-card class="my-12 mx-auto text-center rounded-lg" style="max-width: 450px">
           <v-card-title class="justify-center"
-            >Masz już konto?<br />Zaloguj się:
+            ><div>
+              <h2 class="mt-3 mb-6">Masz już konto?</h2>
+              <h3 class="mb-1">Zaloguj się:</h3>
+            </div>
           </v-card-title>
-
-          <v-card-subtitle>Wpisz swoje dane:</v-card-subtitle>
 
           <v-card-text>
             <v-form
               ref="sign-in"
               v-model="valid"
               lazy-validation
-              class="pb-5 mx-auto"
+              class="pb-5 mx-3"
             >
               <v-text-field
                 v-model="email"
                 label="Adres e-mail"
                 :rules="[rules.required, rules.counter(email, 6, 'ów')]"
                 required
-                @keyup.enter="validate()"
               ></v-text-field>
 
               <v-text-field
@@ -41,23 +41,30 @@
                 required
                 v-model="password"
                 @click:append="() => (show = !show)"
-                @keyup.enter="validate()"
               ></v-text-field>
 
-              <v-btn color="secondary" class="white--text" @click="validate()">
-                Zaloguj się
-              </v-btn>
+              <div class="mb-5">
+                <v-btn
+                  color="secondary"
+                  class="white--text rounded-pill"
+                  @click="validate()"
+                >
+                  <h4>Zaloguj się</h4>
+                </v-btn>
+              </div>
 
-              <p></p><p></p>
-
-              <router-link to="/retrive">Nie pamiętam hasła</router-link>
+              <div>
+                <router-link :to="{ name: 'Retrive' }"
+                  >Nie pamiętam hasła</router-link
+                >
+              </div>
             </v-form>
           </v-card-text>
 
           <hr />
 
           <v-card-title class="justify-center"
-            >... lub zarejestruj się:
+            ><h3>... lub zarejestruj</h3>
           </v-card-title>
 
           <v-card-subtitle>
@@ -79,7 +86,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import Registration from '../components/Registration.vue';
+import Registration from '@/components/Registration.vue';
 
 @Component({
   components: {
