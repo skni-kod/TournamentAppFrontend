@@ -72,6 +72,7 @@
                     rules.counter(password, 8, 'ów'),
                     rules.regex_password(password),
                   ]"
+                  autocomplete="on"
                   required
                 ></v-text-field>
               </v-col>
@@ -80,6 +81,7 @@
                 <v-text-field
                   label="Powtórz hasło*"
                   type="password"
+                  autocomplete="on"
                   v-model="re_password"
                   required
                   :rules="[

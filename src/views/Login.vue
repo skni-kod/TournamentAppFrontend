@@ -38,6 +38,7 @@
                 :rules="[rules.required, rules.counter(password, 8, 'ów')]"
                 :type="show ? 'text' : 'password'"
                 label="Hasło"
+                autocomplete="on"
                 required
                 v-model="password"
                 @click:append="() => (show = !show)"
