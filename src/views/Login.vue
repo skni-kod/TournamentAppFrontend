@@ -11,7 +11,10 @@
         ></v-img>
       </v-col>
       <v-col sm="8" md="4">
-        <v-card class="my-12 mx-auto text-center rounded-lg" style="max-width: 450px">
+        <v-card
+          class="my-12 mx-auto text-center rounded-lg"
+          style="max-width: 450px"
+        >
           <v-card-title class="justify-center"
             ><div>
               <h2 class="mt-3 mb-6">Masz już konto?</h2>
@@ -35,13 +38,13 @@
 
               <v-text-field
                 :append-icon="show ? 'mdi-eye-off' : 'mdi-eye'"
-                :rules="[rules.required, rules.counter(password, 8, 'ów')]"
                 :type="show ? 'text' : 'password'"
+                @click:append="() => (show = !show)"
+                :rules="[rules.required, rules.counter(password, 8, 'ów')]"
                 label="Hasło"
                 autocomplete="on"
                 required
                 v-model="password"
-                @click:append="() => (show = !show)"
               ></v-text-field>
 
               <div class="mb-5">

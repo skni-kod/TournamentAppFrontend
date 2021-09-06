@@ -64,8 +64,10 @@
 
               <v-col sm="12" md="6">
                 <v-text-field
+                  :append-icon="show ? 'mdi-eye-off' : 'mdi-eye'"
+                  :type="show ? 'text' : 'password'"
+                  @click:append="() => (show = !show)"
                   label="Hasło*"
-                  type="password"
                   v-model="password"
                   :rules="[
                     rules.required,
@@ -79,8 +81,10 @@
 
               <v-col sm="12" md="6">
                 <v-text-field
+                  :append-icon="show2 ? 'mdi-eye-off' : 'mdi-eye'"
+                  :type="show2 ? 'text' : 'password'"
+                  @click:append="() => (show2 = !show2)"
                   label="Powtórz hasło*"
-                  type="password"
                   autocomplete="on"
                   v-model="re_password"
                   required
@@ -125,11 +129,18 @@
         <v-card-actions>
           <v-spacer></v-spacer>
 
-          <v-btn class="secondary--text rounded-pill pa-3" text @click="dialog = false">
+          <v-btn
+            class="secondary--text rounded-pill pa-3"
+            text
+            @click="dialog = false"
+          >
             <h4>Zamknij</h4>
           </v-btn>
 
-          <v-btn class="secondary white--text rounded-pill pa-3" @click="register()">
+          <v-btn
+            class="secondary white--text rounded-pill pa-3"
+            @click="register()"
+          >
             <h4>Zarejestruj się</h4>
           </v-btn>
         </v-card-actions>
@@ -153,6 +164,8 @@ export default class Registration extends Vue {
       checkbox: false,
       dialog: false,
       valid: true,
+      show: false,
+      show2: false,
       first_name: '',
       last_name: '',
       email: '',
