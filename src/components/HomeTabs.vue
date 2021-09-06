@@ -9,7 +9,7 @@
       icons-and-text
     >
       <v-tab v-for="(item, id) in items" :key="id">
-        <div class="d-none d-sm-flex">{{ item.tab }}</div>
+        <div class="d-sm-flex">{{ item.tab }}</div>
         <v-icon>{{ item.icon }}</v-icon>
       </v-tab>
     </v-tabs>

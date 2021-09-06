@@ -1,28 +1,27 @@
 <template>
-  <v-dialog v-model="dialog" persistent max-width="50%">
+  <v-dialog v-model="dialog" width="80%" max-width="1000">
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         color="secondary"
-        class="white--text mb-5"
+        class="white--text mb-5 rounded-pill"
         v-bind="attrs"
         v-on="on"
       >
-        Zarejestruj się
+        <h4>Zarejestruj się</h4>
       </v-btn>
     </template>
     <v-form v-model="valid">
-      <v-card>
-       
+      <v-card class="pa-4 rounded-lg">
         <v-card-title>Rejestracja użytkownika</v-card-title>
-       
         <v-card-subtitle>Wypełnij informacje o sobie.</v-card-subtitle>
-       
+
         <v-card-text>
           <v-container>
             <v-row>
-             
               <v-col
-                cols="4"
+                sm="6"
+                md="4"
+                lg="3"
                 v-for="(field, i) in fields_name_surname"
                 :key="i"
               >
@@ -31,8 +30,8 @@
                   :v-model="field.model"
                 ></v-text-field>
               </v-col>
-             
-              <v-col cols="2">
+
+              <v-col sm="6" md="2">
                 <v-select
                   :items="gender_list"
                   item-value="code"
@@ -41,8 +40,8 @@
                   v-model="gender"
                 ></v-select>
               </v-col>
-             
-              <v-col cols="2">
+
+              <v-col sm="6" md="2">
                 <v-select
                   :items="country_list"
                   item-value="name_en"
@@ -53,8 +52,8 @@
                   required
                 ></v-select>
               </v-col>
-             
-              <v-col cols="8">
+
+              <v-col sm="12" md="6">
                 <v-text-field
                   label="Adres e-mail*"
                   v-model="email"
@@ -62,25 +61,31 @@
                   required
                 ></v-text-field>
               </v-col>
-             
-              <v-col cols="6">
+
+              <v-col sm="12" md="6">
                 <v-text-field
+                  :append-icon="show ? 'mdi-eye-off' : 'mdi-eye'"
+                  :type="show ? 'text' : 'password'"
+                  @click:append="() => (show = !show)"
                   label="Hasło*"
-                  type="password"
                   v-model="password"
                   :rules="[
                     rules.required,
                     rules.counter(password, 8, 'ów'),
                     rules.regex_password(password),
                   ]"
+                  autocomplete="on"
                   required
                 ></v-text-field>
               </v-col>
-             
-              <v-col cols="6">
+
+              <v-col sm="12" md="6">
                 <v-text-field
+                  :append-icon="show2 ? 'mdi-eye-off' : 'mdi-eye'"
+                  :type="show2 ? 'text' : 'password'"
+                  @click:append="() => (show2 = !show2)"
                   label="Powtórz hasło*"
-                  type="password"
+                  autocomplete="on"
                   v-model="re_password"
                   required
                   :rules="[
@@ -89,14 +94,14 @@
                   ]"
                 ></v-text-field>
               </v-col>
-             
-              <v-col cols="6">
+
+              <v-col sm="10" md="4">
                 <v-text-field
                   label="Klub szachowy"
                   v-model="club"
                 ></v-text-field>
               </v-col>
-             
+
               <v-col cols="2">
                 <v-text-field
                   label="Rating"
@@ -106,33 +111,38 @@
                   v-model="rating"
                 ></v-text-field>
               </v-col>
-           
             </v-row>
           </v-container>
-          
+
           <small>* oznacza pole wymagane.</small>
-          
+
           <v-checkbox v-model="checkbox" :rules="[rules.required]" required>
             <div slot="label">
               Zapoznałem/am się z
-              <router-link to="/regulations">Regulaminem serwisu</router-link>
+              <router-link :to="{ name: 'Privacy Policy' }"
+                >Regulaminem serwisu</router-link
+              >
               i akceptuję go.
             </div>
           </v-checkbox>
-        
         </v-card-text>
         <v-card-actions>
-        
           <v-spacer></v-spacer>
-        
-          <v-btn color="secondary" text @click="dialog = false">
-            Zamknij
+
+          <v-btn
+            class="secondary--text rounded-pill pa-3"
+            text
+            @click="dialog = false"
+          >
+            <h4>Zamknij</h4>
           </v-btn>
-        
-          <v-btn color="secondary" class="white--text" @click="register()">
-            Zarejestruj się
+
+          <v-btn
+            class="secondary white--text rounded-pill pa-3"
+            @click="register()"
+          >
+            <h4>Zarejestruj się</h4>
           </v-btn>
-        
         </v-card-actions>
       </v-card>
     </v-form>
@@ -154,6 +164,8 @@ export default class Registration extends Vue {
       checkbox: false,
       dialog: false,
       valid: true,
+      show: false,
+      show2: false,
       first_name: '',
       last_name: '',
       email: '',

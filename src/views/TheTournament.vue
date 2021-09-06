@@ -3,7 +3,6 @@
     <v-col cols="8" sm="8">
       <div
         class="info--text text-h3 text-center font-weight-bold my-8 tytul"
-        @click="$router.push('/register')"
       >
         {{ name }}
       </div>
