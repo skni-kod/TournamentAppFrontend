@@ -68,7 +68,7 @@
           <hr />
 
           <v-card-title class="justify-center"
-            ><h3>... lub zarejestruj</h3>
+            ><h3>... lub zarejestruj się</h3>
           </v-card-title>
 
           <v-card-subtitle>
