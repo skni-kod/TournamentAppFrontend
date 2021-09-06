@@ -2,7 +2,7 @@
   <v-row justify="center">
     <v-col sm="12" md="9" lg="8" xl="6">
       <v-container>
-        <v-carousel cycle height="350px">
+        <v-carousel cycle height="480px">
           <v-carousel-item
             v-for="(image, i) in images"
             :key="i"
