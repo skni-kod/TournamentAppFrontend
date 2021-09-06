@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-col cols="8" sm="8">
+    <v-col sm="10" md="8" xl="5">
       <v-container>
         <v-carousel cycle height="350px">
           <v-carousel-item

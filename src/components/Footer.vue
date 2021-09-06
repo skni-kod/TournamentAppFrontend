@@ -1,7 +1,7 @@
 <template>
   <v-footer class="primary white--text">
     <v-row justify="center" no-gutters>
-      <v-col v-for="(link, i) in links" :key="i" class="text-center">
+      <v-col sm="4" md="3" v-for="(link, i) in links" :key="i" class="text-center">
         <v-btn
           rounded
           text
