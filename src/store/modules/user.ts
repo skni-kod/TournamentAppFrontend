@@ -6,14 +6,14 @@ const userModule: Module<any, any> = {
   state: {
     token: undefined,
     refreshToken: undefined,
-    id:undefined,
+    id: undefined,
   },
 
   mutations: {
     authUser(state, auth) {
       state.token = auth.token;
       state.refreshToken = auth.refreshToken;
-      state.id=auth.id;
+      state.id = auth.id;
     },
     clearAuthData(state) {
       state.token = undefined;
@@ -32,13 +32,19 @@ const userModule: Module<any, any> = {
         })
         .then((res) => {
           if (res.status == 200) {
-            alert('Logowanie przebiegło pomyślnie.');
             commit('authUser', {
               token: res.data.access,
               refreshToken: res.data.refresh,
               id: res.data.id,
             });
-            router.replace({ name: 'Home' });
+            router.push({ name: 'Home' }).catch(error => {
+              if (
+                error.name !== 'NavigationDuplicated' &&
+                !error.message.includes('Avoided redundant navigation to current location')
+              ) {
+                console.log(error)
+              }
+            });
           }
         })
         .catch((err) => {
@@ -50,11 +56,11 @@ const userModule: Module<any, any> = {
       router.replace({ name: 'Login' });
       alert("Wylogowanie przebiegło pomyślnie.")
     },
-    register({dispatch}, data){
+    register({ dispatch }, data) {
       axios
         .post('user/', data)
         .then((res) => {
-          if (res.status == 201){
+          if (res.status == 201) {
             alert("Rejestracja przebiegła pomyślnie. Możesz teraz się zalogować.");
             router.go(0);
           }
