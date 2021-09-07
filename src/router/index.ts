@@ -46,7 +46,7 @@ const routes: Array<RouteConfig> = [
     path: '/skni',
     name: 'SKNI',
     beforeEnter() {
-      location.href = 'https://kod.prz.edu.pl/#/';
+      window.open('https://kod.prz.edu.pl/#/', '_blank');
     }
   },
   {
