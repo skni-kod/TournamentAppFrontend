@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card max-width="700" class="mx-auto">
+    <v-card max-width="60%" class="mx-auto">
       <v-container>
         <v-row dense>
           <v-col>
@@ -13,7 +13,7 @@
 
                 <v-list-item-content two-line>
                   <v-list-item-title
-                    >{{ info[0] }} {{ info[1] }}</v-list-item-title
+                    ><b>{{ info[0] }} {{ info[1] }}</b></v-list-item-title
                   >
                   <v-list-item-subtitle>{{ info[2] }}</v-list-item-subtitle>
                 </v-list-item-content>
@@ -61,7 +61,7 @@ export default class TheUser extends Vue {
             this.$data.info = basic;
             this.$data.id = this.$store.getters.id;
 
-            let player_id:any;
+            let player_id: any;
             player_id = data.profile[0];
             axios
               .get('profile/' + player_id + '/', {

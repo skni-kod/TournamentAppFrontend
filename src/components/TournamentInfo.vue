@@ -4,9 +4,9 @@
       <v-divider></v-divider>
       <v-col class="col-12 col-md-6 mb-5">
         <GmapMap
-          :center="{lat:50.036478837861466,lng:22.00336856058096}"
+          :center="{ lat: 50.036478837861466, lng: 22.00336856058096 }"
           :zoom="12"
-          style="width:100%;height:100%;"
+          style="width: 100%; height: 100%"
         >
         </GmapMap>
       </v-col>
