@@ -5,7 +5,7 @@
         <v-btn
           rounded
           text
-          :class="'primary'"
+          class="primary"
           :to="link.link"
           >{{ link.text }}
         </v-btn>
@@ -31,3 +31,9 @@ export default class Footer extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.v-btn:before {
+  background-color: transparent;
+}
+</style>

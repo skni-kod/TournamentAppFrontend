@@ -5,29 +5,28 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon :to="page[0].link">
-        <v-icon>{{ page[0].icon }}</v-icon>
-      </v-btn>
-      <v-btn v-if="auth" icon :to="page[1].link">
-        <v-icon>{{ page[1].icon }}</v-icon>
-      </v-btn>
+      <div v-for="(page, i) in pages" :key="i">
+        <v-btn v-if="page.default || auth" icon :to="page.link">
+          <v-icon>{{ page.icon }}</v-icon>
+        </v-btn>
+      </div>
+
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute top right temporary>
-      <v-list nav dense>
+      <v-list nav dense shaped>
         <v-list-item-group v-model="group">
-          <div class="font-weight-bold pl-2">Aplikacja Turniejowa</div>
+          <h3 class="font-weight-bold pl-2 mb-2">Aplikacja Turniejowa</h3>
 
-          <v-list-item :to="page[0].link">
-            <v-icon>{{ page[0].icon }}</v-icon>
-            <v-list-item-title>{{ page[0].text }}</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item v-if="auth" :to="page[1].link">
-            <v-icon>{{ page[1].icon }}</v-icon>
-            <v-list-item-title>{{ page[1].text }}</v-list-item-title>
-          </v-list-item>
+          <div v-for="(page, i) in pages" :key="i">
+            <v-list-item v-if="page.default || auth" :to="page.link">
+              <v-icon>{{ page.icon }}</v-icon>
+              <v-list-item-title
+                ><h4>{{ page.text }}</h4></v-list-item-title
+              >
+            </v-list-item>
+          </div>
 
           <v-list-item v-if="auth" @click="logout">
             <v-icon>mdi-logout</v-icon>
@@ -55,16 +54,18 @@ export default class Navbar extends Vue {
     return {
       drawer: false,
       group: null,
-      page: [
+      pages: [
         {
           link: { name: 'Home' },
           icon: 'mdi-seal',
           text: 'Strona główna',
+          default: true,
         },
         {
           link: { name: 'User' },
           icon: 'mdi-account-outline',
           text: 'Profil',
+          default: false,
         },
       ],
     };
@@ -91,3 +92,9 @@ export default class Navbar extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.v-btn:before {
+  background-color: transparent;
+}
+</style>
