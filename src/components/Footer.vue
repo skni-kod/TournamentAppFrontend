@@ -4,12 +4,13 @@
       <v-col
         sm="4"
         md="3"
+        lg="2"
         v-for="(link, i) in links"
         :key="i"
         class="text-center"
       >
-        <v-btn rounded text class="primary btn-fix" :to="link.link"
-          >{{ link.text }}
+        <v-btn rounded text class="primary" :to="link.link">
+          {{ link.text }}
         </v-btn>
       </v-col>
     </v-row>
@@ -33,3 +34,9 @@ export default class Footer extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.v-btn:before {
+  background-color: transparent;
+}
+</style>
