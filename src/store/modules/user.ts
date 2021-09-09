@@ -54,7 +54,6 @@ const userModule: Module<any, any> = {
     logout({ dispatch, commit, state }) {
       commit('clearAuthData');
       router.replace({ name: 'Login' });
-      alert("Wylogowanie przebiegło pomyślnie.")
     },
     register({ dispatch }, data) {
       axios
