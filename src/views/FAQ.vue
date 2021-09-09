@@ -1,9 +1,12 @@
 <template>
-  <v-container rounded>
+  <v-container>
     <v-row justify="center">
-      <v-col cols="12" sm="10" md="8" lg="6" xl="4" class="pa-md-4">
-        <v-card class="primary white--text">
-          <v-card-title class="justify-center">
+      <v-col cols="12" sm="10" md="8" lg="6" xl="4" class="pa-md-4 my-6" style="max-width: 600px">
+        <v-card class="primary white--text mx-3">
+          <v-card-title
+            class="text-center justify-center px-6"
+            style="word-break: break-word;"
+          >
             <h2>Często zadawane pytania</h2>
           </v-card-title>
           <v-expansion-panels accordion multiple>
@@ -54,4 +57,3 @@ export default class FAQ extends Vue {
   }
 }
 </script>
-
