@@ -9,8 +9,8 @@
         :key="i"
         class="text-center"
       >
-        <v-btn rounded text class="primary" :to="link.link"
-          >{{ link.text }}
+        <v-btn rounded text class="primary" :to="link.link">
+          {{ link.text }}
         </v-btn>
       </v-col>
     </v-row>
