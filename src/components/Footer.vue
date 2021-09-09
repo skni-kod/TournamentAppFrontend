@@ -1,12 +1,14 @@
 <template>
   <v-footer class="primary white--text">
     <v-row justify="center" no-gutters>
-      <v-col sm="4" md="3" v-for="(link, i) in links" :key="i" class="text-center">
-        <v-btn
-          rounded
-          text
-          :class="'primary'"
-          :to="link.link"
+      <v-col
+        sm="4"
+        md="3"
+        v-for="(link, i) in links"
+        :key="i"
+        class="text-center"
+      >
+        <v-btn rounded text class="primary btn-fix" :to="link.link"
           >{{ link.text }}
         </v-btn>
       </v-col>

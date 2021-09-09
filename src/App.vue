@@ -22,3 +22,13 @@ import { Component } from 'vue-property-decorator';
 })
 export default class App extends Vue {}
 </script>
+<style scoped>
+html,
+body {
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+  width: 100%;
+}
+</style>
