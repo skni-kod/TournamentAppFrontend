@@ -1,7 +1,10 @@
 <template>
   <div>
     <v-app-bar dark class="primary">
-      <v-toolbar-title>Aplikacja Turniejowa</v-toolbar-title>
+      <v-icon v-if="$vuetify.breakpoint.xsOnly">mdi-chess-king</v-icon>
+      <v-toolbar-title v-else>Aplikacja Turniejowa
+      </v-toolbar-title>
+      
 
       <v-spacer></v-spacer>
 
@@ -23,19 +26,20 @@
             <v-list-item v-if="page.default || auth" :to="page.link">
               <v-icon>{{ page.icon }}</v-icon>
               <v-list-item-title
-                ><h4>{{ page.text }}</h4></v-list-item-title
+                ><h4 class="grey--text text--darken-2">
+                  {{ page.text }}
+                </h4></v-list-item-title
               >
             </v-list-item>
           </div>
 
-          <v-list-item v-if="auth" @click="logout">
-            <v-icon>mdi-logout</v-icon>
-            <v-list-item-title>Wyloguj się</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item v-else @click="login">
-            <v-icon>mdi-login</v-icon>
-            <v-list-item-title>Zaloguj się</v-list-item-title>
+          <v-list-item @click="auth ? logout() : login()">
+            <v-icon>{{ text.icon }}</v-icon>
+            <v-list-item-title
+              ><h4 class="grey--text text--darken-2">
+                {{ text.info }}
+              </h4></v-list-item-title
+            >
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -89,6 +93,13 @@ export default class Navbar extends Vue {
   }
   get id() {
     return this.$store.getters.id;
+  }
+  get text() {
+    if (this.auth) {
+      return { icon: 'mdi-logout', info: 'Wyloguj się' };
+    } else {
+      return { icon: 'mdi-login', info: 'Zaloguj się' };
+    }
   }
 }
 </script>
