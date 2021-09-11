@@ -1,8 +1,13 @@
 <template>
   <v-row justify="center">
-    <v-col sm="12" md="9" lg="8" xl="6">
-      <v-container>
-        <v-carousel cycle height="480px">
+    <v-col sm="12" md="9" lg="8" xl="6" class="px-5">
+      <v-container class="mb-12">
+        <v-carousel
+          cycle
+          height="35vh"
+          show-arrows-on-hover
+          hide-delimiter-background
+        >
           <v-carousel-item
             v-for="(image, i) in images"
             :key="i"
@@ -34,7 +39,6 @@ export default class Home extends Vue {
         require('@/assets/home/chess.jpg'),
         require('@/assets/home/chess2.jpg'),
         require('@/assets/home/chess3.jpg'),
-        require('@/assets/home/chess4.jpg'),
       ],
     };
   }
