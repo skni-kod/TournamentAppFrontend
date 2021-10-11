@@ -19,7 +19,7 @@
           <v-container>
             <v-row>
               <v-col
-                sm="6"
+                cols="6"
                 md="4"
                 lg="3"
                 v-for="(field, i) in fields_name_surname"
@@ -31,7 +31,7 @@
                 ></v-text-field>
               </v-col>
 
-              <v-col sm="6" md="2">
+              <v-col cols="6" md="2">
                 <v-select
                   :items="gender_list"
                   item-value="code"
@@ -41,7 +41,7 @@
                 ></v-select>
               </v-col>
 
-              <v-col sm="6" md="2">
+              <v-col cols="6" md="2">
                 <v-select
                   :items="country_list"
                   item-value="name_en"
@@ -53,7 +53,7 @@
                 ></v-select>
               </v-col>
 
-              <v-col sm="12" md="6">
+              <v-col cols="12" md="6">
                 <v-text-field
                   label="Adres e-mail*"
                   v-model="email"
@@ -62,7 +62,7 @@
                 ></v-text-field>
               </v-col>
 
-              <v-col sm="12" md="6">
+              <v-col cols="12" md="6">
                 <v-text-field
                   :append-icon="show ? 'mdi-eye-off' : 'mdi-eye'"
                   :type="show ? 'text' : 'password'"
@@ -79,7 +79,7 @@
                 ></v-text-field>
               </v-col>
 
-              <v-col sm="12" md="6">
+              <v-col cols="12" md="6">
                 <v-text-field
                   :append-icon="show2 ? 'mdi-eye-off' : 'mdi-eye'"
                   :type="show2 ? 'text' : 'password'"
@@ -95,14 +95,14 @@
                 ></v-text-field>
               </v-col>
 
-              <v-col sm="10" md="4">
+              <v-col cols="8" md="4">
                 <v-text-field
                   label="Klub szachowy"
                   v-model="club"
                 ></v-text-field>
               </v-col>
 
-              <v-col cols="2">
+              <v-col cols="4">
                 <v-text-field
                   label="Rating"
                   type="number"
