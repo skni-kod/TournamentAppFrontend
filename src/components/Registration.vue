@@ -44,7 +44,7 @@
               <v-col sm="6" md="2">
                 <v-select
                   :items="country_list"
-                  item-value="name_en"
+                  item-value="code"
                   item-text="name_pl"
                   label="Kraj*"
                   v-model="country"
