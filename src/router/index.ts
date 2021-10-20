@@ -30,6 +30,12 @@ const routes: Array<RouteConfig> = [
       import(/* webpackChunkName: "user" */ '../views/TheUser.vue'),
   },
   {
+    path: '/index',
+    name: 'Index',
+    component: () =>
+      import(/* webpackChunkName: "index" */ '../views/Index.vue'),
+  },
+  {
     path: '/tournament/:id/:module?',
     name: 'Tournament Info',
     component: () =>
