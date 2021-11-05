@@ -1,6 +1,6 @@
 <template>
     <v-row justify="center">
-        <v-col cols="12" class="pa-md-4 my-6" style="max-width: 1600px">
+        <v-col cols="12" sm="12" md="9" lg="8" xl="6" class="pa-md-4 my-6" style="max-width: 1600px">
             <v-card 
             class="primary white--text mx-3">
                 <v-card-title
@@ -12,9 +12,8 @@
                 <v-card-text
                     v-for="(article, id) in articles"
                     :key="id"
-                    class="background-color: white black--text text-justify"
+                    class="background-color: white black--text text-justify pt-3 pl-6 pr-6"
                 >
-                    <br>
                     <h2> {{ article.sectionTitle }} </h2>
                     {{ article.section }}
                 </v-card-text>
