@@ -13,7 +13,10 @@
       </p>
     </div>
     <!-- prawa strona-->
-    <div class="d-flex rightSide">
+    <div
+      class="d-flex pb-12 pt-8"
+      :class="[removeElement ? rightSide2 : '', rightSide]"
+    >
       <v-col cols="12" class="d-flex justify-space-around">
         <v-card>
           <v-img
@@ -34,16 +37,22 @@
   </div>
 </template>
 
+
 <script lang="ts">
-import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component, Watch } from 'vue-property-decorator';
 @Component
 export default class HomePage extends Vue {
+  //
   data() {
-    return {};
+    return {
+      rightSide: 'rightSide',
+      rightSide2: 'rightSide2',
+    };
   }
 }
 </script>
+
 
 <style scoped>
 /*główny wrap*/
@@ -60,6 +69,13 @@ export default class HomePage extends Vue {
   box-sizing: border-box;
   width: 50%;
 }
+.rightSide2 {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  height: 100%;
+  box-sizing: border-box;
+}
 /*tło po lewej stronie*/
 .leftSide {
   background: linear-gradient(
@@ -67,7 +83,7 @@ export default class HomePage extends Vue {
       hsla(0, 0%, 100%, 0),
       rgba(10, 72, 130, 0.8) 0
     ),
-    url("../assets/indexBg.jpg");
+    url('../assets/indexBg.jpg');
   height: 100%;
   background-size: cover;
   position: absolute;
