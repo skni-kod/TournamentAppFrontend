@@ -7,15 +7,18 @@
     >
       <p
         class="white--text"
-        style="font-size: 70px; text-shadow: 2px 2px #000000"
+        style="font-size: 65px; text-shadow: 2px 2px #000000"
       >
         Aplikacja Turniejowa
       </p>
     </div>
     <!-- prawa strona-->
     <div
-      class="d-flex pb-12 pt-8"
-      :class="[removeElement ? rightSide2 : '', rightSide]"
+      class="d-flex pb-12 pt-8 rightSide"
+      :class="[
+        { rightSide: $vuetify.breakpoint.mdAndUp },
+        { rightSide2: $vuetify.breakpoint.smAndDown },
+      ]"
     >
       <v-col cols="12" class="d-flex justify-space-around">
         <v-card>
@@ -45,10 +48,7 @@ import { Component, Watch } from 'vue-property-decorator';
 export default class HomePage extends Vue {
   //
   data() {
-    return {
-      rightSide: 'rightSide',
-      rightSide2: 'rightSide2',
-    };
+    return {};
   }
 }
 </script>
@@ -57,8 +57,23 @@ export default class HomePage extends Vue {
 <style scoped>
 /*główny wrap*/
 .main {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   position: relative;
   height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 /*tło z prawej strony*/
 .rightSide {
@@ -75,6 +90,7 @@ export default class HomePage extends Vue {
   top: 10px;
   height: 100%;
   box-sizing: border-box;
+  width: 100%;
 }
 /*tło po lewej stronie*/
 .leftSide {

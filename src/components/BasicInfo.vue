@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-row class="align-center justify-center" style="margin: 0px">
-      <v-col cols="8" class="mx-16">
+      <v-col :sm="12" :lg="8" class="mx-16">
         <v-card class="mx-auto"
           ><v-card-title><h1>Czym jest Aplikacja Turniejowa?</h1></v-card-title>
           <v-card-text class="pa-3 text-h5">
@@ -31,7 +31,7 @@
             <br />
             <b>Funkcjonalności dla użytkownika z pełnymi informacjami:</b>
             <ul>
-              <li>żliwość zapisywania się na turniej</li>
+              <li>możliwość zapisywania się na turniej</li>
               <li>wyświetlanie listy turniejów, w których user brał udział</li>
               <li>dołączanie do grup klubów szachowych</li>
               <li>podgląd szczegółowych statystyk zawodników</li>
@@ -44,18 +44,24 @@
         <v-card class="mx-auto"
           ><v-card-title><h1>Kto stworzył apke turniejową?</h1></v-card-title>
           <v-row class="pa-4">
-            <v-col cols="4"
+            <v-col cols="4" class="pt-8" v-if="$vuetify.breakpoint.mdAndUp"
               ><v-img
                 src="https://kod.prz.edu.pl/img/logo_small.35e34fc9.png"
                 contain
                 max-height="125px"
-                to="https://kod.prz.edu.pl"
               ></v-img></v-col
-            ><v-col cols="8"
-              ><v-card-text class="pa-3 text-h5">
+            ><v-col :sm="12" :lg="8"
+              ><v-card-text
+                class="pa-3"
+                :class="[
+                  { 'px-0 text-h6': $vuetify.breakpoint.smAndDown },
+                  { 'text-h5': $vuetify.breakpoint.mdAndUp },
+                ]"
+              >
                 Aplikacja Turniejowa została stworzona w ramach projektu dla
-                rzeszowskiego Studenckiego Koła Naukowego Informatyków
-                KOD.</v-card-text
+                rzeszowskiego Studenckiego Koła Naukowego Informatyków KOD przez
+                zespół w składzie: Oskar Tyniec, Konrad Bochenek, Hubert Futoma,
+                Natalia Miarowska, Tomasz Popek, Brajan Miśkowicz</v-card-text
               ></v-col
             ></v-row
           >
@@ -66,8 +72,8 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
 @Component
 export default class BasicInfo extends Vue {}
 </script>
