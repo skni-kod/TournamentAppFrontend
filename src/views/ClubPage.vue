@@ -3,28 +3,32 @@
         <v-col cols="12" sm="12" md="9" lg="8" xl="6" class="pa-md-4 my-6" style="max-width: 1600px">
             <v-card>
                 <v-card-title class="pa-6">
-                    <v-avatar
-                        color="primary"
-                        size="150"
-                    >
-                    <img
-                        v-bind:src="club.club_logo"
-                        alt="John Xina"
-                    >
-                    </v-avatar>
-                    <div class="mx-7">
-                    <h1>{{ club.club_name }}</h1>
-                        <v-row class="mx-auto pt-4">
-                        <v-img
-                        v-bind:src = "generateFlagURL()"
-                        max-height="32px"
-                        max-width="32px"
-                        class="mr-2"
-                        >
-                        </v-img>
-                        {{ getCountryName() }}
+                    <v-col>
+                        <v-row class="justify-center mx-16 mb-2">
+                            <v-avatar
+                                color="primary"
+                                size="150"
+                                >
+                                <img
+                                    v-bind:src="club.club_logo"
+                                    alt="John Xina"
+                                >
+                            </v-avatar>
                         </v-row>
-                </div>
+                        <v-row class="justify-center mx-16">
+                            <h1>{{ club.club_name }}</h1>
+                        </v-row>
+                            <v-row class="justify-center mx-15 pt-4 pb-2">
+                                <v-img
+                                v-bind:src = "generateFlagURL()"
+                                max-height="32px"
+                                max-width="32px"
+                                class="mr-2"
+                                >
+                                </v-img>
+                                {{ getCountryName() }}
+                            </v-row>
+                    </v-col>
                 </v-card-title>
                 <h1 class="pt-2 px-3">O klubie</h1>
                 <div class="pt-2 px-3 text-justify">
@@ -32,12 +36,12 @@
                 </div>
                 <h1 class="pt-2 px-3"> Członkowie </h1>
                 <v-list class="pt-2 px-3">
-                    <template >
+                    <template>
                         <v-list-item 
+                        v-bind:to="member.profile"
                         v-for="(member, id) in members"
                         :key="id"
                         >
-                            
                             <v-list-item-avatar>
                                 <v-img v-bind:src="member.avatar"> </v-img>
                             </v-list-item-avatar>
@@ -69,15 +73,18 @@ export default class ClubPage extends Vue{
             members:[
                 {
                     nickname: "Random Citizen",
-                    avatar: "https://qph.fs.quoracdn.net/main-qimg-817bea36ddd7fa50b40fea92dd2121c3-c"
+                    avatar: "https://qph.fs.quoracdn.net/main-qimg-817bea36ddd7fa50b40fea92dd2121c3-c",
+                    profile: "Profile_URL_1"
                 },
                 {
                     nickname: "John Xina",
-                    avatar: "https://i.ytimg.com/vi/nC_14l9cdXw/hqdefault.jpg"
+                    avatar: "https://i.ytimg.com/vi/nC_14l9cdXw/hqdefault.jpg",
+                    profile: "Profile_URL_2"
                 },
                 {
                     nickname: "Xi Jinping",
-                    avatar: "https://purepng.com/public/uploads/medium/purepng.com-winnie-poohwinnie-poohwinniepoohpooh-bearbearwinnie-the-poohteddy-bearcharacterbook-winnie-the-pooh-1926pooh-corner-1928-1701528660039lfqkq.png"
+                    avatar: "https://purepng.com/public/uploads/medium/purepng.com-winnie-poohwinnie-poohwinniepoohpooh-bearbearwinnie-the-poohteddy-bearcharacterbook-winnie-the-pooh-1926pooh-corner-1928-1701528660039lfqkq.png",
+                    profile: "Profile_URL_3"
                 }
             ]
 
@@ -92,7 +99,5 @@ export default class ClubPage extends Vue{
         let countryObject = countries.find(e => e.code === this.$data.club.country);
         return countryObject?.name_pl;
     }
-
-
 }
 </script>

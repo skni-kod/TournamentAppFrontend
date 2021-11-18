@@ -45,6 +45,19 @@
                     >Więcej o Turnieju</v-btn
                   >
                 </v-col>
+                <v-col
+                  cols="auto"
+                  class="my-auto"
+                  v-else
+                  >
+                    <v-btn
+                      :to="{
+                        name: 'Club page',
+                        params: { id: item.id, module},
+                      }"
+                    >
+                    Więcej o Klubie</v-btn>
+                  </v-col>
               </v-row>
             </td>
           </template>
