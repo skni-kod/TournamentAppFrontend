@@ -37,8 +37,8 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '/club/:id',
-    name: 'Club page',
-    component: () => import('../views/ClubPage.vue'),
+    name: 'Club',
+    component: () => import('../views/TheClub.vue'),
   },
   {
     path: '/faq',

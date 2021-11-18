@@ -52,8 +52,8 @@
                   >
                     <v-btn
                       :to="{
-                        name: 'Club page',
-                        params: { id: item.id, module},
+                        name: 'Club',
+                        params: { id: item.id},
                       }"
                     >
                     Więcej o Klubie</v-btn>
@@ -122,6 +122,7 @@ export default class HomeTabs extends Vue {
             const data = club.data;
             data.forEach((element:any) => {
               let tab:any = {};
+              tab.id = element.id;
               tab.name = element.club_name;
               tab.country = element.country;
               tab.info = element.club_info;
