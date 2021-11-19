@@ -4,7 +4,7 @@
       <HomePage />
     </div>
     <div>
-      <BasicInfo class="pt-5" />
+      <BasicInfo />
     </div>
   </div>
 </template>

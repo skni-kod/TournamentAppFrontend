@@ -34,6 +34,7 @@ const routes: Array<RouteConfig> = [
     name: 'Index',
     component: () =>
       import(/* webpackChunkName: "index" */ '../views/Index.vue'),
+    meta: { hideNavbar: true },
   },
   {
     path: '/tournament/:id/:module?',

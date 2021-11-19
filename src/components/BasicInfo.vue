@@ -1,10 +1,17 @@
 <template>
   <section>
-    <v-row class="align-center justify-center" style="margin: 0px">
-      <v-col :sm="12" :lg="8" class="mx-16">
-        <v-card class="mx-auto"
-          ><v-card-title><h1>Czym jest Aplikacja Turniejowa?</h1></v-card-title>
-          <v-card-text class="pa-3 text-h5">
+    <v-row class="align-center justify-center pt-6" style="margin: 0px">
+      <v-col cols="12" :lg="10" class="mx-16">
+        <v-card>
+          <v-card-title
+            :class="[
+              { 'text-h5': $vuetify.breakpoint.smAndDown },
+              { 'text-h4': $vuetify.breakpoint.mdAndUp },
+            ]"
+          >
+            Czym jest i jakie funkcje spełnia Aplikacja Turniejowa?
+          </v-card-title>
+          <v-card-text class="text-h5">
             Aplikacja Turniejowa to system do zarządzania turniejami szachowymi,
             opracowany przez członków Sekcji Aplikacji Desktopowych, Mobilnych i
             Webowych SKNI KOD. Podzielony został na dwie części: Desktopową oraz
@@ -17,7 +24,10 @@
             turniejów. Po uzupełnieniu pozostałych danych takich jak ranking ELO
             czy Klub, w którym zrzeszony jest dany użytkownik, odblokowane
             zostają pozostałe funkcje takie jak dołączenie do turnieju, czy
-            wgląd w listę turniejów, w których braliśmy udział. <br /><br />
+            wgląd w listę turniejów, w których braliśmy udział.
+            <v-col v-if="$vuetify.breakpoint.mdAndUp" class="pa-5">
+              <v-img src="../assets/1.png" contain max-height="700px"></v-img>
+            </v-col>
 
             <b>Funkcjonalności dla zwykłego użytkownika:</b>
 
@@ -37,12 +47,18 @@
               <li>podgląd szczegółowych statystyk zawodników</li>
             </ul>
           </v-card-text></v-card
-        ></v-col
-      ></v-row
+        >
+      </v-col></v-row
     ><v-row class="align-center justify-center pb-4" style="margin: 0px">
-      <v-col cols="8" class="mx-16">
-        <v-card class="mx-auto"
-          ><v-card-title><h1>Kto stworzył apke turniejową?</h1></v-card-title>
+      <v-col cols="12" :lg="10" class="mx-16">
+        <v-card>
+          <v-card-title
+            :class="[
+              { 'text-h5': $vuetify.breakpoint.smAndDown },
+              { 'text-h4': $vuetify.breakpoint.mdAndUp },
+            ]"
+            >Kto stworzył apke turniejową?</v-card-title
+          >
           <v-row class="pa-4">
             <v-col cols="4" class="pt-8" v-if="$vuetify.breakpoint.mdAndUp"
               ><v-img
@@ -64,8 +80,8 @@
                 Natalia Miarowska, Tomasz Popek, Brajan Miśkowicz</v-card-text
               ></v-col
             ></v-row
-          >
-        </v-card></v-col
+          ></v-card
+        ></v-col
       ></v-row
     >
   </section>
@@ -79,4 +95,8 @@ export default class BasicInfo extends Vue {}
 </script>
 
 <style scoped>
+.v-card__text,
+.v-card__title {
+  word-break: normal;
+}
 </style>
