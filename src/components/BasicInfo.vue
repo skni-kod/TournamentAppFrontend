@@ -1,9 +1,9 @@
 <template>
   <section>
-    <v-row class="align-center justify-center pt-6" style="margin: 0px">
-      <v-col cols="12" :lg="10" class="mx-16">
+    <v-row class="justify-center pt-6" style="margin: 0px">
+      <v-col cols="12" :lg="10">
         <v-card class="pa-4 white">
-          <v-card-title :class="mobileTitle">
+          <v-card-title class="justify-center" :class="mobileTitle">
             Czym jest i jakie funkcje spełnia Aplikacja Turniejowa?
           </v-card-title>
           <v-card-text :class="mobileText">
@@ -39,21 +39,21 @@
           </v-card-text>
         </v-card>
       </v-col></v-row
-    ><v-row class="align-center justify-center pb-4" style="margin: 0px">
-      <v-col cols="12" :lg="10" class="mx-16">
+    ><v-row class="justify-center pb-4" style="margin: 0px">
+      <v-col cols="12" :lg="10">
         <v-card class="indigo darken-1 white--text pa-4">
-          <v-card-title :class="mobileTitle"
+          <v-card-title class="justify-center" :class="mobileTitle"
             >Kto stworzył apke turniejową?</v-card-title
           >
-          <v-row>
-            <v-col cols="4" class="pt-8" v-if="$vuetify.breakpoint.mdAndUp"
+          <v-row class="align-center justify-center">
+            <v-col cols="4" v-if="$vuetify.breakpoint.mdAndUp"
               ><v-img
                 src="../assets/index/logo_white.png"
                 contain
-                max-height="125px"
+                max-height="250px"
               ></v-img></v-col
             ><v-col cols="12" :lg="8"
-              ><v-card-text class="pa-3" :class="mobileText">
+              ><v-card-text :class="mobileText">
                 Aplikacja Turniejowa została stworzona w ramach projektu dla
                 rzeszowskiego Studenckiego Koła Naukowego Informatyków KOD przez
                 zespół w składzie: Oskar Tyniec, Konrad Bochenek, Hubert Futoma,

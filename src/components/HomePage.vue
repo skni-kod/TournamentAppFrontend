@@ -21,7 +21,7 @@
       ]"
     >
       <v-col cols="12" class="d-flex justify-space-around">
-        <v-card>
+        <v-card class="pa-4">
           <v-img
             src="../assets/login-picture.png"
             height="80%"
