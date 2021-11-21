@@ -2,16 +2,11 @@
   <section>
     <v-row class="align-center justify-center pt-6" style="margin: 0px">
       <v-col cols="12" :lg="10" class="mx-16">
-        <v-card>
-          <v-card-title
-            :class="[
-              { 'text-h5': $vuetify.breakpoint.smAndDown },
-              { 'text-h4': $vuetify.breakpoint.mdAndUp },
-            ]"
-          >
+        <v-card class="pa-4 white">
+          <v-card-title :class="mobileTitle">
             Czym jest i jakie funkcje spełnia Aplikacja Turniejowa?
           </v-card-title>
-          <v-card-text class="text-h5">
+          <v-card-text :class="mobileText">
             Aplikacja Turniejowa to system do zarządzania turniejami szachowymi,
             opracowany przez członków Sekcji Aplikacji Desktopowych, Mobilnych i
             Webowych SKNI KOD. Podzielony został na dwie części: Desktopową oraz
@@ -25,55 +20,40 @@
             czy Klub, w którym zrzeszony jest dany użytkownik, odblokowane
             zostają pozostałe funkcje takie jak dołączenie do turnieju, czy
             wgląd w listę turniejów, w których braliśmy udział.
-            <v-col v-if="$vuetify.breakpoint.mdAndUp" class="pa-5">
-              <v-img src="../assets/1.png" contain max-height="700px"></v-img>
+            <v-col class="pa-4">
+              <v-img
+                src="../assets/index/1.png"
+                contain
+                max-height="700px"
+              ></v-img>
             </v-col>
-
-            <b>Funkcjonalności dla zwykłego użytkownika:</b>
-
+            <b>Funkcjonalności dla zwykłego użytkownika</b>
             <ul>
-              <li>podgląd rozgrywanych turniejów</li>
-              <li>podgląd archiwalnych turniejów</li>
-              <li>śledzenie wyników poszczególnych partii szachowych</li>
-              <li>wgląd w galerię zdjęć dla poszczególnych turniejów</li>
-              <li>wgląd w podstawowe statystyki zawodników</li>
+              <li v-for="item in content" :key="item">{{ item }}</li>
             </ul>
             <br />
             <b>Funkcjonalności dla użytkownika z pełnymi informacjami:</b>
             <ul>
-              <li>możliwość zapisywania się na turniej</li>
-              <li>wyświetlanie listy turniejów, w których user brał udział</li>
-              <li>dołączanie do grup klubów szachowych</li>
-              <li>podgląd szczegółowych statystyk zawodników</li>
+              <li v-for="item in content2" :key="item">{{ item }}</li>
             </ul>
-          </v-card-text></v-card
-        >
+          </v-card-text>
+        </v-card>
       </v-col></v-row
     ><v-row class="align-center justify-center pb-4" style="margin: 0px">
       <v-col cols="12" :lg="10" class="mx-16">
-        <v-card>
-          <v-card-title
-            :class="[
-              { 'text-h5': $vuetify.breakpoint.smAndDown },
-              { 'text-h4': $vuetify.breakpoint.mdAndUp },
-            ]"
+        <v-card class="indigo darken-1 white--text pa-4">
+          <v-card-title :class="mobileTitle"
             >Kto stworzył apke turniejową?</v-card-title
           >
-          <v-row class="pa-4">
+          <v-row>
             <v-col cols="4" class="pt-8" v-if="$vuetify.breakpoint.mdAndUp"
               ><v-img
-                src="https://kod.prz.edu.pl/img/logo_small.35e34fc9.png"
+                src="../assets/index/logo_white.png"
                 contain
                 max-height="125px"
               ></v-img></v-col
-            ><v-col :sm="12" :lg="8"
-              ><v-card-text
-                class="pa-3"
-                :class="[
-                  { 'px-0 text-h6': $vuetify.breakpoint.smAndDown },
-                  { 'text-h5': $vuetify.breakpoint.mdAndUp },
-                ]"
-              >
+            ><v-col cols="12" :lg="8"
+              ><v-card-text class="pa-3" :class="mobileText">
                 Aplikacja Turniejowa została stworzona w ramach projektu dla
                 rzeszowskiego Studenckiego Koła Naukowego Informatyków KOD przez
                 zespół w składzie: Oskar Tyniec, Konrad Bochenek, Hubert Futoma,
@@ -91,10 +71,41 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 @Component
-export default class BasicInfo extends Vue {}
+export default class BasicInfo extends Vue {
+  data() {
+    return {
+      mobileText: [
+        { 'px-0 text-h6': this.$vuetify.breakpoint.smAndDown },
+        { 'text-h5': this.$vuetify.breakpoint.mdAndUp },
+      ],
+      mobileTitle: [
+        [
+          { 'text-h5 pa-0 pb-4': this.$vuetify.breakpoint.smAndDown },
+          { 'text-h4': this.$vuetify.breakpoint.mdAndUp },
+        ],
+      ],
+      content: [
+        'podgląd rozgrywanych turniejów',
+        'podgląd archiwalnych turniejów',
+        'śledzenie wyników poszczególnych partii szachowych',
+        'wgląd w galerię zdjęć dla poszczególnych turniejów',
+        'wgląd w podstawowe statystyki zawodników',
+      ],
+      content2: [
+        'możliwość zapisywania się na turniej',
+        'wyświetlanie listy turniejów, w których user brał udział',
+        'dołączanie do grup klubów szachowych',
+        'podgląd szczegółowych statystyk zawodników',
+      ],
+    };
+  }
+}
 </script>
 
 <style scoped>
+.v-card {
+  border-radius: 40px;
+}
 .v-card__text,
 .v-card__title {
   word-break: normal;

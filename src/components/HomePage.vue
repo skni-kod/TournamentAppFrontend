@@ -62,6 +62,9 @@ export default class HomePage extends Vue {
   position: relative;
   height: 100vh;
 }
+.main :not(:focus-visible) {
+  animation-play-state: paused;
+}
 
 @keyframes gradient {
   0% {
@@ -98,7 +101,7 @@ export default class HomePage extends Vue {
       hsla(0, 0%, 100%, 0),
       rgba(10, 72, 130, 0.8) 0
     ),
-    url('../assets/indexBg.jpg');
+    url('../assets/index/indexBg.jpg');
   height: 100%;
   background-size: cover;
   position: absolute;
