@@ -1,8 +1,7 @@
 <template>
   <v-container>
-    <v-row justify="center">
-      <v-divider></v-divider>
-      <v-col class="col-12 col-md-6 mb-5">
+    <v-row class="justify-center">
+      <v-col class="col-md-6">
         <GmapMap
           :center="{ lat: 50.036478837861466, lng: 22.00336856058096 }"
           :zoom="12"
@@ -10,9 +9,9 @@
         >
         </GmapMap>
       </v-col>
-      <v-col class="col-12 col-md-6 mb-5">
-        <v-card-title><b>Informacje</b></v-card-title>
-        <v-card-text v-for="(t, i) in text" :key="i"
+      <v-col class="col-md-6">
+        <v-card-title class="text-h4 pt-0"><b>Informacje</b></v-card-title>
+        <v-card-text class="pb-0" v-for="(t, i) in text" :key="i"
           ><b>{{ t }}: </b>{{ info[i] }}</v-card-text
         >
       </v-col>

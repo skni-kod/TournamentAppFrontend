@@ -6,10 +6,10 @@
       class="d-flex justify-space-around align-center leftSide"
     >
       <p
-        class="white--text"
+        class="text-center white--text"
         style="font-size: 65px; text-shadow: 2px 2px #000000"
       >
-        Aplikacja Turniejowa
+        Aplikacja <br />Turniejowa
       </p>
     </div>
     <!-- prawa strona-->
@@ -25,13 +25,12 @@
           <v-img
             src="../assets/login-picture.png"
             height="80%"
-            class="mx-auto"
+            class="mt-6"
             contain
           ></v-img>
-          <div class="d-flex justify-space-around pa-5">
+          <div class="d-flex justify-space-around pa-8">
             <v-btn rounded-pill color="secondary" to="login"
-              ><v-icon>mdi-login</v-icon>
-              <div class="d-none d-md-block">Zaloguj się</div></v-btn
+              ><v-icon class="pe-2">mdi-login</v-icon> Zaloguj się</v-btn
             >
           </div>
         </v-card>
@@ -56,7 +55,7 @@ export default class HomePage extends Vue {
 <style scoped>
 /*główny wrap*/
 .main {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #9652ee, #3c78e7, #4136e2, #8090ee);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   position: relative;
