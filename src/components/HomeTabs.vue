@@ -45,6 +45,19 @@
                     >Więcej o Turnieju</v-btn
                   >
                 </v-col>
+                <v-col
+                  cols="auto"
+                  class="my-auto"
+                  v-else
+                  >
+                    <v-btn
+                      :to="{
+                        name: 'Club',
+                        params: { id: item.id},
+                      }"
+                    >
+                    Więcej o Klubie</v-btn>
+                  </v-col>
               </v-row>
             </td>
           </template>
@@ -109,6 +122,7 @@ export default class HomeTabs extends Vue {
             const data = club.data;
             data.forEach((element:any) => {
               let tab:any = {};
+              tab.id = element.id;
               tab.name = element.club_name;
               tab.country = element.country;
               tab.info = element.club_info;
