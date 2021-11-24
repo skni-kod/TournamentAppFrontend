@@ -1,52 +1,66 @@
 <template>
   <section>
-    <v-row class="justify-center" style="margin: 0px">
+    <!--Sekcja pierwsza -->
+
+    <v-row class="justify-center">
       <v-col class="pa-0">
-        <v-card-title class="justify-center white pt-8" :class="mobileTitle">
+        <v-card-title
+          class="justify-center py-8 indigo darken-2 white--text"
+          :class="mobileTitle"
+        >
           <b>Czym jest i jakie funkcje spełnia Aplikacja Turniejowa?</b>
         </v-card-title>
-        <v-row class="justify-center align-center white pa-4">
-          <v-col class="" cols="12" :lg="4">
-            <v-card-text
-              class="text-justify"
-              :class="mobileText"
-              style="text-indent: 1.5em"
-            >
-              Aplikacja Turniejowa to system do zarządzania turniejami
-              szachowymi, opracowany przez członków SKNI "KOD". Głównym
-              założeniem strony WWW jest prezentacja wyników oraz stworzenie
-              środowiska przystępnego dla różnego rodzaju użytkowników.
-            </v-card-text>
-          </v-col>
-          <v-col cols="12" :lg="4">
-            <v-img
-              src="../assets/index/1.png"
-              contain
-              max-height="500px"
-            ></v-img>
-          </v-col>
-        </v-row>
-        <v-row class="justify-center align-center white pa-4">
-          <v-col cols="12" :lg="4">
-            <v-img
-              src="../assets/index/2.png"
-              contain
-              max-height="500px"
-            ></v-img>
-          </v-col>
-          <v-col cols="12" :lg="4">
-            <v-card-text
-              class="text-justify"
-              :class="mobileText"
-              style="text-indent: 1.5em"
-            >
-              Każde z zarejestrowanych kont może działać dwojako, przy podaniu
-              tylko podstawowych danych takich jak login, hasło i email, możliwa
-              jest obserwacja wyników na żywo ze wszystkich dostępnych w
-              systemie turniejów.
-            </v-card-text></v-col
-          ></v-row
-        >
+        <div class="s1bg my-3">
+          <v-row class="justify-center align-center pa-4 pt-8">
+            <v-col class="py-6 mx-8" cols="12" :lg="4">
+              <div class="messL">
+                <v-card-text
+                  class="text-justify px-4"
+                  :class="mobileText"
+                  style="text-indent: 1.5em"
+                >
+                  Aplikacja Turniejowa to system do zarządzania turniejami
+                  szachowymi, opracowany przez członków SKNI "KOD". Głównym
+                  założeniem strony WWW jest prezentacja wyników oraz stworzenie
+                  środowiska przystępnego dla różnego rodzaju użytkowników.
+                </v-card-text>
+              </div>
+            </v-col>
+            <v-col cols="12" :lg="5">
+              <v-img
+                src="../assets/index/1.png"
+                contain
+                max-height="400px"
+              ></v-img>
+            </v-col>
+          </v-row>
+          <v-row class="align-center justify-center pa-4">
+            <v-col cols="12" :lg="4">
+              <v-img
+                src="../assets/index/2.png"
+                contain
+                max-height="400px"
+              ></v-img>
+            </v-col>
+            <v-col class="py-6 mx-8" cols="12" :lg="4">
+              <div class="messR">
+                <v-card-text
+                  class="text-justify px-4"
+                  :class="mobileText"
+                  style="text-indent: 1.5em"
+                >
+                  Każde z zarejestrowanych kont może działać dwojako, przy
+                  podaniu tylko podstawowych danych takich jak login, hasło i
+                  email, możliwa jest obserwacja wyników na żywo ze wszystkich
+                  dostępnych w systemie turniejów.
+                </v-card-text>
+              </div>
+            </v-col></v-row
+          >
+        </div>
+
+        <!--Sekcja druga -->
+
         <v-row class="justify-space-around indigo lighten-5 ma-0 pa-4">
           <v-col cols="12" :lg="5">
             <v-card-text :class="mobileText">
@@ -70,13 +84,16 @@
           </v-col>
         </v-row>
       </v-col></v-row
-    ><v-row
+    >
+    <!--Sekcja trzecia -->
+
+    <v-row
       class="justify-center pb-4 indigo darken-2 white--text"
       style="margin: 0px"
     >
       <v-col>
         <v-card-title class="justify-center" :class="mobileTitle"
-          ><b>Kto stworzył Aplikacja Turniejową?</b></v-card-title
+          ><b>Kto stworzył Aplikację Turniejową?</b></v-card-title
         >
         <v-row class="align-center justify-center">
           <v-col cols="12" :lg="4" v-if="$vuetify.breakpoint.mdAndUp"
@@ -117,7 +134,7 @@ export default class BasicInfo extends Vue {
       mobileTitle: [
         [
           { 'text-h5 pb-4': this.$vuetify.breakpoint.smAndDown },
-          { 'text-h4': this.$vuetify.breakpoint.mdAndUp },
+          { 'text-h3': this.$vuetify.breakpoint.mdAndUp },
         ],
       ],
       content: [
@@ -139,8 +156,56 @@ export default class BasicInfo extends Vue {
 </script>
 
 <style scoped>
+.s1bg {
+  position: relative;
+  width: 100%;
+}
+.s1bg:before {
+  background: url('../assets/index/s1_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: absolute;
+  content: '';
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.2;
+}
 .v-card__text,
 .v-card__title {
   word-break: normal;
+}
+.mobile {
+  height: 100%;
+}
+.notmobile {
+  height: 50%;
+}
+.messL,
+.messR {
+  width: 100%;
+  background: rgb(255, 210, 105);
+  position: relative;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.messL:before,
+.messR:before {
+  content: '';
+  position: absolute;
+  top: 26px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+}
+.messL:before {
+  border-right: 26px solid rgb(255, 210, 105);
+  right: 100%;
+}
+.messR:before {
+  border-left: 26px solid rgb(255, 210, 105);
+  left: 100%;
 }
 </style>
