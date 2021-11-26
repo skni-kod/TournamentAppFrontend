@@ -12,7 +12,7 @@
         </v-card-title>
         <div class="s1bg my-3">
           <v-row class="justify-center align-center pa-4 pt-8">
-            <v-col class="py-6 mx-8" cols="12" :lg="4">
+            <v-col class="mx-8" cols="10" :lg="4" :md="5">
               <div class="messL">
                 <v-card-text
                   class="text-justify px-4"
@@ -26,23 +26,25 @@
                 </v-card-text>
               </div>
             </v-col>
-            <v-col cols="12" :lg="5">
+            <v-col cols="12" :lg="5" :md="6">
               <v-img
                 src="../assets/index/1.png"
                 contain
                 max-height="400px"
+                style="box-shadow: 0 0 1em rgb(128, 128, 129)"
               ></v-img>
             </v-col>
           </v-row>
           <v-row class="align-center justify-center pa-4">
-            <v-col cols="12" :lg="4">
+            <v-col cols="12" :lg="4" :md="6">
               <v-img
                 src="../assets/index/2.png"
                 contain
                 max-height="400px"
+                style="box-shadow: 0 0 1em rgb(128, 128, 129)"
               ></v-img>
             </v-col>
-            <v-col class="py-6 mx-8" cols="12" :lg="4">
+            <v-col class="mx-8" cols="10" :lg="4" :md="5">
               <div class="messR">
                 <v-card-text
                   class="text-justify px-4"
@@ -175,20 +177,16 @@ export default class BasicInfo extends Vue {
 .v-card__title {
   word-break: normal;
 }
-.mobile {
-  height: 100%;
-}
-.notmobile {
-  height: 50%;
-}
+
 .messL,
 .messR {
   width: 100%;
-  background: rgb(255, 210, 105);
+  background: rgb(247, 234, 163);
   position: relative;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
+  box-shadow: 0 0 1em rgb(128, 128, 129);
 }
 .messL:before,
 .messR:before {
@@ -199,13 +197,5 @@ export default class BasicInfo extends Vue {
   height: 0;
   border-top: 13px solid transparent;
   border-bottom: 13px solid transparent;
-}
-.messL:before {
-  border-right: 26px solid rgb(255, 210, 105);
-  right: 100%;
-}
-.messR:before {
-  border-left: 26px solid rgb(255, 210, 105);
-  left: 100%;
 }
 </style>
