@@ -26,7 +26,7 @@
                 </v-card-text>
               </div>
             </v-col>
-            <v-col cols="12" :lg="5" :md="6">
+            <v-col cols="12" :lg="4" :md="6">
               <v-img
                 src="../assets/index/1.png"
                 contain
@@ -63,7 +63,7 @@
 
         <!--Sekcja druga -->
 
-        <v-row class="justify-space-around indigo lighten-5 ma-0 pa-4">
+        <v-row class="justify-center indigo lighten-5 ma-0 pa-4">
           <v-col cols="12" :lg="5">
             <v-card-text :class="mobileText">
               <b>Funkcjonalności dla zwykłego użytkownika:</b>
@@ -181,7 +181,7 @@ export default class BasicInfo extends Vue {
 .messL,
 .messR {
   width: 100%;
-  background: rgb(247, 234, 163);
+  background: linear-gradient(135deg, rgb(253, 237, 144), rgb(255, 240, 190));
   position: relative;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
