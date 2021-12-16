@@ -7,13 +7,21 @@
       
 
       <v-spacer></v-spacer>
-
+      <v-row v-if="$vuetify.breakpoint.xsOnly" justify="end" class="pr-3">
       <div v-for="(page, i) in pages" :key="i">
-        <v-btn v-if="page.default || auth" icon :to="page.link">
+        <v-btn v-if="page.default || auth" icon :to="page.link" class="icon">
           <v-icon>{{ page.icon }}</v-icon>
         </v-btn>
       </div>
-
+      </v-row>
+      
+      <v-row justify="end" class="pr-3" v-else>
+      <div v-for="(page, i) in pages" :key="i">
+        <v-btn v-if="page.default || auth" icon :to="page.link" class="icon">
+          <v-icon>{{ page.icon }}</v-icon>
+        </v-btn>
+      </div>
+      </v-row>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
 
@@ -61,16 +69,22 @@ export default class Navbar extends Vue {
       pages: [
         {
           link: { name: 'Home' },
-          icon: 'mdi-seal',
+          icon: 'mdi-home',
           text: 'Strona główna',
           default: true,
+        },
+        {
+          link: { name: 'User' }, // Insert here a link to the tournaments page
+          icon: 'mdi-trophy-outline',
+          text: 'Turnieje',
+          default: false,
         },
         {
           link: { name: 'User' },
           icon: 'mdi-account-outline',
           text: 'Profil',
           default: false,
-        },
+        }
       ],
     };
   }
