@@ -73,7 +73,7 @@ export default class TheUser extends Vue {
                 let player = []; //player rating, klub etc
                 const data1 = res2.data;
                 player[0] = data1.rating;
-                player[1] = data1.club;
+                player[1] = data1.club.club_name;
                 player[2] = data1.user.email;
                 player[3] = data1.country;
                 this.$data.player = player;
