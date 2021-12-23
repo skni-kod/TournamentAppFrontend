@@ -1,7 +1,11 @@
 <template>
   <div>
     <v-app-bar dark class="primary">
-      <v-icon class="mr-2">mdi-chess-king</v-icon>
+      <img
+        :src="require('../../public/logo.png')"
+        class="img-fluid mr-2"
+        style="height: 35px; margin-left: -5px"
+      />
       <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">
         Aplikacja Turniejowa
       </v-toolbar-title>
