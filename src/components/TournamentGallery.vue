@@ -49,6 +49,7 @@ export default class Gallery extends Vue {
     return this.value;
   }
 }
+
 </script>
 
 <style scoped>
@@ -56,5 +57,11 @@ export default class Gallery extends Vue {
   float: left;
   background-size: cover;
   background-position: center center;
+}
+
+@media screen and (min-width: 1040px) and (max-width: 1510px){
+  .image{
+    max-width: 50%;
+  }
 }
 </style>
