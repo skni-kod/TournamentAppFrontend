@@ -36,6 +36,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from '@/axios';
+import { countries } from '../../assets/country';
 
 @Component
 export default class TheUser extends Vue {
@@ -75,7 +76,11 @@ export default class TheUser extends Vue {
                 player[0] = data1.rating;
                 player[1] = data1.club.club_name;
                 player[2] = data1.user.email;
-                player[3] = data1.country;
+                const country_code = data1.country;
+                const countryObject = countries.find(
+                  (c: any) => c.code === country_code,
+                );
+                player[3] = countryObject?.name_pl;
                 this.$data.player = player;
               })
               .catch(() => {

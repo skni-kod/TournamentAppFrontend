@@ -105,8 +105,8 @@ export default class ClubPage extends Vue {
   }
 
   getCountryName() {
-    let countryObject = countries.find(
-      (e) => e.code === this.$data.club.country,
+    const countryObject = countries.find(
+      (c) => c.code === this.$data.club.country,
     );
     return countryObject?.name_pl;
   }
