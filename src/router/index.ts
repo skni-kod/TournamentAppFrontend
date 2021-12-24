@@ -9,7 +9,7 @@ const routes: Array<RouteConfig> = [
     path: '/login',
     name: 'Login',
     component: () =>
-      import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+      import(/* webpackChunkName: "login" */ '../views/login/TheLogin.vue'),
     beforeEnter: (to, from, next) => {
       if (!store.getters.isAuthenticated) {
         next();
@@ -43,14 +43,14 @@ const routes: Array<RouteConfig> = [
   {
     path: '/faq',
     name: 'FAQ',
-    component: () => import(/* webpackChunkName: "faq" */ '../views/FAQ.vue'),
+    component: () => import(/* webpackChunkName: "faq" */ '../views/basic/TheFAQ.vue'),
   },
   {
     path: '/privacy-policy',
     name: 'Privacy Policy',
     component: () =>
       import(
-        /* webpackChunkName: "privacy-policy" */ '../views/PrivacyPolicy.vue'
+        /* webpackChunkName: "privacy-policy" */ '../views/basic/PrivacyPolicy.vue'
       ),
   },
   {
@@ -64,7 +64,7 @@ const routes: Array<RouteConfig> = [
     path: '/retrive',
     name: 'Retrive',
     component: () =>
-      import(/* webpackChunkName: "retrive" */ '../views/Retrive.vue'),
+      import(/* webpackChunkName: "retrive" */ '../views/login/TheRetrive.vue'),
   },
 ];
 
