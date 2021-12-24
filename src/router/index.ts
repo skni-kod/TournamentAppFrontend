@@ -8,8 +8,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/login',
     name: 'Login',
-    component: () =>
-      import(/* webpackChunkName: "login" */ '../views/login/TheLogin.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '../views/login/TheLogin.vue'),
     beforeEnter: (to, from, next) => {
       if (!store.getters.isAuthenticated) {
         next();
@@ -26,14 +25,12 @@ const routes: Array<RouteConfig> = [
   {
     path: '/user',
     name: 'User',
-    component: () =>
-      import(/* webpackChunkName: "user" */ '../views/general/TheUser.vue'),
+    component: () => import(/* webpackChunkName: "user" */ '../views/general/TheUser.vue'),
   },
   {
     path: '/tournament/:id/:module?',
-    name: 'Tournament Info',
-    component: () =>
-      import(/* webpackChunkName: "tournament" */ '../views/general/TheTournament.vue'),
+    name: 'Tournament',
+    component: () => import(/* webpackChunkName: "tournament" */ '../views/general/TheTournament.vue'),
   },
   {
     path: '/club/:id',
@@ -49,9 +46,7 @@ const routes: Array<RouteConfig> = [
     path: '/privacy-policy',
     name: 'Privacy Policy',
     component: () =>
-      import(
-        /* webpackChunkName: "privacy-policy" */ '../views/basic/PrivacyPolicy.vue'
-      ),
+      import(/* webpackChunkName: "privacy-policy" */ '../views/basic/PrivacyPolicy.vue'),
   },
   {
     path: '/skni',

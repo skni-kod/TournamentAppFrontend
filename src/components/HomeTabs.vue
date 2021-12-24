@@ -39,25 +39,22 @@
                 >
                   <v-btn
                     :to="{
-                      name: 'Tournament Info',
+                      name: 'Tournament',
                       params: { id: item.id, module },
                     }"
                     >Więcej o Turnieju</v-btn
                   >
                 </v-col>
-                <v-col
-                  cols="auto"
-                  class="my-auto"
-                  v-else
+                <v-col cols="auto" class="my-auto" v-else>
+                  <v-btn
+                    :to="{
+                      name: 'Club',
+                      params: { id: item.id },
+                    }"
                   >
-                    <v-btn
-                      :to="{
-                        name: 'Club',
-                        params: { id: item.id},
-                      }"
-                    >
-                    Więcej o Klubie</v-btn>
-                  </v-col>
+                    Więcej o Klubie</v-btn
+                  >
+                </v-col>
               </v-row>
             </td>
           </template>
@@ -89,10 +86,10 @@ export default class HomeTabs extends Vue {
         })
         .then((res2) => {
           if (res2.status === 200) {
-            let tabelki:any = [];
+            let tabelki: any = [];
             const data = res2.data;
-            data.forEach((element:any) => {
-              let tab:any = {};
+            data.forEach((element: any) => {
+              let tab: any = {};
               tab.name = element.name;
               tab.date = element.date;
               tab.type = element.play_type;
@@ -109,7 +106,7 @@ export default class HomeTabs extends Vue {
         .then(() => {
           this.$data.loading = false;
         });
-      
+
       axios
         .get('club/', {
           headers: {
@@ -118,10 +115,10 @@ export default class HomeTabs extends Vue {
         })
         .then((club) => {
           if (club.status === 200) {
-            let tabelki:any = [];
+            let tabelki: any = [];
             const data = club.data;
-            data.forEach((element:any) => {
-              let tab:any = {};
+            data.forEach((element: any) => {
+              let tab: any = {};
               tab.id = element.id;
               tab.name = element.club_name;
               tab.country = element.country;
