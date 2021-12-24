@@ -18,12 +18,11 @@
       </v-col>
     </v-row>
   </v-container>
-</template> 
+</template>
 
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import axios from '@/axios';
 
 @Component
 export default class TournamentInfo extends Vue {

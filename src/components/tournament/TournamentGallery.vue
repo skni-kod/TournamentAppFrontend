@@ -27,7 +27,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import axios from '@/axios';
 import VueGallery from '../../../node_modules/vue-gallery/src/component/gallery.vue';
 
 @Component({
