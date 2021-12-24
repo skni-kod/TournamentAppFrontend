@@ -21,24 +21,24 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
+    component: () => import(/* webpackChunkName: "home" */ '../views/general/Home.vue'),
   },
   {
     path: '/user',
     name: 'User',
     component: () =>
-      import(/* webpackChunkName: "user" */ '../views/TheUser.vue'),
+      import(/* webpackChunkName: "user" */ '../views/general/TheUser.vue'),
   },
   {
     path: '/tournament/:id/:module?',
     name: 'Tournament Info',
     component: () =>
-      import(/* webpackChunkName: "tournament" */ '../views/TheTournament.vue'),
+      import(/* webpackChunkName: "tournament" */ '../views/general/TheTournament.vue'),
   },
   {
     path: '/club/:id',
     name: 'Club',
-    component: () => import('../views/TheClub.vue'),
+    component: () => import(/* webpackChunkName: "club" */ '../views/general/TheClub.vue'),
   },
   {
     path: '/faq',
