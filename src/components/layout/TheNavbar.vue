@@ -2,7 +2,7 @@
   <div>
     <v-app-bar dark class="primary">
       <img
-        :src="require('../../public/logo.png')"
+        :src="require('../../../public/logo.png')"
         class="img-fluid mr-2"
         style="height: 35px; margin-left: -5px"
       />

@@ -1,9 +1,7 @@
 <template>
   <v-row justify="center">
     <v-col cols="8" sm="8">
-      <div
-        class="info--text text-h3 text-center font-weight-bold my-8 tytul"
-      >
+      <div class="info--text text-h3 text-center font-weight-bold my-8 tytul">
         {{ name }}
       </div>
 
@@ -28,10 +26,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Gallery from '@/components/TournamentGallery.vue';
-import Matches from '@/components/TournamentMatches.vue';
-import Players from '@/components/TournamentPlayers.vue';
-import Info from '@/components/TournamentInfo.vue';
+import Gallery from '@/components/tournament/TournamentGallery.vue';
+import Matches from '@/components/tournament/TournamentMatches.vue';
+import Players from '@/components/tournament/TournamentPlayers.vue';
+import Info from '@/components/tournament/TournamentInfo.vue';
 import axios from '@/axios';
 
 import { Component } from 'vue-property-decorator';
@@ -86,7 +84,7 @@ export default class TheTournament extends Vue {
         .catch(() => {
           console.log('Błąd w nazwie/info turnieju');
         });
-      
+
       axios
         .get('tournament_player_notifications/', {
           headers: {
@@ -119,7 +117,7 @@ export default class TheTournament extends Vue {
         .catch((error) => {
           console.log(error);
         });
-      
+
       axios
         .get('tournament_games/' + this.id, {
           headers: {
@@ -184,7 +182,7 @@ export default class TheTournament extends Vue {
   get module() {
     return this.$route.params.module;
   }
-  
+
   get id() {
     return this.$route.params.id;
   }
