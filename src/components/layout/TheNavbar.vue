@@ -1,7 +1,11 @@
 <template>
   <div>
     <v-app-bar dark class="primary">
-      <v-icon class="mr-2">mdi-chess-king</v-icon>
+      <img
+        :src="require('../../../public/logo.png')"
+        class="img-fluid mr-2"
+        style="height: 35px; margin-left: -5px"
+      />
       <v-toolbar-title v-if="$vuetify.breakpoint.mdAndUp">
         Aplikacja Turniejowa
       </v-toolbar-title>
@@ -23,8 +27,23 @@
             </h4>
           </v-btn>
         </div>
+        <div>
+          <v-btn
+            icon
+            class="icon mr-3 px-2 rounded-xl"
+            width="auto"
+            @click="auth ? logout() : login()"
+          >
+            <v-icon class="mr-1">{{ text.icon }}</v-icon>
+            <h4 v-if="$vuetify.breakpoint.smAndUp">{{ text.info }}</h4>
+          </v-btn>
+        </div>
       </v-row>
-      <v-app-bar-nav-icon class="ml-2" @click.stop="drawer = !drawer">
+      <v-app-bar-nav-icon
+        v-if="$vuetify.breakpoint.xs"
+        class="ml-2"
+        @click.stop="drawer = !drawer"
+      >
       </v-app-bar-nav-icon>
     </v-app-bar>
 
@@ -76,13 +95,13 @@ export default class Navbar extends Vue {
         {
           link: { name: 'Home' },
           icon: 'mdi-home',
-          text: 'Strona główna',
+          text: 'Start',
           default: true,
         },
         {
           link: { name: 'User' }, // Insert here a link to the tournaments page
-          icon: 'mdi-trophy-outline',
-          text: 'Turnieje',
+          icon: 'mdi-tournament',
+          text: 'Rozgrywki',
           default: false,
         },
         {
@@ -114,9 +133,9 @@ export default class Navbar extends Vue {
   }
   get text() {
     if (this.auth) {
-      return { icon: 'mdi-logout', info: 'Wyloguj się' };
+      return { icon: 'mdi-logout', info: 'Wyloguj' };
     } else {
-      return { icon: 'mdi-login', info: 'Zaloguj się' };
+      return { icon: 'mdi-login', info: 'Zaloguj' };
     }
   }
 }

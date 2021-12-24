@@ -39,25 +39,22 @@
                 >
                   <v-btn
                     :to="{
-                      name: 'Tournament Info',
+                      name: 'Tournament',
                       params: { id: item.id, module },
                     }"
                     >Więcej o Turnieju</v-btn
                   >
                 </v-col>
-                <v-col
-                  cols="auto"
-                  class="my-auto"
-                  v-else
+                <v-col cols="auto" class="my-auto" v-else>
+                  <v-btn
+                    :to="{
+                      name: 'Club',
+                      params: { id: item.id },
+                    }"
                   >
-                    <v-btn
-                      :to="{
-                        name: 'Club',
-                        params: { id: item.id},
-                      }"
-                    >
-                    Więcej o Klubie</v-btn>
-                  </v-col>
+                    Więcej o Klubie</v-btn
+                  >
+                </v-col>
               </v-row>
             </td>
           </template>
@@ -71,6 +68,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from '@/axios';
+import { countries } from '../assets/country';
 
 @Component
 export default class HomeTabs extends Vue {
@@ -89,14 +87,18 @@ export default class HomeTabs extends Vue {
         })
         .then((res2) => {
           if (res2.status === 200) {
-            let tabelki:any = [];
+            let tabelki: any = [];
             const data = res2.data;
-            data.forEach((element:any) => {
-              let tab:any = {};
+            data.forEach((element: any) => {
+              let tab: any = {};
               tab.name = element.name;
               tab.date = element.date;
-              tab.type = element.play_type;
-              tab.country = element.country;
+              tab.type = element.play_type === 'RR' ? 'Kołowy' : 'Drabinkowy';
+              const country_code = element.country;
+              const countryObject = countries.find(
+                (c: any) => c.code === country_code,
+              );
+              tab.country = countryObject?.name_pl;
               tab.id = element.id;
               tabelki.push(tab);
             });
@@ -109,7 +111,7 @@ export default class HomeTabs extends Vue {
         .then(() => {
           this.$data.loading = false;
         });
-      
+
       axios
         .get('club/', {
           headers: {
@@ -118,13 +120,17 @@ export default class HomeTabs extends Vue {
         })
         .then((club) => {
           if (club.status === 200) {
-            let tabelki:any = [];
+            let tabelki: any = [];
             const data = club.data;
-            data.forEach((element:any) => {
-              let tab:any = {};
+            data.forEach((element: any) => {
+              let tab: any = {};
               tab.id = element.id;
               tab.name = element.club_name;
-              tab.country = element.country;
+              const country_code = element.country;
+              const countryObject = countries.find(
+                (c: any) => c.code === country_code,
+              );
+              tab.country = countryObject?.name_pl;
               tab.info = element.club_info;
               tabelki.push(tab);
             });

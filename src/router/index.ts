@@ -8,8 +8,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/login',
     name: 'Login',
-    component: () =>
-      import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '../views/login/TheLogin.vue'),
     beforeEnter: (to, from, next) => {
       if (!store.getters.isAuthenticated) {
         next();
@@ -21,37 +20,33 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
+    component: () => import(/* webpackChunkName: "home" */ '../views/general/Home.vue'),
   },
   {
     path: '/user',
     name: 'User',
-    component: () =>
-      import(/* webpackChunkName: "user" */ '../views/TheUser.vue'),
+    component: () => import(/* webpackChunkName: "user" */ '../views/general/TheUser.vue'),
   },
   {
     path: '/tournament/:id/:module?',
-    name: 'Tournament Info',
-    component: () =>
-      import(/* webpackChunkName: "tournament" */ '../views/TheTournament.vue'),
+    name: 'Tournament',
+    component: () => import(/* webpackChunkName: "tournament" */ '../views/general/TheTournament.vue'),
   },
   {
     path: '/club/:id',
     name: 'Club',
-    component: () => import('../views/TheClub.vue'),
+    component: () => import(/* webpackChunkName: "club" */ '../views/general/TheClub.vue'),
   },
   {
     path: '/faq',
     name: 'FAQ',
-    component: () => import(/* webpackChunkName: "faq" */ '../views/FAQ.vue'),
+    component: () => import(/* webpackChunkName: "faq" */ '../views/basic/TheFAQ.vue'),
   },
   {
     path: '/privacy-policy',
     name: 'Privacy Policy',
     component: () =>
-      import(
-        /* webpackChunkName: "privacy-policy" */ '../views/PrivacyPolicy.vue'
-      ),
+      import(/* webpackChunkName: "privacy-policy" */ '../views/basic/PrivacyPolicy.vue'),
   },
   {
     path: '/skni',
@@ -64,7 +59,7 @@ const routes: Array<RouteConfig> = [
     path: '/retrive',
     name: 'Retrive',
     component: () =>
-      import(/* webpackChunkName: "retrive" */ '../views/Retrive.vue'),
+      import(/* webpackChunkName: "retrive" */ '../views/login/TheRetrive.vue'),
   },
 ];
 

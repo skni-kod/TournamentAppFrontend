@@ -14,11 +14,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import axios from '@/axios';
 
 @Component
 export default class Players extends Vue {
-  @Prop({required: true}) readonly value!: String[]
+  @Prop({ required: true }) readonly value!: String[];
   data() {
     return {
       headers: [

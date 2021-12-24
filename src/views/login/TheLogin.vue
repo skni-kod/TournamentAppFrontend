@@ -3,7 +3,7 @@
     <v-row style="max-width: 1450px;" class="mx-auto justify-center">
       <v-col class="d-none d-md-flex" md="4">
         <v-img
-          :src="require('../assets/login-picture.png')"
+          :src="require('../../assets/login-picture.png')"
           alt="Logo Apki turniejowej"
           contain
           height="540"
