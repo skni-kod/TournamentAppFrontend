@@ -9,11 +9,11 @@ const routes: Array<RouteConfig> = [
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/login/TheLogin.vue'),
-    beforeEnter: (to, from, next) => {
+    beforeEnter: (_, _2, next) => {
       if (!store.getters.isAuthenticated) {
         next();
       } else {
-        next({ name: 'Home' });
+        next({ name: 'Schedules' });
       }
     },
   },
