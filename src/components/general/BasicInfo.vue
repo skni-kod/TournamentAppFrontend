@@ -25,7 +25,7 @@
             </v-col>
             <v-col cols="12" lg="4" md="6">
               <v-img
-                src="../../assets/index/1.png"
+                src="../../assets/home/schedule.png"
                 contain
                 max-height="400px"
                 style="box-shadow: 0 0 1em rgb(128, 128, 129)"
@@ -35,7 +35,7 @@
           <v-row class="align-center justify-center pa-4">
             <v-col cols="12" lg="4" md="6">
               <v-img
-                src="../../assets/index/2.png"
+                src="../../assets/home/t_t.png"
                 contain
                 max-height="400px"
                 style="box-shadow: 0 0 1em rgb(128, 128, 129)"
@@ -94,7 +94,7 @@
         <v-row class="align-center justify-center">
           <v-col v-if="$vuetify.breakpoint.mdAndUp" cols="12" lg="4"
             ><v-img
-              src="../../assets/index/logo_white.png"
+              src="../../assets/loga-skni/logo_white.png"
               contain
               max-height="200px"
             ></v-img></v-col
@@ -156,7 +156,7 @@ export default class BasicInfo extends Vue {
   width: 100%;
 }
 .s1bg:before {
-  background: url('../../assets/index/s1_bg.jpg') no-repeat center center fixed;
+  background: url('../../assets/home/homeBg2.jpg') no-repeat center center fixed;
   background-size: cover;
   position: absolute;
   content: '';

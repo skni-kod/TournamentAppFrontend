@@ -36,9 +36,9 @@ export default class Home extends Vue {
   data() {
     return {
       images: [
-        require('@/assets/home/chess.jpg'),
-        require('@/assets/home/chess2.jpg'),
-        require('@/assets/home/chess3.jpg'),
+        require('@/assets/tournament/chess.jpg'),
+        require('@/assets/tournament/chess2.jpg'),
+        require('@/assets/tournament/chess3.jpg'),
       ],
     };
   }

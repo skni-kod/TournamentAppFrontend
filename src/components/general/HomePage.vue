@@ -98,7 +98,7 @@ export default class HomePage extends Vue {
       hsla(0, 0%, 100%, 0),
       rgba(10, 72, 130, 0.8) 0
     ),
-    url('../../assets/index/indexBg.jpg');
+    url('../../assets/home/homeBg.jpg');
   height: 100%;
   background-size: cover;
   position: absolute;
