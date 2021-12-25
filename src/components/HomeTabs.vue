@@ -29,13 +29,13 @@
           <template v-slot:expanded-item="{ headers, item }">
             <td :colspan="headers.length">
               <v-row>
-                <v-col class="my-auto">
+                <v-col class="my-3">
                   {{ item.info }}
                 </v-col>
                 <v-col
-                  cols="auto"
-                  class="my-auto"
                   v-if="itemtab.tab === 'Turnieje'"
+                  cols="auto"
+                  class="my-3"
                 >
                   <v-btn
                     :to="{
@@ -45,7 +45,7 @@
                     >Więcej o Turnieju</v-btn
                   >
                 </v-col>
-                <v-col cols="auto" class="my-auto" v-else>
+                <v-col v-else cols="auto" class="my-auto">
                   <v-btn
                     :to="{
                       name: 'Club',
@@ -205,3 +205,12 @@ export default class HomeTabs extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.v-data-table
+  >>> .v-data-table__wrapper
+  tbody
+  tr.v-data-table__expanded__content {
+  box-shadow: none;
+}
+</style>
