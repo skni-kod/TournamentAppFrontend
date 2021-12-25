@@ -1,13 +1,10 @@
-<!-- lewa strona-->
 <template>
   <div class="main">
-    <div
-      v-if="$vuetify.breakpoint.mdAndUp"
-      class="d-flex justify-space-around align-center leftSide"
-    >
+    <!-- lewa strona-->
+    <div v-if="mdUp" class="d-flex justify-space-around align-center leftSide">
       <p
         class="text-center white--text"
-        style="font-size: 65px; text-shadow: 2px 2px #000000"
+        style="font-size: 65px; text-shadow: 2px 2px black"
       >
         Aplikacja <br />Turniejowa
       </p>
@@ -15,10 +12,7 @@
     <!-- prawa strona-->
     <div
       class="d-flex pb-12 pt-8 rightSide"
-      :class="[
-        { rightSide: $vuetify.breakpoint.mdAndUp },
-        { rightSide2: $vuetify.breakpoint.smAndDown },
-      ]"
+      :class="[{ rightSide: mdUp }, { rightSide2: !mdUp }]"
     >
       <v-col cols="12" class="d-flex justify-space-around">
         <v-card class="pa-4">
@@ -29,9 +23,13 @@
             contain
           ></v-img>
           <div class="d-flex justify-space-around pa-8">
-            <v-btn rounded-pill color="secondary" to="login"
-              ><v-icon class="pe-2">mdi-login</v-icon> Zaloguj się</v-btn
+            <v-btn
+              v-if="!auth"
+              class="secondary rounded-pill"
+              :to="{ name: 'Login' }"
             >
+              <v-icon class="pe-2">mdi-login</v-icon> Zaloguj się
+            </v-btn>
           </div>
         </v-card>
       </v-col>
@@ -41,11 +39,14 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Watch } from 'vue-property-decorator';
+import { Component } from 'vue-property-decorator';
 @Component
 export default class HomePage extends Vue {
-  data() {
-    return {};
+  get mdUp() {
+    return this.$vuetify.breakpoint.mdAndUp;
+  }
+  get auth() {
+    return this.$store.getters.isAuthenticated;
   }
 }
 </script>
