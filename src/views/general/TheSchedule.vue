@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import HomeTabs from '@/components/HomeTabs.vue';
+import HomeTabs from '@/components/general/ScheduleTabs.vue';
 import { Component } from 'vue-property-decorator';
 
 @Component({
@@ -36,9 +36,9 @@ export default class Home extends Vue {
   data() {
     return {
       images: [
-        require('@/assets/home/chess.jpg'),
-        require('@/assets/home/chess2.jpg'),
-        require('@/assets/home/chess3.jpg'),
+        require('@/assets/tournament/chess.jpg'),
+        require('@/assets/tournament/chess2.jpg'),
+        require('@/assets/tournament/chess3.jpg'),
       ],
     };
   }

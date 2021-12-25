@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card max-width="60%" class="mx-auto">
+    <v-card max-width="60%" class="mx-auto mt-8">
       <v-container>
         <v-row dense>
           <v-col>

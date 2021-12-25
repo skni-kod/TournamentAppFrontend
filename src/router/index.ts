@@ -9,18 +9,24 @@ const routes: Array<RouteConfig> = [
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/login/TheLogin.vue'),
-    beforeEnter: (to, from, next) => {
+    beforeEnter: (_, _2, next) => {
       if (!store.getters.isAuthenticated) {
         next();
       } else {
-        next({ name: 'Home' });
+        next({ name: 'Schedules' });
       }
     },
   },
   {
     path: '/',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/general/Home.vue'),
+    component: () => import(/* webpackChunkName: "home" */ '../views/TheHome.vue'),
+    meta: { stickyNavbar: true },
+  },
+  {
+    path: '/schedules',
+    name: 'Schedules',
+    component: () => import(/* webpackChunkName: "schedules" */ '../views/general/TheSchedule.vue'),
   },
   {
     path: '/user',
