@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-app-bar dark class="primary">
+  <div :class="{ sticky: stickyNav }">
+    <v-app-bar dark class="primary p-2">
       <img
         :src="require('../../../public/logo.png')"
         class="img-fluid mr-2"
@@ -46,14 +46,14 @@
       >
       </v-app-bar-nav-icon>
     </v-app-bar>
-
     <v-navigation-drawer
       v-model="drawer"
       absolute
       top
       right
       temporary
-      color="primary"
+      style="height: 215px"
+      class="primary rounded-xl rounded-tr-0"
     >
       <v-list nav dense shaped>
         <v-list-item-group v-model="group">
@@ -99,7 +99,7 @@ export default class Navbar extends Vue {
           default: true,
         },
         {
-          link: { name: 'Schedules' }, // Insert here a link to the tournaments page
+          link: { name: 'Schedules' },
           icon: 'mdi-tournament',
           text: 'Rozgrywki',
           default: false,
@@ -138,11 +138,21 @@ export default class Navbar extends Vue {
       return { icon: 'mdi-login', info: 'Zaloguj' };
     }
   }
+  get stickyNav() {
+    return this.$route.meta?.stickyNavbar || this.$vuetify.breakpoint.xs;
+  }
 }
 </script>
 
 <style scoped>
 .v-btn:before {
   background-color: transparent;
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
 }
 </style>

@@ -21,6 +21,7 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'Home',
     component: () => import(/* webpackChunkName: "home" */ '../views/TheHome.vue'),
+    meta: { stickyNavbar: true },
   },
   {
     path: '/schedules',
