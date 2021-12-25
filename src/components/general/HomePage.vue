@@ -1,0 +1,112 @@
+<!-- lewa strona-->
+<template>
+  <div class="main">
+    <div
+      v-if="$vuetify.breakpoint.mdAndUp"
+      class="d-flex justify-space-around align-center leftSide"
+    >
+      <p
+        class="text-center white--text"
+        style="font-size: 65px; text-shadow: 2px 2px #000000"
+      >
+        Aplikacja <br />Turniejowa
+      </p>
+    </div>
+    <!-- prawa strona-->
+    <div
+      class="d-flex pb-12 pt-8 rightSide"
+      :class="[
+        { rightSide: $vuetify.breakpoint.mdAndUp },
+        { rightSide2: $vuetify.breakpoint.smAndDown },
+      ]"
+    >
+      <v-col cols="12" class="d-flex justify-space-around">
+        <v-card class="pa-4">
+          <v-img
+            src="../../assets/login-picture.png"
+            height="80%"
+            class="mt-6"
+            contain
+          ></v-img>
+          <div class="d-flex justify-space-around pa-8">
+            <v-btn rounded-pill color="secondary" to="login"
+              ><v-icon class="pe-2">mdi-login</v-icon> Zaloguj się</v-btn
+            >
+          </div>
+        </v-card>
+      </v-col>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import { Component, Watch } from 'vue-property-decorator';
+@Component
+export default class HomePage extends Vue {
+  data() {
+    return {};
+  }
+}
+</script>
+
+<style scoped>
+/*główny wrap*/
+.main {
+  background: linear-gradient(-45deg, #9652ee, #3c78e7, #4136e2, #8090ee);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  position: relative;
+  height: 100vh;
+}
+.main :not(:focus-visible) {
+  animation-play-state: paused;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/*tło z prawej strony*/
+.rightSide {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  height: 100%;
+  box-sizing: border-box;
+  width: 50%;
+}
+.rightSide2 {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  height: 100%;
+  box-sizing: border-box;
+  width: 100%;
+}
+/*tło po lewej stronie*/
+.leftSide {
+  background: linear-gradient(
+      90deg,
+      hsla(0, 0%, 100%, 0),
+      rgba(10, 72, 130, 0.8) 0
+    ),
+    url('../../assets/index/indexBg.jpg');
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  width: 50%;
+  background-blend-mode: hard-light;
+  clip-path: ellipse(95% 95% at 0% 50%);
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+</style>

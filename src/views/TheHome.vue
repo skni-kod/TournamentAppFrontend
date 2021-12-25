@@ -1,46 +1,25 @@
 <template>
-  <v-row justify="center">
-    <v-col sm="12" md="9" lg="8" xl="6" class="px-5">
-      <v-container class="mb-12">
-        <v-carousel
-          cycle
-          height="35vh"
-          show-arrows-on-hover
-          hide-delimiter-background
-        >
-          <v-carousel-item
-            v-for="(image, i) in images"
-            :key="i"
-            :src="image"
-            contain
-          >
-          </v-carousel-item>
-        </v-carousel>
-        <home-tabs />
-      </v-container>
-    </v-col>
-  </v-row>
+  <div class="main-container">
+    <div>
+      <HomePage />
+    </div>
+    <div>
+      <BasicInfo />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HomeTabs from '@/components/general/ScheduleTabs.vue';
 import { Component } from 'vue-property-decorator';
-
+import HomePage from '@/components/general/HomePage.vue';
+import BasicInfo from '@/components/general/BasicInfo.vue';
 @Component({
   components: {
-    HomeTabs,
+    HomePage,
+    BasicInfo,
   },
 })
-export default class Home extends Vue {
-  data() {
-    return {
-      images: [
-        require('@/assets/home/chess.jpg'),
-        require('@/assets/home/chess2.jpg'),
-        require('@/assets/home/chess3.jpg'),
-      ],
-    };
-  }
-}
+export default class Index extends Vue {}
 </script>
+<style scoped></style>
