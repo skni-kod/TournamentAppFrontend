@@ -68,7 +68,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from '@/axios';
-import { countries } from '../assets/country';
+import { countries } from '../../assets/country';
 
 @Component
 export default class HomeTabs extends Vue {

@@ -99,7 +99,7 @@ export default class Navbar extends Vue {
           default: true,
         },
         {
-          link: { name: 'User' }, // Insert here a link to the tournaments page
+          link: { name: 'Schedules' }, // Insert here a link to the tournaments page
           icon: 'mdi-tournament',
           text: 'Rozgrywki',
           default: false,
