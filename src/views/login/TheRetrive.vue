@@ -1,10 +1,12 @@
 <template>
   <div>
-    <v-row justify="center" align="center">
-      <v-col cols="12" sm="10" md="8" lg="6" xl="4" class="pa-md-4">
-        <v-card class="ma-2 text-center">
-          <v-card-title class="justify-center">Zapomniane hasło:</v-card-title>
-          <v-card-subtitle>
+    <v-row justify="center" class="mt-5">
+      <v-col sm="10" md="7" lg="6" xl="4">
+        <v-card class="ma-5 pa-3 text-center rounded-lg">
+          <v-card-title class="justify-center mb-5 pt-5">
+            <h2>Zapomniane hasło:</h2>
+          </v-card-title>
+          <v-card-subtitle class="pb-2">
             Poniżej wpisz adres e-mail powiązany z Twoim kontem.<br />
             Zostanie wysłana wiadomość z instrukcjami, które pomogą Ci zmienić
             hasło.
@@ -14,15 +16,18 @@
               ref="retrive-password"
               v-model="valid"
               lazy-validation
-              class="pb-5 mx-5"
+              class="mb-5"
             >
               <v-text-field
                 v-model="email"
-                :rules="emailRules"
                 label="Adres e-mail"
-                required
+                style="max-width: 350px; margin: auto"
               ></v-text-field>
-              <v-btn color="secondary" class="white--text" @click="validate">
+              <v-btn
+                color="secondary"
+                class="white--text rounded-pill mt-1"
+                @click="validate"
+              >
                 Wyślij wiadomość
               </v-btn>
             </v-form>
@@ -38,5 +43,15 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 
 @Component
-export default class Retrive extends Vue {}
+export default class Retrive extends Vue {
+  data() {
+    return {
+      email: '',
+      valid: false,
+    };
+  }
+  validate() {
+    const email = this.$data.email;
+  }
+}
 </script>
