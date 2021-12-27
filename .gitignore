@@ -3,6 +3,7 @@ node_modules
 .firebase
 .firebaserc
 firebase.json
+dist
 
 # local env files
 .env.local
