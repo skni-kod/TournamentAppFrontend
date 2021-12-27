@@ -109,15 +109,14 @@ export default class Login extends Vue {
     return {
       email: '',
       password: '',
-      dialog: false,
       valid: false,
+      show: false,
       rules: {
         required: (input: string) => !!input || 'To pole jest wymagane',
         counter: (input: string, number: number, end: string) =>
           input.length >= number ||
           'Musisz podać minimum ' + number + ' znak' + end,
       },
-      show: false,
     };
   }
 }
