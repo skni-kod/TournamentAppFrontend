@@ -10,11 +10,8 @@ const routes: Array<RouteConfig> = [
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/login/TheLogin.vue'),
     beforeEnter: (_, _2, next) => {
-      if (!store.getters.isAuthenticated) {
-        next();
-      } else {
-        next({ name: 'Schedules' });
-      }
+      if (store.getters.isAuthenticated) { next({ name: 'Schedules' }); }
+      else { next(); }
     },
   },
   {
@@ -27,21 +24,25 @@ const routes: Array<RouteConfig> = [
     path: '/schedules',
     name: 'Schedules',
     component: () => import(/* webpackChunkName: "schedules" */ '../views/general/TheSchedule.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/user',
     name: 'User',
     component: () => import(/* webpackChunkName: "user" */ '../views/general/TheUser.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/tournament/:id/:module?',
     name: 'Tournament',
     component: () => import(/* webpackChunkName: "tournament" */ '../views/general/TheTournament.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/club/:id',
     name: 'Club',
     component: () => import(/* webpackChunkName: "club" */ '../views/general/TheClub.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/faq',
@@ -67,6 +68,7 @@ const routes: Array<RouteConfig> = [
     component: () =>
       import(/* webpackChunkName: "retrive" */ '../views/login/TheRetrive.vue'),
   },
+  { path: '*', redirect: '/' },
 ];
 
 const router = new VueRouter({
@@ -75,4 +77,11 @@ const router = new VueRouter({
   routes,
 });
 
+router.beforeEach((to, _, next) => {
+  if (to.meta?.requiresAuth && !store.getters.isAuthenticated) {
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
+});
 export default router;
