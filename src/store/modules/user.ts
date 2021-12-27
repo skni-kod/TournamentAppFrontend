@@ -24,8 +24,8 @@ const userModule: Module<any, any> = {
   },
 
   actions: {
-    login({ commit }, data) {
-      axios
+    async login({ commit }, data) {
+      await axios
         .post('token/', {
           email: data.email,
           password: data.password,
