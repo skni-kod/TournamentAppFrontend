@@ -6,15 +6,20 @@
       </div>
 
       <v-row justify="center" no-gutters class="ma-5">
-        <v-col v-for="(mod, i) in modules" :key="i" class="text-center">
-          <v-btn
-            @click="$router.replace('/tournament/' + id + '/' + mod.mod)"
-            color="primary"
-            class="rounded text-h5 text-capitalize pa-4"
-            :disabled="$route.path === '/tournament/' + id + '/' + mod.mod"
-            >{{ mod.name }}
-          </v-btn>
-        </v-col>
+        <v-tabs
+            fixed-tabs
+            center-active
+            show-arrows
+            height="70px"
+            background-color="primary"
+          >
+            <v-tab
+              v-for="(mod, i) in modules" :key="i"
+              @click="onTabClick(mod,id)"
+              class="rounded text-h5 text-capitalize"
+              >{{ mod.name }}
+            </v-tab>
+        </v-tabs>
       </v-row>
 
       <v-card class="py-4 px-6 rounded-lg mb-3">
@@ -45,6 +50,12 @@ import { Component } from 'vue-property-decorator';
 export default class TheTournament extends Vue {
   created() {
     this.downloadData();
+  }
+
+  onTabClick(mod: any, id: any){
+    if(!(this.$router.currentRoute.path === ('/tournament/' + id + '/' + mod.mod))){
+      this.$router.replace('/tournament/' + id + '/' + mod.mod)
+    }
   }
 
   downloadData() {
@@ -204,4 +215,5 @@ export default class TheTournament extends Vue {
   word-spacing: 10px;
   cursor: pointer;
 }
+
 </style>
