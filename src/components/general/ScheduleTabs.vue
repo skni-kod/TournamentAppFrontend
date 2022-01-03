@@ -29,23 +29,23 @@
           <template v-slot:expanded-item="{ headers, item }">
             <td :colspan="headers.length">
               <v-row>
-                <v-col class="my-4">
+                <v-col class="my-3">
                   {{ item.info }}
                 </v-col>
                 <v-col
-                  cols="auto"
-                  class="my-4"
                   v-if="itemtab.tab === 'Turnieje'"
+                  cols="auto"
+                  class="my-3"
                 >
                   <v-btn
                     :to="{
-                      name: 'Tournament Info',
+                      name: 'Tournament',
                       params: { id: item.id, module },
                     }"
                     >Więcej o Turnieju</v-btn
                   >
                 </v-col>
-                <v-col cols="auto" class="my-auto" v-else>
+                <v-col v-else cols="auto" class="my-auto">
                   <v-btn
                     :to="{
                       name: 'Club',
@@ -68,6 +68,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import axios from '@/axios';
+import { countries } from '../../assets/country';
 
 @Component
 export default class HomeTabs extends Vue {
@@ -92,8 +93,12 @@ export default class HomeTabs extends Vue {
               let tab: any = {};
               tab.name = element.name;
               tab.date = element.date;
-              tab.type = element.play_type;
-              tab.country = element.country;
+              tab.type = element.play_type === 'RR' ? 'Kołowy' : 'Drabinkowy';
+              const country_code = element.country;
+              const countryObject = countries.find(
+                (c: any) => c.code === country_code,
+              );
+              tab.country = countryObject?.name_pl;
               tab.id = element.id;
               tabelki.push(tab);
             });
@@ -121,7 +126,11 @@ export default class HomeTabs extends Vue {
               let tab: any = {};
               tab.id = element.id;
               tab.name = element.club_name;
-              tab.country = element.country;
+              const country_code = element.country;
+              const countryObject = countries.find(
+                (c: any) => c.code === country_code,
+              );
+              tab.country = countryObject?.name_pl;
               tab.info = element.club_info;
               tabelki.push(tab);
             });

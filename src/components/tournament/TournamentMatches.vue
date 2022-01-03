@@ -14,11 +14,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import axios from '@/axios';
 
 @Component
 export default class Matches extends Vue {
-  @Prop({required: true}) readonly value!: []
+  @Prop({ required: true }) readonly value!: [];
   data() {
     return {
       headers: [
@@ -56,9 +55,9 @@ export default class Matches extends Vue {
       ],
     };
   }
-  
+
   get positions() {
-      return this.value
-    }
+    return this.value;
+  }
 }
 </script>

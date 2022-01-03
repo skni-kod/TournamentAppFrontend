@@ -1,9 +1,7 @@
 <template>
   <v-row justify="center">
     <v-col cols="8" sm="8">
-      <div
-        class="info--text text-h3 text-center font-weight-bold my-8 tytul"
-      >
+      <div class="info--text text-h3 text-center font-weight-bold my-8 tytul">
         {{ name }}
       </div>
 
@@ -28,12 +26,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Gallery from '@/components/TournamentGallery.vue';
-import Matches from '@/components/TournamentMatches.vue';
-import Players from '@/components/TournamentPlayers.vue';
-import Info from '@/components/TournamentInfo.vue';
+import Gallery from '@/components/tournament/TournamentGallery.vue';
+import Matches from '@/components/tournament/TournamentMatches.vue';
+import Players from '@/components/tournament/TournamentPlayers.vue';
+import Info from '@/components/tournament/TournamentInfo.vue';
 import axios from '@/axios';
-
+import { countries } from '../../assets/country';
 import { Component } from 'vue-property-decorator';
 
 @Component({
@@ -65,11 +63,15 @@ export default class TheTournament extends Vue {
             const data = res2.data;
             tab[0] = data.name;
             tab[1] = data.date;
-            tab[2] = data.country;
+            const country_code = data.country;
+            const countryObject = countries.find(
+              (c: any) => c.code === country_code,
+            );
+            tab[2] = countryObject?.name_pl;
             tab[3] = data.address;
             tab[4] = data.members_limit;
             tab[5] = data.organiser;
-            tab[6] = data.play_type;
+            tab[6] = data.play_type === 'RR' ? 'Kołowy' : 'Drabinkowy';
             name = data.name;
             this.$data.name = name;
             this.$data.info = tab;
@@ -86,7 +88,7 @@ export default class TheTournament extends Vue {
         .catch(() => {
           console.log('Błąd w nazwie/info turnieju');
         });
-      
+
       axios
         .get('tournament_player_notifications/', {
           headers: {
@@ -106,7 +108,11 @@ export default class TheTournament extends Vue {
                   player.id = member.player.id;
                   player.name =
                     member.player.first_name + ' ' + member.player.last_name;
-                  player.country = member.player.country;
+                  const country_code = member.player.country;
+                  const countryObject = countries.find(
+                    (c: any) => c.code === country_code,
+                  );
+                  player.country = countryObject?.name_pl;
                   player.club = member.player.club;
                   player.rating = member.player.rating;
                   players.push(player);
@@ -119,7 +125,7 @@ export default class TheTournament extends Vue {
         .catch((error) => {
           console.log(error);
         });
-      
+
       axios
         .get('tournament_games/' + this.id, {
           headers: {
@@ -149,7 +155,7 @@ export default class TheTournament extends Vue {
                 game.pointsi = '2';
                 game.points = '0';
                 game.result = '0:2';
-              } else if (g.result === '3') {
+              } else {
                 game.points = '1';
                 game.pointsi = '1';
                 game.result = '1:1';
@@ -184,7 +190,7 @@ export default class TheTournament extends Vue {
   get module() {
     return this.$route.params.module;
   }
-  
+
   get id() {
     return this.$route.params.id;
   }

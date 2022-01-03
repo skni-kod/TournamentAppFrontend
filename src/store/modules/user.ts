@@ -24,8 +24,8 @@ const userModule: Module<any, any> = {
   },
 
   actions: {
-    login({ commit }, data) {
-      axios
+    async login({ commit }, data) {
+      await axios
         .post('token/', {
           email: data.email,
           password: data.password,
@@ -37,7 +37,7 @@ const userModule: Module<any, any> = {
               refreshToken: res.data.refresh,
               id: res.data.id,
             });
-            router.push({ name: 'Home' }).catch(error => {
+            router.push({ name: 'Schedules' }).catch(error => {
               if (
                 error.name !== 'NavigationDuplicated' &&
                 !error.message.includes('Avoided redundant navigation to current location')

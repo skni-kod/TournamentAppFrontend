@@ -1,16 +1,16 @@
 <template>
   <div>
     <v-row style="max-width: 1450px;" class="mx-auto justify-center">
-      <v-col sm="8" md="4">
+      <v-col class="d-none d-md-flex" md="4">
         <v-img
-          :src="require('../assets/login-picture.png')"
+          :src="require('../../assets/login-picture.png')"
           alt="Logo Apki turniejowej"
           contain
           height="540"
           class="mx-auto my-12"
         ></v-img>
       </v-col>
-      <v-col sm="8" md="4">
+      <v-col sm="10" md="4">
         <v-card
           class="my-12 mx-auto text-center rounded-lg"
           style="max-width: 450px"
@@ -109,15 +109,14 @@ export default class Login extends Vue {
     return {
       email: '',
       password: '',
-      dialog: false,
       valid: false,
+      show: false,
       rules: {
         required: (input: string) => !!input || 'To pole jest wymagane',
         counter: (input: string, number: number, end: string) =>
           input.length >= number ||
           'Musisz podać minimum ' + number + ' znak' + end,
       },
-      show: false,
     };
   }
 }
