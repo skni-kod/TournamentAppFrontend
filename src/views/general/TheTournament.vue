@@ -5,21 +5,27 @@
         {{ name }}
       </div>
 
-      <v-row justify="center" no-gutters class="ma-5">
+      <v-row justify="center" no-gutters class="ma-3">
+      <v-responsive
+        min-width="300px">
         <v-tabs
             fixed-tabs
             center-active
             show-arrows
             height="70px"
             background-color="primary"
+            active-class="active"
           >
             <v-tab
               v-for="(mod, i) in modules" :key="i"
               @click="onTabClick(mod,id)"
-              class="rounded text-h5 text-capitalize"
-              >{{ mod.name }}
+              class="rounded text-h5 text-capitalize grey--text"
+              style = "{ width: fit-content; }"
+              >
+              {{ mod.name }}
             </v-tab>
         </v-tabs>
+        </v-responsive>
       </v-row>
 
       <v-card class="py-4 px-6 rounded-lg mb-3">
@@ -214,6 +220,10 @@ export default class TheTournament extends Vue {
   letter-spacing: 1px;
   word-spacing: 10px;
   cursor: pointer;
+}
+
+.active{
+  color: white !important;
 }
 
 </style>
