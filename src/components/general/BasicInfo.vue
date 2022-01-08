@@ -32,7 +32,7 @@
             </v-col>
           </v-row>
           <v-row class="align-center justify-center pa-4">
-            <v-col cols="12" lg="4" md="5" sm="10">
+            <v-col cols="12" lg="4" md="6" sm="10">
               <v-img
                 src="../../assets/home/t_t.png"
                 contain
