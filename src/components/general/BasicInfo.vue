@@ -1,7 +1,5 @@
 <template>
   <section>
-    <!--Sekcja pierwsza -->
-
     <v-row class="justify-center">
       <v-col class="px-0">
         <v-card-title
@@ -52,9 +50,6 @@
             </v-col>
           </v-row>
         </div>
-
-        <!--Sekcja druga -->
-
         <v-row class="justify-center indigo lighten-5 ma-0 py-4">
           <v-col cols="12" lg="5">
             <v-card-text :class="mobileText" class="py-0">
@@ -79,8 +74,6 @@
         </v-row>
       </v-col></v-row
     >
-    <!--Sekcja trzecia -->
-
     <v-row
       class="justify-center pb-4 indigo darken-2 white--text"
       style="margin: 0px"
@@ -171,7 +164,7 @@ export default class BasicInfo extends Vue {
 .messL,
 .messR {
   width: 100%;
-  background: linear-gradient(170deg, rgb(255, 249, 214), rgb(255, 243, 202));
+  background: linear-gradient(135sdeg, rgb(253, 237, 144), rgb(255, 240, 190));
   position: relative;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;

@@ -18,7 +18,7 @@
             v-if="page.default || auth"
             icon
             :to="page.link"
-            class="icon mr-3 px-2 rounded-xl"
+            class="icon mr-3 px-2 rounded-xl btn-fix"
             width="auto"
           >
             <v-icon class="mr-1">{{ page.icon }}</v-icon>
@@ -150,7 +150,7 @@ export default class Navbar extends Vue {
 </script>
 
 <style scoped>
-.v-btn::before {
+.btn-fix::before {
   display: none;
 }
 .sticky {
