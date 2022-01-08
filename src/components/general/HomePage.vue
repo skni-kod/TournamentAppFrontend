@@ -54,7 +54,7 @@ export default class HomePage extends Vue {
 <style scoped>
 /*główny wrap*/
 .main {
-  background: linear-gradient(-45deg, #9652ee, #3c78e7, #4136e2, #8090ee);
+  background: linear-gradient(-45deg, #9652ee, #4b80e2, #4136e2, #7678ec);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   position: relative;

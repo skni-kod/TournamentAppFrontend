@@ -3,9 +3,9 @@
     <!--Sekcja pierwsza -->
 
     <v-row class="justify-center">
-      <v-col class="pa-0">
+      <v-col class="px-0">
         <v-card-title
-          class="justify-center py-8 indigo darken-2 white--text"
+          class="justify-center text-center indigo darken-2 white--text"
           :class="mobileTitle"
         >
           <b>Czym jest i jakie funkcje spełnia Aplikacja Turniejowa?</b>
@@ -23,21 +23,19 @@
                 </v-card-text>
               </div>
             </v-col>
-            <v-col cols="12" lg="4" md="6">
+            <v-col cols="12" lg="4" md="6" sm="10">
               <v-img
                 src="../../assets/home/schedule.png"
                 contain
-                max-height="400px"
                 style="box-shadow: 0 0 1em rgb(128, 128, 129)"
               ></v-img>
             </v-col>
           </v-row>
           <v-row class="align-center justify-center pa-4">
-            <v-col cols="12" lg="4" md="6">
+            <v-col cols="12" lg="4" md="5" sm="10">
               <v-img
                 src="../../assets/home/t_t.png"
                 contain
-                max-height="400px"
                 style="box-shadow: 0 0 1em rgb(128, 128, 129)"
               ></v-img>
             </v-col>
@@ -57,11 +55,11 @@
 
         <!--Sekcja druga -->
 
-        <v-row class="justify-center indigo lighten-5 ma-0 pa-4">
+        <v-row class="justify-center indigo lighten-5 ma-0 py-4">
           <v-col cols="12" lg="5">
-            <v-card-text :class="mobileText">
+            <v-card-text :class="mobileText" class="py-0">
               <b>Funkcjonalności dla zwykłego użytkownika:</b>
-              <ul class="pt-4">
+              <ul>
                 <li v-for="item in content" :key="item">
                   {{ item }}
                 </li>
@@ -69,9 +67,9 @@
             </v-card-text>
           </v-col>
           <v-col cols="12" lg="5">
-            <v-card-text :class="mobileText">
+            <v-card-text :class="mobileText" class="py-0">
               <b>Funkcjonalności dla użytkownika z pełnymi informacjami:</b>
-              <ul class="pt-4">
+              <ul>
                 <li v-for="item in content2" :key="item">
                   {{ item }}
                 </li>
@@ -88,7 +86,7 @@
       style="margin: 0px"
     >
       <v-col>
-        <v-card-title class="justify-center" :class="mobileTitle">
+        <v-card-title class="justify-center text-center" :class="mobileTitle">
           <b>Kto stworzył Aplikację Turniejową?</b>
         </v-card-title>
         <v-row class="align-center justify-center">
@@ -142,7 +140,7 @@ export default class BasicInfo extends Vue {
     };
   }
   get mobileText() {
-    return this.$vuetify.breakpoint.smAndDown ? 'px-0 text-h6' : 'text-h5';
+    return this.$vuetify.breakpoint.smAndDown ? 'px-2 text-h6' : 'text-h5';
   }
   get mobileTitle() {
     return this.$vuetify.breakpoint.smAndDown ? 'text-h5 pb-4' : 'text-h3';
@@ -173,7 +171,7 @@ export default class BasicInfo extends Vue {
 .messL,
 .messR {
   width: 100%;
-  background: linear-gradient(135deg, rgb(253, 237, 144), rgb(255, 240, 190));
+  background: linear-gradient(170deg, rgb(255, 249, 214), rgb(255, 243, 202));
   position: relative;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;

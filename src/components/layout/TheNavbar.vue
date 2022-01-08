@@ -61,7 +61,11 @@
             Aplikacja Turniejowa
           </h3>
           <div v-for="(page, i) in pages" :key="i">
-            <v-list-item v-if="page.default || auth" :to="page.link">
+            <v-list-item
+              v-if="page.default || auth"
+              :to="page.link"
+              class="btn-fix"
+            >
               <v-icon color="white">{{ page.icon }}</v-icon>
               <v-list-item-title>
                 <h4 class="white--text pl-4">{{ page.text }}</h4>
@@ -98,6 +102,7 @@ export default class Navbar extends Vue {
           text: 'Start',
           default: true,
         },
+
         {
           link: { name: 'Schedules' },
           icon: 'mdi-tournament',
@@ -145,8 +150,8 @@ export default class Navbar extends Vue {
 </script>
 
 <style scoped>
-.v-btn:before {
-  background-color: transparent;
+.v-btn::before {
+  display: none;
 }
 .sticky {
   position: sticky;
