@@ -50,8 +50,9 @@
             </v-col>
           </v-row>
         </div>
+
         <v-row class="justify-center indigo lighten-5 ma-0 py-4">
-          <v-col cols="12" lg="5">
+          <v-col cols="12" lg="5" class="pr-2">
             <v-card-text :class="mobileText" class="py-0">
               <b>Funkcjonalności dla zwykłego użytkownika:</b>
               <ul>
@@ -61,7 +62,7 @@
               </ul>
             </v-card-text>
           </v-col>
-          <v-col cols="12" lg="5">
+          <v-col cols="12" lg="5" class="pr-2">
             <v-card-text :class="mobileText" class="py-0">
               <b>Funkcjonalności dla użytkownika z pełnymi informacjami:</b>
               <ul>
@@ -74,16 +75,20 @@
         </v-row>
       </v-col></v-row
     >
+
     <v-row
       class="justify-center pb-4 indigo darken-2 white--text"
       style="margin: 0px"
     >
       <v-col>
-        <v-card-title class="justify-center text-center" :class="mobileTitle">
+        <v-card-title
+          class="justify-center text-center pb-0"
+          :class="mobileTitle"
+        >
           <b>Kto stworzył Aplikację Turniejową?</b>
         </v-card-title>
-        <v-row class="align-center justify-center">
-          <v-col v-if="$vuetify.breakpoint.mdAndUp" cols="12" lg="4"
+        <v-row class="align-center justify-center pt-2">
+          <v-col v-if="$vuetify.breakpoint.lgAndUp" cols="12" lg="4"
             ><v-img
               src="../../assets/loga-skni/logo_white.png"
               contain
@@ -133,10 +138,10 @@ export default class BasicInfo extends Vue {
     };
   }
   get mobileText() {
-    return this.$vuetify.breakpoint.smAndDown ? 'px-2 text-h6' : 'text-h5';
+    return this.$vuetify.breakpoint.smAndDown ? 'text-h6' : 'text-h5';
   }
   get mobileTitle() {
-    return this.$vuetify.breakpoint.smAndDown ? 'text-h5 pb-4' : 'text-h3';
+    return this.$vuetify.breakpoint.smAndDown ? 'text-h5' : 'text-h3';
   }
 }
 </script>
@@ -164,7 +169,7 @@ export default class BasicInfo extends Vue {
 .messL,
 .messR {
   width: 100%;
-  background: linear-gradient(135sdeg, rgb(253, 237, 144), rgb(255, 240, 190));
+  background: linear-gradient(135deg, rgb(253, 237, 144), rgb(255, 240, 190));
   position: relative;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;

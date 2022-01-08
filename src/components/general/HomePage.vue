@@ -19,13 +19,14 @@
           <v-img
             src="../../assets/login-picture.png"
             height="80%"
-            class="mt-6"
+            class="mt-6 align-center"
             contain
           ></v-img>
           <div class="d-flex justify-space-around pa-8">
             <v-btn
               v-if="!auth"
-              class="secondary rounded-pill"
+              class="primary rounded-pill"
+              x-large
               :to="{ name: 'Login' }"
             >
               <v-icon class="pe-2">mdi-login</v-icon> Zaloguj się
