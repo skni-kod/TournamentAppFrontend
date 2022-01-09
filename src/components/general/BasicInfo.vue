@@ -26,7 +26,8 @@
                 src="../../assets/home/schedule.png"
                 contain
                 style="box-shadow: 0 0 1em rgb(128, 128, 129)"
-              ></v-img>
+              >
+              </v-img>
             </v-col>
           </v-row>
           <v-row class="align-center justify-center pa-4">
@@ -35,7 +36,8 @@
                 src="../../assets/home/t_t.png"
                 contain
                 style="box-shadow: 0 0 1em rgb(128, 128, 129)"
-              ></v-img>
+              >
+              </v-img>
             </v-col>
             <v-col class="mx-8" cols="10" lg="4" md="5">
               <div class="messR">
@@ -52,29 +54,25 @@
         </div>
 
         <v-row class="justify-center indigo lighten-5 ma-0 py-4">
-          <v-col cols="12" lg="5" class="pl-6">
+          <v-col
+            cols="12"
+            lg="5"
+            class="pl-6"
+            v-for="(c, i) in content"
+            :key="i"
+          >
             <v-card-text :class="mobileText" class="py-0">
-              <b>Funkcjonalności dla zwykłego użytkownika:</b>
+              <b>{{ c.title }}</b>
               <ul>
-                <li v-for="item in content" :key="item">
-                  {{ item }}
-                </li>
-              </ul>
-            </v-card-text>
-          </v-col>
-          <v-col cols="12" lg="5" class="pl-6">
-            <v-card-text :class="mobileText" class="py-0">
-              <b>Funkcjonalności dla użytkownika z pełnymi informacjami:</b>
-              <ul>
-                <li v-for="item in content2" :key="item">
+                <li v-for="(item, id) in c.answers" :key="id">
                   {{ item }}
                 </li>
               </ul>
             </v-card-text>
           </v-col>
         </v-row>
-      </v-col></v-row
-    >
+      </v-col>
+    </v-row>
 
     <v-row
       class="justify-center pb-4 indigo darken-2 white--text"
@@ -123,17 +121,25 @@ export default class BasicInfo extends Vue {
       authors:
         'Aplikacja Turniejowa została stworzona w ramach projektu dla rzeszowskiego Studenckiego Koła Naukowego Informatyków KOD przez zespół w składzie: Brajan Miśkowicz, Hubert Futoma, Konrad Bochenek, Natalia Miarowska, Oskar Tyniec, Tomasz Popek.',
       content: [
-        'podgląd rozgrywanych turniejów',
-        'podgląd archiwalnych turniejów',
-        'śledzenie wyników poszczególnych partii szachowych',
-        'wgląd w galerię zdjęć dla poszczególnych turniejów',
-        'wgląd w podstawowe statystyki zawodników',
-      ],
-      content2: [
-        'możliwość zapisywania się na turniej',
-        'wyświetlanie listy turniejów, w których user brał udział',
-        'dołączanie do grup klubów szachowych',
-        'podgląd szczegółowych statystyk zawodników',
+        {
+          title: 'Funkcjonalności dla zwykłego użytkownika:',
+          answers: [
+            'podgląd rozgrywanych turniejów',
+            'podgląd archiwalnych turniejów',
+            'śledzenie wyników poszczególnych partii szachowych',
+            'wgląd w galerię zdjęć dla poszczególnych turniejów',
+            'wgląd w podstawowe statystyki zawodników',
+          ],
+        },
+        {
+          title: 'Funkcjonalności dla użytkownika z pełnymi informacjami:',
+          answers: [
+            'możliwość zapisywania się na turniej',
+            'wyświetlanie listy turniejów, w których user brał udział',
+            'dołączanie do grup klubów szachowych',
+            'podgląd szczegółowych statystyk zawodników',
+          ],
+        },
       ],
     };
   }
