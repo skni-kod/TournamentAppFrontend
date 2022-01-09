@@ -52,7 +52,7 @@
         </div>
 
         <v-row class="justify-center indigo lighten-5 ma-0 py-4">
-          <v-col cols="12" lg="5" class="pr-2">
+          <v-col cols="12" lg="5" class="pl-6">
             <v-card-text :class="mobileText" class="py-0">
               <b>Funkcjonalności dla zwykłego użytkownika:</b>
               <ul>
@@ -62,7 +62,7 @@
               </ul>
             </v-card-text>
           </v-col>
-          <v-col cols="12" lg="5" class="pr-2">
+          <v-col cols="12" lg="5" class="pl-6">
             <v-card-text :class="mobileText" class="py-0">
               <b>Funkcjonalności dla użytkownika z pełnymi informacjami:</b>
               <ul>
