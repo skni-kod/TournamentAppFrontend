@@ -11,29 +11,35 @@
     </div>
     <!-- prawa strona-->
     <div
-      class="d-flex pb-12 pt-8 rightSide"
+      class="pa-8 justify-space-around rightSide"
       :class="[{ rightSide: mdUp }, { rightSide2: !mdUp }]"
     >
-      <v-col cols="12" class="d-flex justify-space-around">
-        <v-card class="pa-4">
-          <v-img
-            src="../../assets/login-picture.png"
-            height="80%"
-            class="mt-6 align-center"
-            contain
-          ></v-img>
-          <div class="d-flex justify-space-around pa-8">
+      <v-card
+        class="align-center justify-center ma-0"
+        height="100%"
+        :aspect-ratio="1"
+      >
+        <v-row>
+          <v-col>
+            <v-img
+              :src="require('../../assets/login-picture.png')"
+              contain
+              max-height="600px"
+            ></v-img></v-col
+        ></v-row>
+        <v-row>
+          <v-col>
             <v-btn
               v-if="!auth"
-              class="primary rounded-pill"
+              class="d-flex justify-center primary rounded-pill mx-8 my-4"
               x-large
               :to="{ name: 'Login' }"
             >
               <v-icon class="pe-2">mdi-login</v-icon> Zaloguj się
             </v-btn>
-          </div>
-        </v-card>
-      </v-col>
+          </v-col>
+        </v-row>
+      </v-card>
     </div>
   </div>
 </template>

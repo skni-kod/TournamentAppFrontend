@@ -30,7 +30,7 @@
         <div>
           <v-btn
             icon
-            class="icon mr-3 px-2 rounded-xl"
+            class="icon mr-3 px-2 rounded-xl btn-fix"
             width="auto"
             @click="auth ? logout() : login()"
           >
