@@ -1,14 +1,13 @@
 <template>
   <v-row justify="center">
-    <v-col cols="8" sm="8">
+    <v-col cols="8">
       <div class="info--text text-h3 text-center font-weight-bold my-8 tytul">
         {{ name }}
       </div>
 
       <v-row justify="center" no-gutters class="ma-3">
-      <v-responsive
-        min-width="300px">
-        <v-tabs
+        <v-responsive min-width="500px" max-width="1200px" class="rounded-lg">
+          <v-tabs
             fixed-tabs
             center-active
             show-arrows
@@ -17,14 +16,15 @@
             active-class="active"
           >
             <v-tab
-              v-for="(mod, i) in modules" :key="i"
-              @click="onTabClick(mod,id)"
+              v-for="(mod, i) in modules"
+              :key="i"
+              @click="onTabClick(mod, id)"
               class="rounded text-h5 text-capitalize grey--text"
-              style = "{ width: fit-content; }"
-              >
+              style="width: fit-content; min-width: 150px"
+            >
               {{ mod.name }}
             </v-tab>
-        </v-tabs>
+          </v-tabs>
         </v-responsive>
       </v-row>
 
@@ -58,9 +58,11 @@ export default class TheTournament extends Vue {
     this.downloadData();
   }
 
-  onTabClick(mod: any, id: any){
-    if(!(this.$router.currentRoute.path === ('/tournament/' + id + '/' + mod.mod))){
-      this.$router.replace('/tournament/' + id + '/' + mod.mod)
+  onTabClick(mod: any, id: any) {
+    if (
+      !(this.$router.currentRoute.path === '/tournament/' + id + '/' + mod.mod)
+    ) {
+      this.$router.replace('/tournament/' + id + '/' + mod.mod);
     }
   }
 
@@ -222,8 +224,7 @@ export default class TheTournament extends Vue {
   cursor: pointer;
 }
 
-.active{
+.active {
   color: white !important;
 }
-
 </style>
