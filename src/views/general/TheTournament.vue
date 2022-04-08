@@ -1,20 +1,31 @@
 <template>
   <v-row justify="center">
-    <v-col cols="8" sm="8">
+    <v-col cols="8">
       <div class="info--text text-h3 text-center font-weight-bold my-8 tytul">
         {{ name }}
       </div>
 
-      <v-row justify="center" no-gutters class="ma-5">
-        <v-col v-for="(mod, i) in modules" :key="i" class="text-center">
-          <v-btn
-            @click="$router.replace('/tournament/' + id + '/' + mod.mod)"
-            color="primary"
-            class="rounded text-h5 text-capitalize pa-4"
-            :disabled="$route.path === '/tournament/' + id + '/' + mod.mod"
-            >{{ mod.name }}
-          </v-btn>
-        </v-col>
+      <v-row justify="center" no-gutters class="ma-3">
+        <v-responsive min-width="500px" max-width="1200px" class="rounded-lg">
+          <v-tabs
+            fixed-tabs
+            center-active
+            show-arrows
+            height="70px"
+            background-color="primary"
+            active-class="active"
+          >
+            <v-tab
+              v-for="(mod, i) in modules"
+              :key="i"
+              @click="onTabClick(mod, id)"
+              class="rounded text-h5 text-capitalize grey--text"
+              style="width: fit-content; min-width: 150px"
+            >
+              {{ mod.name }}
+            </v-tab>
+          </v-tabs>
+        </v-responsive>
       </v-row>
 
       <v-card class="py-4 px-6 rounded-lg mb-3">
@@ -45,6 +56,14 @@ import { Component } from 'vue-property-decorator';
 export default class TheTournament extends Vue {
   created() {
     this.downloadData();
+  }
+
+  onTabClick(mod: any, id: any) {
+    if (
+      !(this.$router.currentRoute.path === '/tournament/' + id + '/' + mod.mod)
+    ) {
+      this.$router.replace('/tournament/' + id + '/' + mod.mod);
+    }
   }
 
   downloadData() {
@@ -203,5 +222,9 @@ export default class TheTournament extends Vue {
   letter-spacing: 1px;
   word-spacing: 10px;
   cursor: pointer;
+}
+
+.active {
+  color: white !important;
 }
 </style>
