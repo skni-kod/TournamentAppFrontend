@@ -1,11 +1,9 @@
 <template>
   <section>
-    <!--Sekcja pierwsza -->
-
     <v-row class="justify-center">
-      <v-col class="pa-0">
+      <v-col class="px-0">
         <v-card-title
-          class="justify-center py-8 indigo darken-2 white--text"
+          class="justify-center text-center indigo darken-2 white--text"
           :class="mobileTitle"
         >
           <b>Czym jest i jakie funkcje spełnia Aplikacja Turniejowa?</b>
@@ -23,23 +21,23 @@
                 </v-card-text>
               </div>
             </v-col>
-            <v-col cols="12" lg="4" md="6">
+            <v-col cols="12" lg="4" md="6" sm="10">
               <v-img
                 src="../../assets/home/schedule.png"
                 contain
-                max-height="400px"
                 style="box-shadow: 0 0 1em rgb(128, 128, 129)"
-              ></v-img>
+              >
+              </v-img>
             </v-col>
           </v-row>
           <v-row class="align-center justify-center pa-4">
-            <v-col cols="12" lg="4" md="6">
+            <v-col cols="12" lg="4" md="6" sm="10">
               <v-img
                 src="../../assets/home/t_t.png"
                 contain
-                max-height="400px"
                 style="box-shadow: 0 0 1em rgb(128, 128, 129)"
-              ></v-img>
+              >
+              </v-img>
             </v-col>
             <v-col class="mx-8" cols="10" lg="4" md="5">
               <div class="messR">
@@ -55,44 +53,40 @@
           </v-row>
         </div>
 
-        <!--Sekcja druga -->
-
-        <v-row class="justify-center indigo lighten-5 ma-0 pa-4">
-          <v-col cols="12" lg="5">
-            <v-card-text :class="mobileText">
-              <b>Funkcjonalności dla zwykłego użytkownika:</b>
-              <ul class="pt-4">
-                <li v-for="item in content" :key="item">
-                  {{ item }}
-                </li>
-              </ul>
-            </v-card-text>
-          </v-col>
-          <v-col cols="12" lg="5">
-            <v-card-text :class="mobileText">
-              <b>Funkcjonalności dla użytkownika z pełnymi informacjami:</b>
-              <ul class="pt-4">
-                <li v-for="item in content2" :key="item">
+        <v-row class="justify-center indigo lighten-5 ma-0 py-4">
+          <v-col
+            cols="12"
+            lg="5"
+            class="pl-6"
+            v-for="(c, i) in content"
+            :key="i"
+          >
+            <v-card-text :class="mobileText" class="py-0">
+              <b>{{ c.title }}</b>
+              <ul>
+                <li v-for="(item, id) in c.answers" :key="id">
                   {{ item }}
                 </li>
               </ul>
             </v-card-text>
           </v-col>
         </v-row>
-      </v-col></v-row
-    >
-    <!--Sekcja trzecia -->
+      </v-col>
+    </v-row>
 
     <v-row
       class="justify-center pb-4 indigo darken-2 white--text"
       style="margin: 0px"
     >
       <v-col>
-        <v-card-title class="justify-center" :class="mobileTitle">
+        <v-card-title
+          class="justify-center text-center pb-0"
+          :class="mobileTitle"
+        >
           <b>Kto stworzył Aplikację Turniejową?</b>
         </v-card-title>
-        <v-row class="align-center justify-center">
-          <v-col v-if="$vuetify.breakpoint.mdAndUp" cols="12" lg="4"
+        <v-row class="align-center justify-center pt-2">
+          <v-col v-if="$vuetify.breakpoint.lgAndUp" cols="12" lg="4"
             ><v-img
               src="../../assets/loga-skni/logo_white.png"
               contain
@@ -127,25 +121,33 @@ export default class BasicInfo extends Vue {
       authors:
         'Aplikacja Turniejowa została stworzona w ramach projektu dla rzeszowskiego Studenckiego Koła Naukowego Informatyków KOD przez zespół w składzie: Brajan Miśkowicz, Hubert Futoma, Konrad Bochenek, Natalia Miarowska, Oskar Tyniec, Tomasz Popek.',
       content: [
-        'podgląd rozgrywanych turniejów',
-        'podgląd archiwalnych turniejów',
-        'śledzenie wyników poszczególnych partii szachowych',
-        'wgląd w galerię zdjęć dla poszczególnych turniejów',
-        'wgląd w podstawowe statystyki zawodników',
-      ],
-      content2: [
-        'możliwość zapisywania się na turniej',
-        'wyświetlanie listy turniejów, w których user brał udział',
-        'dołączanie do grup klubów szachowych',
-        'podgląd szczegółowych statystyk zawodników',
+        {
+          title: 'Funkcjonalności dla zwykłego użytkownika:',
+          answers: [
+            'podgląd rozgrywanych turniejów',
+            'podgląd archiwalnych turniejów',
+            'śledzenie wyników poszczególnych partii szachowych',
+            'wgląd w galerię zdjęć dla poszczególnych turniejów',
+            'wgląd w podstawowe statystyki zawodników',
+          ],
+        },
+        {
+          title: 'Funkcjonalności dla użytkownika z pełnymi informacjami:',
+          answers: [
+            'możliwość zapisywania się na turniej',
+            'wyświetlanie listy turniejów, w których user brał udział',
+            'dołączanie do grup klubów szachowych',
+            'podgląd szczegółowych statystyk zawodników',
+          ],
+        },
       ],
     };
   }
   get mobileText() {
-    return this.$vuetify.breakpoint.smAndDown ? 'px-0 text-h6' : 'text-h5';
+    return this.$vuetify.breakpoint.smAndDown ? 'text-h6' : 'text-h5';
   }
   get mobileTitle() {
-    return this.$vuetify.breakpoint.smAndDown ? 'text-h5 pb-4' : 'text-h3';
+    return this.$vuetify.breakpoint.smAndDown ? 'text-h5' : 'text-h3';
   }
 }
 </script>
